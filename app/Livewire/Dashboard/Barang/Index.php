@@ -13,7 +13,7 @@ class Index extends Component
     public $jenis, $id, $no, $foto, $keyword = '';
     public function render()
     {
-        $data = Barang::where('no', 'like', '%' .$this->keyword. '%')->orderBy('id', 'desc')->get();
+        $data = Barang::where('no', 'like', '%' .$this->keyword. '%')->orderBy('no')->get();
 
         return view('livewire.dashboard.barang.index', compact('data'));
     }
@@ -24,6 +24,9 @@ class Index extends Component
 
     public function delete($id){
         $this->dispatch('delete', id:$id);
+    }
+    public function edit($id){
+        $this->dispatch('edit', id:$id);
     }
     
 }

@@ -41,5 +41,11 @@ class DeleteBarang extends Component
         }
     }
 
+    public function cancel(){
+        $this->jenis = null;
+        $this->no = null;
+        $this->id = null;
+    }
+
 
 }

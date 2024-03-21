@@ -86,10 +86,12 @@
                             </div>
                         </div>
                         <div class="w-auto h-full flex flex-col gap-[10px] items-center justify-center">
-                            <a class="w-auto h-auto bg-blue-500 rounded-[10px] p-2">
+                            <button class="w-auto h-auto bg-blue-500 rounded-[10px] p-2" data-ripple-light="true"
+                            data-dialog-target="DIALOG" wire:click='edit({{ $item->id }})'>
                                 <i class="ph ph-note-pencil text-white"></i>
-                            </a>
-                            <button class="w-auto h-auto bg-red-500 rounded-[10px] p-2" data-ripple-light="true" data-dialog-target="dialog-xs" wire:click='delete({{$item->id}})' >
+                            </button>
+                            <button class="w-auto h-auto bg-red-500 rounded-[10px] p-2" data-ripple-light="true" 
+                                data-dialog-target="dialog-xs" wire:click='delete({{ $item->id }})'>
                                 <i class="ph ph-trash text-white"></i>
                             </button>
                             {{-- icon delete item --}}
@@ -97,8 +99,14 @@
                     </div>
                 </div>
             @empty
+            <div class="w-full h-auto">
+                <div class="p-4 bg-gray-900 rounded-[10px] flex justify-center items-center">
+                    <div class="text-white font-bold text-xl">Data tidak tersedia</div>
+                </div>
+            </div>
             @endforelse
 
         </div>
     </div>
+    
 </div>

@@ -5,36 +5,57 @@ namespace App\Livewire\Dashboard\Input\Barang;
 use App\Models\Barang;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Str;
 
 class AddBarang extends Component
 {
-    public $jenis, $no, $nama, $foto;
+    public $jenis, $no, $nama, $foto, $validasiNo, $messageValidasi, $toggleValidasi=false;
     use WithFileUploads;
     public function render()
     {
+        
+
+        if($this->validasiNo){
+            $data = Barang::where('no', $this->validasiNo)->get();
+            if($data->isNotEmpty()){
+                $this->messageValidasi = 'Data telah digunakan';
+                $this->toggleValidasi = false;
+            } else {
+                $this->messageValidasi = '';
+                $this->toggleValidasi = true;
+            }
+        } else {
+            $this->messageValidasi = '';
+        }
+        
         return view('livewire.dashboard.input.barang.add-barang');
     }
 
     public function insert(){
 
-        $post = new Barang;
-        $post->jenis = $this->jenis;
-        $post->no = $this->no; 
-        $post->nama = $this->nama; 
-        $post->status = "0";
-
-        if($this->foto){
-            $data = $this->foto->store('src/img/barang', 'public');
-            $post->foto = $data;
-        }
-
-        try{
-            $post->save();
-            session()->flash('msg', __('Barang berhasil ditambahkan'));
-            session()->flash('alert', 'success');
-            return redirect('/dashboard/barang');
-        } catch (\Throwable $th) {
-
+        if($this->toggleValidasi == true){
+            $post = new Barang;
+            $post->jenis = $this->jenis;
+            $upperNo = Str::upper($this->no);
+            $post->no = $upperNo; 
+            $post->nama = $this->nama; 
+            $post->status = "0";
+    
+            if($this->foto){
+                $data = $this->foto->store('src/img/barang', 'public');
+                $post->foto = $data;
+            }
+    
+            try{
+                $post->save();
+                session()->flash('msg', __('Barang berhasil ditambahkan'));
+                session()->flash('alert', 'success');
+                return redirect('/dashboard/barang');
+            } catch (\Throwable $th) {
+    
+            }
+        } else {
+            return;
         }
     }
 
@@ -42,5 +63,7 @@ class AddBarang extends Component
         $this->jenis = null;
         $this->no = null;
         $this->nama = null;
+        $this->foto = null;
     }
+
 }
