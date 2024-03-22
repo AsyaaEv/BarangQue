@@ -2,7 +2,9 @@
 
 namespace App\Livewire\Dashboard\Input\Barang;
 
+use App\Models\Audit;
 use App\Models\Barang;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Str;
@@ -13,8 +15,6 @@ class AddBarang extends Component
     use WithFileUploads;
     public function render()
     {
-        
-
         if($this->validasiNo){
             $data = Barang::where('no', $this->validasiNo)->get();
             if($data->isNotEmpty()){
@@ -40,6 +40,11 @@ class AddBarang extends Component
             $post->no = $upperNo; 
             $post->nama = $this->nama; 
             $post->status = "0";
+            
+            $audit = new Audit;
+            $audit->nama_admin = Auth::user()->name;
+            $audit->no_barang = $this->no;
+            $audit->keterangan = "Menambahkan";
     
             if($this->foto){
                 $data = $this->foto->store('src/img/barang', 'public');
@@ -48,6 +53,7 @@ class AddBarang extends Component
     
             try{
                 $post->save();
+                $audit->save();
                 session()->flash('msg', __('Barang berhasil ditambahkan'));
                 session()->flash('alert', 'success');
                 return redirect('/dashboard/barang');

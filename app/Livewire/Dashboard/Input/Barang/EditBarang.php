@@ -2,7 +2,9 @@
 
 namespace App\Livewire\Dashboard\Input\Barang;
 
+use App\Models\Audit;
 use App\Models\Barang;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -18,7 +20,8 @@ class EditBarang extends Component
 
     public $jenis, $no, $nama, $status, $foto, $fotoold, $fotoNew;
     #[On('edit')]
-    public function updateEdit($id){
+    public function updateEdit($id)
+    {
         $data = Barang::find($id);
         $this->jenis = $data->jenis;
         $this->no = $data->no;
@@ -28,7 +31,8 @@ class EditBarang extends Component
         $this->fotoold = $data->foto;
     }
 
-    public function update(){
+    public function update()
+    {
         // dd($this->status);
         $data = Barang::where('no', $this->no)->first();
         // dd($data);
@@ -36,7 +40,12 @@ class EditBarang extends Component
         $data->nama = $this->nama;
         $data->status = $this->status;
 
-        if($this->fotoNew){
+        $audit = new Audit;
+        $audit->nama_admin = Auth::user()->name;
+        $audit->no_barang = $this->no;
+        $audit->keterangan = "Mengubah";
+
+        if ($this->fotoNew) {
             Storage::delete('public/' . $this->foto);
             $foto = $this->fotoNew->store('src/img/barang', 'public');
             $data->foto = $foto;
@@ -44,19 +53,20 @@ class EditBarang extends Component
             $data->foto = $this->foto;
         }
 
-        try{
+        try {
             $data->update();
+            $audit->save();
             session()->flash('msg', __('Barang berhasil diedit'));
             session()->flash('alert', 'success');
             return redirect('/dashboard/barang');
         } catch (\Throwable $th) {
-            session()->flash('msg', __('Barang gagal diedit'. $th));
+            session()->flash('msg', __('Barang gagal diedit' . $th));
             session()->flash('alert', 'success');
         }
-
     }
 
-    public function resetData(){
+    public function resetData()
+    {
         $this->jenis = null;
         $this->no = null;
         $this->nama = null;

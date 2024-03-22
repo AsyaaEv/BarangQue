@@ -2,8 +2,10 @@
 
 namespace App\Livewire\Dashboard;
 
+use App\Models\Audit;
 use App\Models\Barang;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class Index extends Component
@@ -13,7 +15,8 @@ class Index extends Component
         $totalBarang = $this->jumlahBarang();
         $totalBarangDiam = $this->jumlahBarangDiam();
         $jumlahBarangDipinjam = $this->jumlahBarangDipinjam();
-        return view('livewire.dashboard.index', compact('totalBarang', 'totalBarangDiam', 'jumlahBarangDipinjam'));
+        $audit = Audit::all();
+        return view('livewire.dashboard.index', compact('totalBarang', 'totalBarangDiam', 'jumlahBarangDipinjam', 'audit'));
     }
 
     public function jumlahBarang(){
@@ -26,8 +29,6 @@ class Index extends Component
         return Barang::where('status', '1')->count();
     }
 
-    public function logout(){
-        Auth::logout();
-        return redirect('/');
-    }
+
+    
 }

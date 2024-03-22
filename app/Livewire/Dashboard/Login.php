@@ -22,13 +22,13 @@ class Login extends Component
         if ($user && Hash::check($this->password, $user->password)) {
             if($user->type == 'admin'){
                 Auth::login($user);
+                // $this->dispatch('login', data: $user->name);
                 return redirect('/dashboard');
             }else {
-                dd('Login failed');
+               //
             }
         } else {
-            // Authentication failed
-            dd('Login failed');
+            session()->flash('msg', __('Email atau password salah'));
         }
     }
 }

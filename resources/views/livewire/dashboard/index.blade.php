@@ -37,10 +37,86 @@
             <i class="ph ph-files text-2xl"></i>
             <div class="">Audit</div>
         </div>
+        <div class="w-full h-[30rem]">
+            <div
+                class="relative flex flex-col w-full h-full overflow-scroll text-gray-700 bg-white shadow-md bg-clip-border rounded-xl">
+                <table class="w-full text-left table-auto min-w-max">
+                    <thead>
+                        <tr>
+                            <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
+                                <p
+                                    class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                    #id
+                                </p>
+                            </th>
+                            <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
+                                <p
+                                    class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                    Nama Admin
+                                </p>
+                            </th>
+                            <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
+                                <p
+                                    class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                    Keterangan
+                                </p>
+                            </th>
+                            <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
+                                <p
+                                    class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                    Barang
+                                </p>
+                            </th>
+                            <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
+                                <p
+                                    class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                    waktu
+                                </p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse ($audit as $item)
+                        <tr class="even:bg-blue-gray-50/50">
+                            <td class="p-4">
+                                <p
+                                    class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                    {{$item->id}}
+                                </p>
+                            </td>
+                            <td class="p-4">
+                                <p
+                                    class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                    {{$item->nama_admin}}
+                                </p>
+                            </td>
+                            <td class="p-4">
+                                <div class="w-auto h-auto {{$item->keterangan == 'Menambahkan' ? 'bg-green-500' : ($item->keterangan == 'Mengubah' ? 'bg-blue-500' : 'bg-red-500')}} rounded-[20px] text-sm text-white p-1 px-2 flex justify-center items-center">
+                                    {{$item->keterangan}}
+                                </div>
+                                
+                                
+                            </td>
+                            <td class="p-4">
+                                <p
+                                    class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 uppercase">
+                                    {{$item->no_barang}}
+                                </p>
+                            </td>
+                            <td class="p-4">
+                                <p
+                                    class="block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
+                                    {{$item->created_at->format('j F Y')}}
+                                    </p>
+                            </td>
+                        </tr>
+                        @empty
+                            
+                        @endforelse
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-    <button wire:click='logout'
-        class="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-gray-900 text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
-        type="button">
-        Button
-    </button>
 </div>
