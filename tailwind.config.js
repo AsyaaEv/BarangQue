@@ -7,7 +7,12 @@ export default withMT ( {
     "./resources/**/*.vue",
   ],
   theme: {
-      extend: {},
+      extend: {
+        colors: {
+          'primary' : '#113e67',
+          'sec' : '#ca9263'
+        }
+      },
   },
   plugins: [],
 });

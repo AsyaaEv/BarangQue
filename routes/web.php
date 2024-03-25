@@ -14,6 +14,24 @@ Route::group(['middleware' => ['auth', 'can:view_profile']], function(){
     });
 });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //login register
 Route::get('/login', function(){
     return view('dashboard.login');

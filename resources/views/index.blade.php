@@ -7,7 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ config('app.name') }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link
+        rel="stylesheet"
+        type="text/css"
+        href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css" />
     <style>
         ::-webkit-scrollbar {
             display: none;
@@ -21,6 +24,7 @@
     @yield('content')
 
     @livewireScripts
+
 </body>
 
 </html>
