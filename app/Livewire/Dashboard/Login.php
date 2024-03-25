@@ -20,12 +20,13 @@ class Login extends Component
     {
         $user = User::where('email', $this->email)->first();
         if ($user && Hash::check($this->password, $user->password)) {
-            if($user->type == 'admin'){
+            if($user->role == 'admin'){
                 Auth::login($user);
                 // $this->dispatch('login', data: $user->name);
                 return redirect('/dashboard');
             }else {
-               //
+               Auth::login($user);
+               return redirect('/');
             }
         } else {
             session()->flash('msg', __('Email atau password salah'));

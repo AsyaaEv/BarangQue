@@ -44,6 +44,7 @@ class EditBarang extends Component
         $audit->nama_admin = Auth::user()->name;
         $audit->no_barang = $this->no;
         $audit->keterangan = "Mengubah";
+        $audit->type = 'barang';
 
         if ($this->fotoNew) {
             Storage::delete('public/' . $this->foto);

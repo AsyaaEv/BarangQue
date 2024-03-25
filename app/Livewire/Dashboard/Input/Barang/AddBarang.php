@@ -45,6 +45,7 @@ class AddBarang extends Component
             $audit->nama_admin = Auth::user()->name;
             $audit->no_barang = $this->no;
             $audit->keterangan = "Menambahkan";
+            $audit->type = 'barang';
     
             if($this->foto){
                 $data = $this->foto->store('src/img/barang', 'public');

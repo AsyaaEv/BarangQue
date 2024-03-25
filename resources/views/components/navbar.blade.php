@@ -1,7 +1,7 @@
 <div class="w-full h-[4rem] flex items-center px-[10px] justify-between border-b-[1px] shadow">
     <div class="">BarangQue</div>
     <div class="w-auto h-full items-center flex gap-[15px]">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREO17hg6KvLlweeZWN0LCEdi-OXM9qGpbQ9w&usqp=CAU"
+        <img src="{{Storage::url('public/' . Auth::user()->foto)}}"
             alt="" class="w-[2.5rem] h-[2.5rem] rounded-full hover:cursor-pointer object-cover" id="profile">
         <div class="w-auto h-auto hover:cursor-pointer" id="toggleNav">
             <i class="ph ph-list text-3xl " id="navShow"></i>
@@ -28,7 +28,7 @@
 <div class="w-full h-screen -translate-x-[50rem] transition-all duration-200 py-[2rem] bg-white absolute z-50"
     id="nav">
     <div class="w-full h-auto flex px-[1rem] gap-[10px] justify-center items-center">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREO17hg6KvLlweeZWN0LCEdi-OXM9qGpbQ9w&usqp=CAU"
+        <img src="{{Storage::url('public/'. Auth::user()->foto)}}"
             alt="" class="w-[3.5rem] h-[3.5rem] rounded-full object-cover">
         <div class="w-full h-full flex justify-center flex-col">
             <div class="text-xl font-semibold">
@@ -52,6 +52,16 @@
                     <i class="ph ph-caret-right @if (request()->is('dashboard')) block @else invisible @endif"></i>
                 </a>
 
+                <a href="/dashboard/master"
+                    class="w-[90%] h-[3rem] @if (request()->is('dashboard/master')) bg-[#F6F8FA] shadow @else bg-transparent @endif  rounded-[10px]  flex justify-between items-center px-4">
+                    <div class="w-auto h-auto flex gap-[10px] justify-center items-center">
+                        <i
+                            class="ph ph-hard-drives text-2xl @if (request()->is('dashboard/master')) text-blue-600 @else @endif"></i>
+                        <div class="@if (request()->is('dashboard/master')) font-semibold text-blue-600 @else @endif">Data Master
+                        </div>
+                    </div>
+                    <i class="ph ph-caret-right @if (request()->is('dashboard/master')) block @else invisible @endif"></i>
+                </a>
                 <a href="/dashboard/barang"
                     class="w-[90%] h-[3rem] @if (request()->is('dashboard/barang')) bg-[#F6F8FA] shadow @else bg-transparent @endif  rounded-[10px]  flex justify-between items-center px-4">
                     <div class="w-auto h-auto flex gap-[10px] justify-center items-center">

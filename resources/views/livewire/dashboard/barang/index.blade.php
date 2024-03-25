@@ -2,7 +2,7 @@
     <div
         role="alert"
         data-dismissible="alert"
-        class="relative flex w-full max-w-screen-md px-4 py-4 text-base text-white bg-gray-900 rounded-lg font-regular @if (empty(session('alert'))) hidden @else relative @endif">
+        class="relative flex w-full max-w-screen-md px-4 py-4 text-base text-white bg-gray-900 rounded-lg font-regular {{session('alert') ? 'relative' : 'hidden'}}">
         <div class="shrink-0">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                 <path fill-rule="evenodd"
@@ -36,7 +36,7 @@
                 <i class="ph ph-stack text-2xl"></i>
                 <div class="">Barang</div>
             </div>
-            <div class="w-72">
+            {{-- <div class="w-72">
                 <div class="relative w-full min-w-[200px] h-10">
                     <div
                         class="absolute grid w-5 h-5 place-items-center text-blue-gray-500 top-2/4 right-3 -translate-y-2/4">
@@ -49,7 +49,7 @@
                         Search
                     </label>
                 </div>
-            </div>
+            </div> --}}
         </div>
         <div
             class="w-full h-[30rem] flex gap-[10px] items-center flex-col md:grid md:grid-cols-2 overflow-auto md:items-start md:justify-normal">
@@ -72,7 +72,7 @@
                                 <div class="">{{ $item->jenis }}</div>
                                 <div class="">{{ $item->nama }}</div>
                                 <div
-                                    class="w-auto h-auto rounded-[10px] @if ($item->status == 0) bg-green-500 @else bg-red-500 @endif flex gap-2 justify-center items-center px-2 text-white">
+                                    class="w-auto h-auto rounded-[10px] {{$item->status == 0 ? 'bg-green-500' : 'bg-red-500'}} flex gap-2 justify-center items-center px-2 text-white">
                                     <i
                                         class="ph @if ($item->status == 0) ph-check-circle @else ph-x-circle @endif"></i>
                                     <div class="">
@@ -101,7 +101,7 @@
             @empty
             <div class="w-full h-auto">
                 <div class="p-4 bg-gray-900 rounded-[10px] flex justify-center items-center">
-                    <div class="text-white font-bold text-xl">Data tidak tersedia</div>
+                    <div class="text-white font-bold text-lg">Data tidak tersedia</div>
                 </div>
             </div>
             @endforelse

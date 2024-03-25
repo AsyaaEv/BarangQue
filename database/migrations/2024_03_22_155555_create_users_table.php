@@ -15,8 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('email')->unique();
+            $table->string('no_wa');
             $table->string('type');
+            $table->foreign('type')->references('type')->on('type_users')->onDelete('cascade');
+            $table->string('role');
             $table->string('password');
+            $table->string('foto');
             $table->rememberToken();
             $table->timestamps();
         });

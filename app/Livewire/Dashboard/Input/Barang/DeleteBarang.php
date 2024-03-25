@@ -36,6 +36,7 @@ class DeleteBarang extends Component
         $audit->nama_admin = Auth::user()->name;
         $audit->no_barang = $this->no;
         $audit->keterangan = "Menghapus";
+        $audit->type = 'barang';
         
         if ($foto) {
             Storage::delete('public/' . $foto);

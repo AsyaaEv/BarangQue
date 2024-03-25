@@ -15,8 +15,9 @@ class Index extends Component
         $totalBarang = $this->jumlahBarang();
         $totalBarangDiam = $this->jumlahBarangDiam();
         $jumlahBarangDipinjam = $this->jumlahBarangDipinjam();
-        $audit = Audit::all();
-        return view('livewire.dashboard.index', compact('totalBarang', 'totalBarangDiam', 'jumlahBarangDipinjam', 'audit'));
+        $auditAdmin = $this->auditAdmin();
+        $auditBarang = $this->auditBarang();
+        return view('livewire.dashboard.index', compact('totalBarang', 'totalBarangDiam', 'jumlahBarangDipinjam', 'auditAdmin', 'auditBarang'));
     }
 
     public function jumlahBarang(){
@@ -27,6 +28,13 @@ class Index extends Component
     }
     public function jumlahBarangDipinjam(){
         return Barang::where('status', '1')->count();
+    }
+
+    public function auditAdmin(){
+        return Audit::where('type', 'admin')->get();
+    }
+    public function auditBarang(){
+        return Audit::where('admin', '')->get();
     }
 
 
