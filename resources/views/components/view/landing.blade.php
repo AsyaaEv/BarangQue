@@ -1,9 +1,8 @@
-<div class="w-full h-auto px-4 mt-[7rem] flex flex-col gap-[20px] -z-50">
+<div id="landing" class="absolute"></div>
+<section   class="w-full h-auto px-4 mt-[7rem] flex flex-col gap-[20px] -z-50">
     <div class="w-full h-auto flex flex-col gap-2 justify-center animate__animated animate__fadeInDown">
         <div class="font-bold text-6xl text-primary">Barang<span class="text-sec">Que</span></div>
-        <div class="text-primary">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero maiores dignissimos
-            libero unde, temporibus perferendis aspernatur? Nobis assumenda facere autem eligendi sint commodi provident
-            fugiat?</div>
+        <div class="text-primary">BarangQue adalah platform peminjaman barang di SMK Negeri 1 Bangsri. Temukan berbagai macam barang yang kamu butuhkan untuk berbagai keperluan dengan mudah dan cepat.</div>
     </div>
     <div class="w-full h-auto flex justify-center items-center animate__animated animate__fadeInLeft">
         <img src="{{ Storage::url('public/src/assets/vLanding.svg') }}" alt="" class="w-[20rem] h-[20rem]">
@@ -21,4 +20,9 @@
             </svg>
         </button>
     </div>
-</div>
+</section>
+
+<script>
+    const lading = document.getElementById('landing')
+    landing.classList.add('-translate-y-[20rem]')
+</script>

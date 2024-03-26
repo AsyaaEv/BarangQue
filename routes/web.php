@@ -8,9 +8,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function(){
     return view('view.index');
 });
+Route::get('/list-barang', function(){
+    return view('view.list-barang');
+});
 Route::group(['middleware' => ['auth', 'can:view_profile']], function(){
     Route::get('/profile', function () {
-        return view('view.profile');
+        return view('view.profile.profile');
+    });
+    Route::get('/profile/barang', function () {
+        return view('view.profile.barang');
     });
 });
 

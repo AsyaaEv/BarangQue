@@ -1,7 +1,7 @@
 <div class="w-full h-[4rem] flex items-center px-[10px] justify-between border-b-[1px] shadow fixed z-[9999] bg-white">
     <div class="">BarangQue</div>
     <div class="w-auto h-full items-center flex gap-[15px]">
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgaD3jz86K2EXpjOibx1lXDlqn9vagioTYs4Sa644lA9wd9sKhTEZVDO4hN9HzBUamI5h6LTRiPwZGYi9zFbZnCcLgMCdvS6cQH7A7iI4qGm-zHlBXbZ52rneNErGqM3iZ0PdlcR2JciGPvWdNxBfptUzkBuFaQMzKlkV1SvEBtT01AJPW3c0VpA_ky0w/s555/14.jpg"
+        <img src="{{Storage::url('public/' .Auth::user()->foto)}}"
             alt="" class="w-[2.5rem] h-[2.5rem] rounded-full hover:cursor-pointer object-cover" id="profile">
         <div class="w-auto h-auto hover:cursor-pointer" id="toggleNav">
             <i class="ph ph-list text-3xl " id="navShow"></i>
@@ -34,53 +34,34 @@
             <div class="text-xl font-semibold">
                 Anggun Rasya
             </div>
-            <div class="">Selamat datang di dashboard admin BarangQue👋</div>
+            <div class="">Selamat datang di profile user👋</div>
         </div>
     </div>
     <div class="w-full h-full flex  flex-col gap-3">
         <div class="w-full h-auto mt-[2rem] px-[2rem] ">
             <div class="text-gray-500">MAIN</div>
             <div class="w-full h-auto flex flex-col gap-[10px] mt-4 justify-center items-center">
-                <a href="#landing"
-                    class="w-[90%] h-[3rem]   rounded-[10px]  flex justify-between items-center px-4 hover:bg-gray-200 transition-all">
+                <a href="/profile"
+                    class="w-[90%] h-[3rem] @if (request()->is('profile')) bg-[#F6F8FA] shadow @else bg-transparent @endif  rounded-[10px]  flex justify-between items-center px-4">
                     <div class="w-auto h-auto flex gap-[10px] justify-center items-center">
                         <i
-                            class="ph ph-house text-2xl "></i>
-                        <div class="">
-                            Home</div>
+                            class="ph ph-user text-2xl @if (request()->is('profile')) text-blue-600 @else @endif"></i>
+                        <div class="@if (request()->is('profile')) font-semibold text-blue-600 @else @endif">
+                            Profile</div>
                     </div>
-                    <i class="ph ph-caret-right "></i>
+                    <i class="ph ph-caret-right @if (request()->is('profile')) block @else invisible @endif"></i>
                 </a>
-                <a href="#about"
-                    class="w-[90%] h-[3rem]   rounded-[10px]  flex justify-between items-center px-4 hover:bg-gray-200 transition-all">
+                <a href="/profile/barang"
+                    class="w-[90%] h-[3rem] @if (request()->is('profile/barang')) bg-[#F6F8FA] shadow @else bg-transparent @endif  rounded-[10px]  flex justify-between items-center px-4">
                     <div class="w-auto h-auto flex gap-[10px] justify-center items-center">
                         <i
-                            class="ph ph-info text-2xl "></i>
-                        <div class="">
-                            About</div>
-                    </div>
-                    <i class="ph ph-caret-right "></i>
-                </a>
-                <a href="#barang"
-                    class="w-[90%] h-[3rem]   rounded-[10px]  flex justify-between items-center px-4 hover:bg-gray-200 transition-all">
-                    <div class="w-auto h-auto flex gap-[10px] justify-center items-center">
-                        <i
-                            class="ph ph-stack text-2xl "></i>
-                        <div class="">
+                            class="ph ph-stack text-2xl @if (request()->is('profile/barang')) text-blue-600 @else @endif"></i>
+                        <div class="@if (request()->is('profile/barang')) font-semibold text-blue-600 @else @endif">
                             Barang</div>
                     </div>
-                    <i class="ph ph-caret-right "></i>
+                    <i class="ph ph-caret-right @if (request()->is('profile/barang')) block @else invisible @endif"></i>
                 </a>
-                <a href="#testimoni"
-                    class="w-[90%] h-[3rem]   rounded-[10px]  flex justify-between items-center px-4 hover:bg-gray-200 transition-all">
-                    <div class="w-auto h-auto flex gap-[10px] justify-center items-center">
-                        <i
-                            class="ph ph-crown text-2xl  "></i>
-                        <div class="">
-                            Testimoni</div>
-                    </div>
-                    <i class="ph ph-caret-right "></i>
-                </a>
+
             </div>
         </div>
         <div class="w-auto h-auto text-center flex justify-center items-center">
