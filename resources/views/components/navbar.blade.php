@@ -11,7 +11,7 @@
 </div>
 <ul id="dropdownProfile"
     class="fixed z-10 flex min-w-[180px] flex-col gap-2 overflow-auto rounded-md border border-blue-gray-50 bg-white p-3 font-sans text-sm font-normal text-blue-gray-500 shadow-lg shadow-blue-gray-500/10 focus:outline-none right-3 translate-x-[50rem] transition-all">
-    <button role="menuitem"
+    <a href="/profile" role="menuitem"
         class="flex w-full cursor-pointer select-none items-center gap-2 rounded-md px-3 pt-[9px] pb-2 text-start leading-tight outline-none transition-all hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -21,7 +21,7 @@
         <p class="block font-sans text-sm antialiased font-medium leading-normal text-inherit">
             My Profile
         </p>
-    </button>
+    </a>
     <hr class="my-2 border-blue-gray-50" role="menuitem" />
     @livewire('dashboard.navbar.logout')
 </ul>

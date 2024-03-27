@@ -3,7 +3,7 @@
     <div class="w-full h-auto">
         @include('components.view.navbar')
         <div class="py-4 px-4">
-            @livewire('view.list-barang.index')
+            @livewire('view.barang-list.index')
         </div>
         {{-- @include('components.view.footer ') --}}
     </div>

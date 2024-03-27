@@ -69,7 +69,7 @@ class Register extends Component
             $foto = $this->foto->store('foto', 'public');
             $data->foto = $foto;
         } else {
-            $data->foto = 'foto/blank_pp.jpg';
+            $data->foto = 'foto/blank_pp.png';
         }
 
         try {

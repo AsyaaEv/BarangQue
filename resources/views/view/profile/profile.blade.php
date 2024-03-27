@@ -7,4 +7,8 @@
     </div>
     @include('components.view.footer ')
 </div>
+@include('components.profile.popup.ubahInfo')
+@include('components.profile.popup.ubahBio')
+@include('components.profile.popup.removePP')
+@include('components.profile.popup.unggahPP')
 @endsection

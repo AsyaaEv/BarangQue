@@ -28,11 +28,11 @@
 <nav class="w-full h-full -translate-x-[50rem] transition-all duration-200 py-[2rem] bg-white  z-50 fixed mt-[3rem]"
     id="nav">
     <div class="w-full h-auto flex px-[1rem] gap-[10px] justify-center items-center">
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgaD3jz86K2EXpjOibx1lXDlqn9vagioTYs4Sa644lA9wd9sKhTEZVDO4hN9HzBUamI5h6LTRiPwZGYi9zFbZnCcLgMCdvS6cQH7A7iI4qGm-zHlBXbZ52rneNErGqM3iZ0PdlcR2JciGPvWdNxBfptUzkBuFaQMzKlkV1SvEBtT01AJPW3c0VpA_ky0w/s555/14.jpg"
+        <img src="{{Storage::url('public/' .Auth::user()->foto)}}"
             alt="" class="w-[3.5rem] h-[3.5rem] rounded-full object-cover">
         <div class="w-full h-full flex justify-center flex-col">
             <div class="text-xl font-semibold">
-                Anggun Rasya
+                {{Auth::user()->name}}
             </div>
             <div class="">Selamat datang di profile user👋</div>
         </div>

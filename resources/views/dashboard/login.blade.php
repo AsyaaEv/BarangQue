@@ -6,7 +6,7 @@
                 <img src="{{Storage::url('src/assets/vLogin.svg')}}" alt="" class="w-[15rem] h-[15rem]">
             </div>
             <div class="w-full h-auto flex flex-col justify-center items-center mb-4">
-                <div class="font-bold text-2xl">Barang<span class="text-blue-500">Que</span></div>
+                <div class="font-bold text-2xl text-primary">Barang<span class="text-sec">Que</span></div>
                 <div class="">Silakan masukan data untuk login</div>
             </div>
             @livewire('dashboard.login')

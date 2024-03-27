@@ -1,14 +1,22 @@
 <div class="w-full h-[4rem] flex items-center px-[10px] justify-between border-b-[1px] shadow fixed z-[9999] bg-white">
     <div class="">BarangQue</div>
     <div class="w-auto h-full items-center flex gap-[15px]">
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgaD3jz86K2EXpjOibx1lXDlqn9vagioTYs4Sa644lA9wd9sKhTEZVDO4hN9HzBUamI5h6LTRiPwZGYi9zFbZnCcLgMCdvS6cQH7A7iI4qGm-zHlBXbZ52rneNErGqM3iZ0PdlcR2JciGPvWdNxBfptUzkBuFaQMzKlkV1SvEBtT01AJPW3c0VpA_ky0w/s555/14.jpg"
-            alt="" class="w-[2.5rem] h-[2.5rem] rounded-full hover:cursor-pointer object-cover" id="profile">
+        <img src="@if (Auth::check()) 
+        {{Storage::url('public/' . Auth::user()->foto)}}  
+        @endif"
+            alt="" class="w-[2.5rem] h-[2.5rem] rounded-full hover:cursor-pointer object-cover {{Auth::check() ? 'block' : 'hidden'}}" id="profile">
+        <div class="{{Auth::check() ? 'hidden' : 'block'}}">
+            <a href="/login" class="p-2 bg-primary rounded-[10px] text-white">
+                Login
+            </a>
+        </div>
         <div class="w-auto h-auto hover:cursor-pointer" id="toggleNav">
             <i class="ph ph-list text-3xl " id="navShow"></i>
             <i class="ph ph-x text-3xl hidden" id="navHide"></i>
         </div>
     </div>
 </div>
+@if (Auth::check())
 <ul id="dropdownProfile"
     class="fixed z-10 flex min-w-[180px] flex-col gap-2 translate-y-[4rem] overflow-auto rounded-md border border-blue-gray-50 bg-white p-3 font-sans text-sm font-normal text-blue-gray-500 shadow-lg shadow-blue-gray-500/10 focus:outline-none right-3 translate-x-[50rem] transition-all">
     <a role="menuitem" href="/profile"
@@ -25,17 +33,20 @@
     <hr class="my-2 border-blue-gray-50" role="menuitem" />
     @livewire('dashboard.navbar.logout')
 </ul>
+@endif
 <nav class="w-full h-full -translate-x-[50rem] transition-all duration-200 py-[2rem] bg-white  z-50 fixed mt-[3rem]"
     id="nav">
     <div class="w-full h-auto flex px-[1rem] gap-[10px] justify-center items-center">
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgaD3jz86K2EXpjOibx1lXDlqn9vagioTYs4Sa644lA9wd9sKhTEZVDO4hN9HzBUamI5h6LTRiPwZGYi9zFbZnCcLgMCdvS6cQH7A7iI4qGm-zHlBXbZ52rneNErGqM3iZ0PdlcR2JciGPvWdNxBfptUzkBuFaQMzKlkV1SvEBtT01AJPW3c0VpA_ky0w/s555/14.jpg"
+        @if (Auth::check())
+        <img src="{{Storage::url('public/'. Auth::user()->foto)}}"
             alt="" class="w-[3.5rem] h-[3.5rem] rounded-full object-cover">
         <div class="w-full h-full flex justify-center flex-col">
             <div class="text-xl font-semibold">
-                Anggun Rasya
+                {{Auth::user()->name}}
             </div>
-            <div class="">Selamat datang di dashboard admin BarangQue👋</div>
+            <div class="">Selamat datang di BarangQue👋</div>
         </div>
+        @endif
     </div>
     <div class="w-full h-full flex  flex-col gap-3">
         <div class="w-full h-auto mt-[2rem] px-[2rem] ">
