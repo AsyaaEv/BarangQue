@@ -1,4 +1,4 @@
-<div class="w-full h-auto bottom-0  ">
+<div class="w-full h-auto bottom-0 ">
     <div class="w-full h-auto bg-primary p-4" data-aos='fade-up' data-aos-once="true">
         <div class="w-full h-auto flex flex-col border-b-2 pb-2">
             <div class="text-3xl font-bold text-white">Barang<span class="text-sec">Que</span></div>

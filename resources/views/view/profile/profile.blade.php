@@ -11,4 +11,5 @@
 @include('components.profile.popup.ubahBio')
 @include('components.profile.popup.removePP')
 @include('components.profile.popup.unggahPP')
+@include('components.profile.popup.editPassword')
 @endsection

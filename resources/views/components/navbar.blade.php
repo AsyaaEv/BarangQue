@@ -1,5 +1,7 @@
 <div class="w-full h-[4rem] flex items-center px-[10px] justify-between border-b-[1px] shadow">
-    <div class="">BarangQue</div>
+    <a href="/">
+        <img src="{{Storage::url('public/src/assets/vLogo2.svg')}}" alt="" class="w-[8rem] h-[8rem]">
+    </a>
     <div class="w-auto h-full items-center flex gap-[15px]">
         <img src="{{Storage::url('public/' . Auth::user()->foto)}}"
             alt="" class="w-[2.5rem] h-[2.5rem] rounded-full hover:cursor-pointer object-cover" id="profile">

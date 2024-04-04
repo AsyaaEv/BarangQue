@@ -7,13 +7,15 @@
         <div class="w-auto h-auto flex flex-col justify-between py-2">
             <div class="font-bold text-xl">Unggah Gambar</div>
             <div class="w-auto h-auto flex gap-2">
-                <div class="bg-red-500 rounded-[10px] py-2 px-1 flex items-center gap-2 hover:cursor-pointer {{$data->foto == 'foto/blank_pp.png' ? 'hidden' : 'block'}}" data-ripple-light="true"
+                <div class="bg-red-500 rounded-[10px] py-2 px-1 flex items-center gap-2 hover:cursor-pointer {{ $data->foto == 'foto/blank_pp.png' ? 'hidden' : 'block' }}"
+                    data-ripple-light="true"
                     data-dialog-target="dialogRemovePP">
                     <i class="ph ph-trash text-white"></i>
                     <button class="text-white">Hapus</button>
                 </div>
-                <div class="bg-primary rounded-[10px] py-2 px-1 flex items-center gap-2 hover:cursor-pointer" data-ripple-light="true"
-                data-dialog-target="dialogUnggahPP">
+                <div class="bg-primary rounded-[10px] py-2 px-1 flex items-center gap-2 hover:cursor-pointer"
+                    data-ripple-light="true"
+                    data-dialog-target="dialogUnggahPP">
                     <i class="ph ph-upload-simple text-white"></i>
                     <button class="text-white">Unggah</button>
                 </div>
@@ -27,9 +29,13 @@
                 <div class="font-semibold text-primary text-xl">Informasi Pengguna</div>
                 <div
                     role="alert"
-                    class="relative flex w-full p-2 text-base text-white bg-primary rounded-lg font-regular {{session('msg') ? 'block' : 'hidden'}}"
+                    class="relative flex w-full p-2 text-base text-white bg-primary rounded-lg font-regular {{ session('msg') ? 'block' : 'hidden' }}"
                     data-dismissible="alert">
-                    <div class="mr-12 ">@if(session('msg')) {{session('msg')}} @endif</div>
+                    <div class="mr-12 ">
+                        @if (session('msg'))
+                            {{ session('msg') }}
+                        @endif
+                    </div>
                     <button
                         data-dismissible-target="alert"
                         class="!absolute  top-3 right-3 h-8 max-h-[32px] w-8 max-w-[32px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-white transition-all hover:bg-white/10 active:bg-white/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
@@ -72,9 +78,13 @@
                 <div class="font-semibold text-primary text-xl">Biodata Pengguna</div>
                 <div
                     role="alert"
-                    class="relative flex w-full p-2 text-base text-white bg-primary rounded-lg font-regular {{session('msgBio') ? 'block' : 'hidden'}}"
+                    class="relative flex w-full p-2 text-base text-white bg-primary rounded-lg font-regular {{ session('msgBio') ? 'block' : 'hidden' }}"
                     data-dismissible="alertbio">
-                    <div class="mr-12 ">@if(session('msgBio')) {{session('msgBio')}} @endif</div>
+                    <div class="mr-12 ">
+                        @if (session('msgBio'))
+                            {{ session('msgBio') }}
+                        @endif
+                    </div>
                     <button
                         data-dismissible-target="alertbio"
                         class="!absolute  top-3 right-3 h-8 max-h-[32px] w-8 max-w-[32px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-white transition-all hover:bg-white/10 active:bg-white/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
@@ -116,14 +126,19 @@
             </div>
             <div class="w-full h-auto flex justify-end items-center">
                 <div class="p-2 bg-primary text-white rounded-[10px]" data-ripple-light="true"
-                data-dialog-target="dialogBio">
+                    data-dialog-target="dialogBio">
                     <i class="ph ph-pencil "></i>
                     <button>Ubah</button>
                 </div>
             </div>
         </div>
     </div>
-    <div class="w-full h-auto mt-4 text-white">
-        <button class="p-2 bg-primary rounded-[10px]"><i class="ph ph-lock mr-2"></i>Ubah Password</button>
+    <div class="w-full h-auto mt-4 text-white flex gap-2">
+        <button class="p-2 bg-primary rounded-[10px]" data-ripple-light="true"
+            data-dialog-target="dialogEditPassword"><i class="ph ph-lock mr-2"></i>Ubah Password</button>
+        <div class="w-auto h-auto flex gap-2 p-2 bg-primary rounded-[10px] justify-center items-center {{session('alert') ? 'block' : 'hidden'}}">
+            <i class="ph ph-info text-white"></i>
+            <div class="">{{session('alert')}}</div>
+        </div>
     </div>
 </div>

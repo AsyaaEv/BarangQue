@@ -35,7 +35,6 @@
             </div>
         </div>
         <div class="w-full h-[21dxrem] flex justify-center items-center flex-col mt-8 gap-[20px]">
-            <div class="">{{$this->status}}</div>
             @foreach ($data as $item)
                 <div class="relative flex flex-col mt-6 text-gray-700 bg-white shadow-xl bg-clip-border rounded-xl w-96"
                     data-aos='fade-right' data-aos-once="true">
@@ -65,18 +64,18 @@
                     </div>
                     <div class="p-6 pt-0">
                         @if ($item->status == 0)
-                            <button
+                            <a href="{{url('/barang/pinjam/' .$item->id)}}"
                                 class="flex justify-center items-center align-middle group select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-primary text-sec shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
                                 type="button">
                                 Pinjam <i class="ph ph-upload-simple ml-2 text-xl group-hover:rotate-90 transition-all"></i>
-                            </button>
+                            </a>
                         @endif
                         @if ($item->status == 1)
-                            <button
+                            <a href="{{url('/barang/info/' .$item->id)}}"
                                 class="flex justify-center items-center align-middle group select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-primary text-sec shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
                                 type="button">
                                 Info <i class="ph ph-info ml-2 text-xl group-hover:rotate-90 transition-all"></i>
-                            </button>
+                            </a>
                         @endif
                     </div>
                 </div>

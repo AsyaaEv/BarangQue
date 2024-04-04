@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Peminjaman;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -15,23 +16,13 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::updateOrCreate([
-            'name' => 'Asyaa',
-            'email' => 'asd',
-            'type' => 'admin',
-            'password' => '123'
-        ],[
-            'name' => 'Asyaa',
-            'email' => 'asd',
-            'type' => 'admin',
-            'password' => '123'
-        ]);
-
-        User::create([
-            'name' => 'rasya',
-            'email' => '123',
-            'type' => 'user',
-            'password' => '123'
+       Peminjaman::updateOrCreate([
+            'id_barang' => 'LP001',
+            'keperluan' => 'testing',
+            'tgl_peminjaman' => '04-04-2024',
+            'tgl_pengembalian' => '05-04-2024',
+            'foto' => 'tets.jpg',
+            'peminjam' => 'Adbul acizz',
         ]);
     }
 }

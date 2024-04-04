@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PinjamController;
 use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +19,8 @@ Route::group(['middleware' => ['auth', 'can:view_profile']], function(){
     Route::get('/profile/barang', function () {
         return view('view.profile.barang');
     });
+    Route::get('/barang/pinjam/{id}', [PinjamController::class, 'index']);
+    Route::POST('/barang/pinjam/proses', [PinjamController::class, 'store']);
 });
 
 //login register
