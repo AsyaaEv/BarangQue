@@ -1,9 +1,9 @@
 <div class="w-full h-[4rem] flex items-center px-[10px] justify-between border-b-[1px] shadow">
     <a href="/">
-        <img src="{{Storage::url('public/src/assets/vLogo2.svg')}}" alt="" class="w-[8rem] h-[8rem]">
+        <img src="{{ Storage::url('public/src/assets/vLogo2.svg') }}" alt="" class="w-[8rem] h-[8rem]">
     </a>
     <div class="w-auto h-full items-center flex gap-[15px]">
-        <img src="{{Storage::url('public/' . Auth::user()->foto)}}"
+        <img src="{{ Storage::url('public/' . Auth::user()->foto) }}"
             alt="" class="w-[2.5rem] h-[2.5rem] rounded-full hover:cursor-pointer object-cover" id="profile">
         <div class="w-auto h-auto hover:cursor-pointer" id="toggleNav">
             <i class="ph ph-list text-3xl " id="navShow"></i>
@@ -30,11 +30,11 @@
 <div class="w-full h-screen -translate-x-[50rem] transition-all duration-200 py-[2rem] bg-white absolute z-50"
     id="nav">
     <div class="w-full h-auto flex px-[1rem] gap-[10px] justify-center items-center">
-        <img src="{{Storage::url('public/'. Auth::user()->foto)}}"
+        <img src="{{ Storage::url('public/' . Auth::user()->foto) }}"
             alt="" class="w-[3.5rem] h-[3.5rem] rounded-full object-cover">
         <div class="w-full h-full flex justify-center flex-col">
             <div class="text-xl font-semibold">
-                {{Auth::user()->name}}
+                {{ Auth::user()->name }}
             </div>
             <div class="">Selamat datang di dashboard admin BarangQue👋</div>
         </div>
@@ -43,7 +43,7 @@
         <div class="w-full h-auto mt-[2rem] px-[2rem] ">
             <div class="text-gray-500">MAIN</div>
             <div class="w-full h-auto flex flex-col gap-[10px] mt-4 justify-center items-center">
-                <a href="/dashboard"
+                <a href="/dashboard" onclick="navbarToggle()"
                     class="w-[90%] h-[3rem] @if (request()->is('dashboard')) bg-[#F6F8FA] shadow @else bg-transparent @endif  rounded-[10px]  flex justify-between items-center px-4">
                     <div class="w-auto h-auto flex gap-[10px] justify-center items-center">
                         <i
@@ -59,7 +59,8 @@
                     <div class="w-auto h-auto flex gap-[10px] justify-center items-center">
                         <i
                             class="ph ph-hard-drives text-2xl @if (request()->is('dashboard/master')) text-blue-600 @else @endif"></i>
-                        <div class="@if (request()->is('dashboard/master')) font-semibold text-blue-600 @else @endif">Data Master
+                        <div class="@if (request()->is('dashboard/master')) font-semibold text-blue-600 @else @endif">Data
+                            Master
                         </div>
                     </div>
                     <i class="ph ph-caret-right @if (request()->is('dashboard/master')) block @else invisible @endif"></i>
@@ -123,4 +124,11 @@
 
         }
     })
+
+    function navbarToggle() {
+        document.getElementById('nav').classList.add('-translate-x-[50rem]')
+        navShow.classList.remove('hidden')
+        navHide.classList.add('hidden')
+        nav = true
+    }
 </script>

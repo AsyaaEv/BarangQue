@@ -5,6 +5,7 @@
         <div class="py-4">
             @include('components.view.landing')
             @include('components.view.about')
+            {{-- @include('components.view.feature') --}}
             @include('components.view.barang')
             @include('components.view.testi')
         </div>

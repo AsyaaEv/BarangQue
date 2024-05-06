@@ -8,11 +8,13 @@ use Egulias\EmailValidator\Validation\EmailValidation;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Str;
+use GuzzleHttp\Client;
 
 class Register extends Component
 {
     use WithFileUploads;
-    public $nama, $toggle1 = false, $toggle2 = false, $type, $noWa, $foto, $password, $cPassword, $email, $errorM;
+    public $nama, $toggle1 = false, $toggle2 = false, $toggle3 = false, $toggle4 = false, $type, $noWa, $foto, $password, $cPassword, $email, $errorM, $otp;
+    public $otp1, $otp2, $otp3, $otp4, $otp5, $otp6;
 
     //siswa
     public $kelas, $absen, $jurusan;
@@ -30,15 +32,12 @@ class Register extends Component
     public function insert()
     {
 
-        $this->validate([
-            'foto' => 'file|max:1020|mimes:png,jpg,jpeg,PNG,JPG|nullable'
-        ], [
-            'foto.file' => $this->errorM = 'Upload harus type file',
-            'foto.max' => $this->errorM = 'maksimal size 1mb',
-            'foto.mimes' => $this->errorM = 'type file hanya png dan jpg',
-        ]);
-
-
+        $combinedOtp = $this->otp1 . $this->otp2 . $this->otp3 . $this->otp4 . $this->otp5 . $this->otp6;
+        if ($combinedOtp != $this->otp) {
+            $this->errorM = 'OTP tidak cocok.';
+            return;
+        } 
+       
         $jurusan = str::upper($this->jurusan);
         $kelas = Str::upper($this->kelas);
         $jurusanGuru = Str::upper($this->jurusanGuru);
@@ -75,8 +74,7 @@ class Register extends Component
         try {
             $type->save();
             $data->save();
-            session()->flash('msg', 'Registrasi berhasil dilakukan');
-            return redirect('/');
+            return redirect('/login');
         } catch (\Throwable $th) {
             dd($th);
         }
@@ -88,11 +86,22 @@ class Register extends Component
             $this->errorM = 'semua input harus terisi';
             return;
         } 
-
-        if($this->cPassword != $this->password){
-            $this->errorM = 'ketidak cocokan confirm password';
+        if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+            $this->errorM = 'format email tidak valid';
             return;
         }
+        
+        if(strlen($this->password) < 6){
+            $this->errorM = 'password minimal 6 karakter';
+            return;
+        }
+        
+        if($this->cPassword != $this->password){
+            $this->errorM = 'confirm password tidak sama dengan password';
+            return;
+        }
+    
+        
 
         $name = User::where('name', $this->nama)->get();
         if($name->count() > 0){
@@ -137,19 +146,65 @@ class Register extends Component
                 return;
             }
         }
-
-        if(!$this->noWa){
-            $this->errorM = 'Semua input harus terisi';
-                return;
-        }
         $this->toggle1 = false;
         $this->toggle2 = true;
+    }
+
+    public function section3(){
+        if ($this->foto) {
+            $fileExtension = strtolower($this->foto->getClientOriginalExtension());
+            if (!in_array($fileExtension, ['png', 'jpg', 'jpeg'])) {
+                $this->errorM = 'Format foto harus PNG atau JPG';
+                return;
+            }
+            if ($this->foto->getSize() > 1024 * 1024) { // 1MB in bytes
+                $this->errorM = 'Ukuran foto maksimal 1MB';
+                return;
+            }
+        }
+
+        
+        $this->toggle2 = false;
+        $this->toggle3 = true;
+    }
+
+    public function section4()
+    {
+        if (substr($this->noWa, 0, 2) !== '08') {
+            $this->errorM = 'Nomor telepon harus diawali dengan 08';
+            return;
+        }
+        $this->otp = rand(100000, 999999);
+    
+        $client = new Client();
+        $url = 'https://waque.rifalkom.my.id/whatsapp/sendmessage'; 
+        try {
+            // Mengirim request ke API
+            $response = $client->request('POST', $url, [
+                'json' => [
+                    "api_key" => "CqtVV1h/7zFAeN6tcaU+mXC2njZmCdMViWUUFOqLu4Y=", // your Secret key
+                    "receiver" => $this->noWa, // target
+                    "type" => "PERSONAL", // PERSONAL | GROUP
+                    "data" => [
+                        "message" => "Kode OTP: " . strval($this->otp) // message
+                    ]
+                ]
+            ]);
+            
+        } catch (\Exception $e) {
+            $this->errorM = 'Error: ' . $e->getMessage();
+        }
+        
+        $this->toggle3 = false;
+        $this->toggle4 = true;
     }
 
     public function back1()
     {
         $this->toggle1 = false;
         $this->toggle2 = false;
+        $this->toggle3 = false;
+        $this->toggle4 = false;
         return redirect('/login');
     }
 
@@ -161,6 +216,17 @@ class Register extends Component
     {
         $this->toggle2 = false;
         $this->toggle1 = true;
+    }
+
+    public function back4()
+    {
+        $this->toggle3 = false;
+        $this->toggle2 = true;
+    }
+    public function back5()
+    {
+        $this->toggle4 = false;
+        $this->toggle3 = true;
     }
 
     public function selectUserType()

@@ -22,7 +22,8 @@
             </label>
         </div>
     </div>
-    <div class="w-full h-auto flex gap-2 justify-end items-center text-sm">
+    <div class="w-full h-auto flex gap-2 justify-between items-center text-sm">
+        <a href="/forget-password" class="text-blue-500">lupa sandi?</a>
         <div class="">Belum punya akun? <a href="/register" class="text-blue-500">daftar</a></div>
     </div>
     <button wire:loading.attr="disabled" type="submit"

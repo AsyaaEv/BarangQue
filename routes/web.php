@@ -27,6 +27,9 @@ Route::group(['middleware' => ['auth', 'can:view_profile']], function(){
 Route::get('/login', function(){
     return view('dashboard.login');
 })->name('login');
+Route::get('/forget-password', function(){
+    return view('dashboard.forget-password');
+});
 
 Route::get('/register', function(){
     return view('dashboard.register.register');

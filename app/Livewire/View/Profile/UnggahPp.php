@@ -19,9 +19,12 @@ class UnggahPp extends Component
 
     public function unggahPP(){
         $this->validate([
-            'fotoNew' => 'image|max:1024' // Adjusted validation rule
+            'fotoNew' => 'image|mimes:jpg,png|max:1024' // Adjusted validation rule for file types and size
+        ], [
+            'fotoNew.image' => 'File yang diunggah harus berupa gambar.',
+            'fotoNew.mimes' => 'Gambar harus berformat: jpg, png.',
+            'fotoNew.max' => 'Ukuran gambar tidak boleh lebih dari 1MB.'
         ]);
-
 
         if($this->fotoNew){
             $data = User::find(Auth::user()->id);

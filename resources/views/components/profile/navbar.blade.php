@@ -41,7 +41,7 @@
     </div>
     <div class="w-full h-full flex  flex-col gap-3">
         <div class="w-full h-auto mt-[2rem] px-[2rem] ">
-            <div class="text-gray-500">MAIN</div>
+            <div class="text-gray-500">Profile</div>
             <div class="w-full h-auto flex flex-col gap-[10px] mt-4 justify-center items-center">
                 <a href="/profile"
                     class="w-[90%] h-[3rem] @if (request()->is('profile')) bg-[#F6F8FA] shadow @else bg-transparent @endif  rounded-[10px]  flex justify-between items-center px-4">
@@ -63,7 +63,17 @@
                     </div>
                     <i class="ph ph-caret-right @if (request()->is('profile/barang')) block @else invisible @endif"></i>
                 </a>
-
+                <hr class="border-[1px] w-full">
+                <a href="/"
+                    class="w-[90%] h-[3rem] bg-primary text-white rounded-[10px]  flex justify-between items-center px-4">
+                    <div class="w-auto h-auto flex gap-[10px] justify-center items-center">
+                        <i
+                            class="ph ph-house text-2xl "></i>
+                        <div class="">
+                            Home</div>
+                    </div>
+                    <i class="ph ph-caret-right @if (request()->is('profile/barang')) block @else invisible @endif"></i>
+                </a>
             </div>
         </div>
         <div class="w-auto h-auto text-center flex justify-center items-center">
