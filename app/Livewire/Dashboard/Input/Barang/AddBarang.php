@@ -35,7 +35,8 @@ class AddBarang extends Component
 
         if($this->toggleValidasi == true){
             $post = new Barang;
-            $post->jenis = $this->jenis;
+            $post->pemilik = Auth::user()->name;
+            $post->jenis = ucfirst($this->jenis);
             $upperNo = Str::upper($this->no);
             $post->no = $upperNo; 
             $post->nama = $this->nama; 

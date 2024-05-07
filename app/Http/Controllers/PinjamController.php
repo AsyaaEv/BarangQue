@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Barang;
 use App\Models\Peminjaman;
 use Carbon\Carbon;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,27 +23,38 @@ class PinjamController extends Controller
         $keperluan = $request->input('keperluan');
         $tglPengembalian = $request->input('tglPengembalian');
         
-        $validatedData = $request->validate([
-            'keperluan' => 'required',
-            'tglPengembalian' => 'required',
-        ]);
-        
         $tglSekarang = Carbon::now()->toDateString();
 
-        
         $gambarPeminjaman = $request->file('file');
-        if(!$gambarPeminjaman){
-            session()->flash('error', 'Berkas tidak boleh kosong');
-            return redirect()->back()->withInput();
-        }
-        if($tglPengembalian < $tglSekarang){
-            session()->flash('error', 'Tanggal pengembalian harus diatas tanggal sekarang');
-            return redirect()->back()->withInput();
+        if (!$gambarPeminjaman) {
+            return redirect()->back()->withInput()->withErrors(['file' => 'Berkas tidak boleh kosong']);
         }
         
-        if ($gambarPeminjaman) {
-        } 
-            $dataFoto = $gambarPeminjaman->store('peminjaman', 'public');
+        $dataFoto = $gambarPeminjaman->store('peminjaman', 'public');
+        $barang = Barang::where('no', $no_barang)->first();
+        $jenis = $barang->jenis;
+        $namaBarang = $barang->nama;
+        $pemilik = $barang->owner->no_wa;
+
+        
+        $client = new Client();
+        $url = 'https://waque.rifalkom.my.id/whatsapp/sendmessage'; 
+        try {
+            // Mengirim request ke API
+            $response = $client->request('POST', $url, [
+                'json' => [
+                    "api_key" => "CqtVV1h/7zFAeN6tcaU+mXC2njZmCdMViWUUFOqLu4Y=", // your Secret key
+                    "receiver" => $pemilik, // target
+                    "type" => "PERSONAL", // PERSONAL | GROUP
+                    "data" => [
+                        "message" => "*BarangQue (Peminjaman)*\n\n*Informasi Peminjam :*\nNama : " . Auth::user()->name . "\nNo. Wa : " . Auth::user()->no_wa . "\n\n*Informasi Barang :* \nJenis : " . $jenis . "\nNama Barang : " . $namaBarang . " \nNo. Barang : " . $no_barang . "\nKeperluan : " . $keperluan . "\nTgl. Peminjaman : " . $tglSekarang . "\nTgl. Pengembalian : " . $tglPengembalian// message
+                    ]
+                ]
+            ]);
+            
+        } catch (\Exception $e) {
+            return;
+        }
         
         $data = new Peminjaman;
         $data->id_barang = $no_barang;
@@ -52,16 +64,17 @@ class PinjamController extends Controller
         $data->foto = $dataFoto;
         $data->peminjam = Auth::user()->name;
         
-        $barang = Barang::where('no', $no_barang)->first();
-        $barang->status = '1';
-        
-        
-        try{
-            $barang->update();
-            $data->save();
-            return redirect('/profile/barang');
-        } catch (\Throwable $th){
-
+        if ($barang) {
+            $barang->status = '1';
+            try {
+                $barang->save();
+                $data->save();
+                return redirect('/profile/barang')->with('success', 'Data peminjaman berhasil disimpan');
+            } catch (\Throwable $th) {
+                return redirect()->back()->withInput()->withErrors(['error' => 'Gagal menyimpan data peminjaman']);
+            }
+        } else {
+            return redirect()->back()->withInput()->withErrors(['no_barang' => 'Barang tidak ditemukan']);
         }
     }
 }

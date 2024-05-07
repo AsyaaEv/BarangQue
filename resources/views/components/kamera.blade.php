@@ -27,7 +27,7 @@
         var stream = null;
         try {
             stream = await navigator.mediaDevices.getUserMedia({
-                video: true,
+                video: { facingMode: "user" }, // Set the camera to front-facing (mirrorless)
                 audio: false
             })
         } catch (error) {
@@ -42,7 +42,10 @@
         canvas.classList.remove('hidden');
         canvas.width = kamera.videoWidth;
         canvas.height = kamera.videoHeight;
-        canvas.getContext("2d").drawImage(kamera, 0, 0, kamera.videoWidth, kamera.videoHeight);
+        const context = canvas.getContext("2d");
+        context.translate(canvas.width, 0);// Move the context to the right by the width of the canvas
+        context.scale(-1, 1); // Flip the context horizontally
+        context.drawImage(kamera, 0, 0, kamera.videoWidth, kamera.videoHeight);
         imageData = canvas.toDataURL('image/jpg');
 
         if (kamera.srcObject) {
@@ -52,39 +55,4 @@
 
     }
 
-    
-
-
-
-
-    function kirimdata() {
-        // ambilGambar();
-        // const formData = new FormData();
-
-        // // Jika gambar telah diambil, tambahkan ke FormData
-        // if (imageData) {
-        //     console.log('data masuk');
-        //     var file = dataURItoBlob(imageData);
-        //     formData.append('gambar', file, 'gambar.jpg');
-        // }
-
-        // var token = $('meta[name="csrf-token"]').attr('content');
-        var token = $('meta[name="csrf-token"]').attr('content');
-        $.ajax({
-            type: 'POST',
-            url: '/barang/pinjam/proses',
-            data: {
-                _token: token,
-                apalah: 'your_data_here'
-            },
-            cache: false,
-            success: function(respond) {
-                console.log('sukses');
-            }
-        });
-
-    }
-
-
-    
 </script>

@@ -77,9 +77,9 @@
                                         class="ph @if ($item->status == 0) ph-check-circle @else ph-x-circle @endif"></i>
                                     <div class="">
                                         @if ($item->status == 0)
-                                            Idle
+                                            Tersedia
                                         @else
-                                            borrowed
+                                            Terpinjam
                                         @endif
                                     </div>
                                 </div>

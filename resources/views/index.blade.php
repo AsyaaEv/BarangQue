@@ -34,9 +34,11 @@
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        
     <script>
         $(document).ready(function() {
-            $('#formPinjam').submit(function() {
+            $('#formPinjam').submit(function(event) {
+                event.preventDefault(); // Prevent the form from submitting via the browser
                 var form = $(this);
                 var token = $('meta[name="csrf-token"]').attr('content');
                 var url = form.attr('action');
@@ -46,11 +48,26 @@
                 var tglPengembalian = $('#tglPengembalian').val();
                 var file = null;
                 
-                if (imageData) {
-                    console.log('data masuk');
-                    file = dataURItoBlob(imageData);
+                var imageData = $('#canvas')[0].toDataURL('image/jpg'); // Assuming imageData is from a canvas element
+                if (!imageData || imageData === 'data:,') {
+                    console.error('Harap ambil foto terlebih dahulu sebelum melanjutkan.');
+                    return;
                 }
-                
+                var file = dataURItoBlob(imageData);
+
+                // Validations
+                if (!keperluan || !tglPengembalian || !file) {
+                    $('#keperluan').before('<div class="absolute text-red-500 text-sm -translate-y-6" id="alert1">Semua kolom harus diisi.</div>');
+                    return;
+                }
+
+                var today = new Date().toISOString().split('T')[0];
+                if (tglPengembalian < today) {
+                    $('#keperluan').before('<div class="absolute text-red-500 text-sm -translate-y-6" id="alert2">Tanggal pengembalian tidak boleh lebih awal dari hari ini.</div>');
+                    $('#alert1').remove(); // Remove alert 1 if alert 2 is shown
+                    return;
+                }
+
                 var formData = new FormData();
                 formData.append('_token', token);
                 formData.append('keperluan', keperluan);
@@ -58,7 +75,6 @@
                 formData.append('tglPengembalian', tglPengembalian);
                 formData.append('file', file);
 
-                
                 $.ajax({
                     type: method,
                     url: url,
@@ -67,9 +83,11 @@
                     processData: false,
                     success: function(response) {
                         console.log('sukses');
+                        window.location.href = '/profile/barang';
                     },
                     error: function(xhr, status, error) {
-                        console.log('Error:', error);
+                        console.error('Error:', error);
+                        alert('Error submitting form!');
                     }
                 });
             });
@@ -82,9 +100,7 @@
                 for (var i = 0; i < byteString.length; i++) {
                     ia[i] = byteString.charCodeAt(i);
                 }
-                var blob = new Blob([ia], {
-                    type: mimeString
-                });
+                var blob = new Blob([ia], {type: mimeString});
                 return blob;
             }
         });

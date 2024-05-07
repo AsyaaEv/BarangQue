@@ -5,7 +5,7 @@
             class="relative h-56 mx-4 -mt-6 overflow-hidden text-white shadow-lg bg-clip-border rounded-xl bg-blue-gray-500 shadow-blue-gray-500/40 object-cover">
             <img
                 src="{{Storage::url('public/' . $item->foto)}}"
-                alt="card-image" class="object-cover"/>
+                alt="card-image" class="object-cover w-full h-full"/>
         </div>
         <div class="p-6">
             <h5
@@ -15,7 +15,7 @@
             @if ($item->status == 0)
             <div class="w-full h-auto flex gap-2 items-center">
                 <i class="ph ph-check-circle p-1 bg-green-500 rounded-full text-2xl text-white"></i>
-                <div class="font-semibold text-primary">Siap</div>
+                <div class="font-semibold text-primary">Tersedia</div>
             </div>
             @endif
             @if ($item->status == 1)

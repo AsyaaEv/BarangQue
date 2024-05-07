@@ -8,7 +8,7 @@
             <div class="text-xl">{{ $dataBarang->nama }}</div>
             <div class="w-full h-auto flex gap-2">
                 <div class="">{{ $dataBarang->no }}</div>
-                <div class="px-2 bg-green-500 rounded-[10px]">Siap</div>
+                <div class="px-2 bg-green-500 rounded-[10px]">Tersedia</div>
             </div>
         </div>
     </div>

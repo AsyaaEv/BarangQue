@@ -31,6 +31,10 @@ Route::get('/forget-password', function(){
     return view('dashboard.forget-password');
 });
 
+Route::get('/barang/info/{id}', function($id){
+    return view('view.barang.info', ['id' => $id]);
+});
+
 Route::get('/register', function(){
     return view('dashboard.register.register');
 });

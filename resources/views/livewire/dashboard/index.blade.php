@@ -18,7 +18,7 @@
                 <i class="ph ph-archive text-2xl text-green-500"></i>
             </div>
             <div class="w-full h-full flex flex-col ">
-                <div class="text-[12px]">Total Barang Diam</div>
+                <div class="text-[12px]">Total Barang Tersedia</div>
                 <div class="text-lg font-bold">{{ $totalBarangDiam }}</div>
             </div>
         </div>
@@ -27,7 +27,7 @@
                 <i class="ph ph-upload text-2xl text-red-500"></i>
             </div>
             <div class="w-full h-full flex flex-col ">
-                <div class="text-[12px]">Total Barang Dipinjam</div>
+                <div class="text-[12px]">Total Barang Terpinjam</div>
                 <div class="text-lg font-bold">{{ $jumlahBarangDipinjam }}</div>
             </div>
         </div>

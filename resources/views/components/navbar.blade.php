@@ -75,7 +75,16 @@
                     </div>
                     <i class="ph ph-caret-right @if (request()->is('dashboard/barang')) block @else invisible @endif"></i>
                 </a>
-
+                <hr class="border-[1px] w-full">
+                <a href="/"
+                    class="w-[90%] h-[3rem] rounded-[10px] bg-primary flex justify-between items-center px-4">
+                    <div class="w-auto h-auto flex gap-[10px] justify-center items-center">
+                        <i
+                            class="ph ph-house text-2xl  text-white"></i>
+                        <div class=" font-semibold text-white">Home
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
         <div class="w-full h-full ">

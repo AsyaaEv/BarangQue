@@ -52,7 +52,7 @@
                         @if ($item->status == 0)
                             <div class="w-full h-auto flex gap-2 items-center">
                                 <i class="ph ph-check-circle p-1 bg-green-500 rounded-full text-2xl text-white"></i>
-                                <div class="font-semibold text-primary">Siap</div>
+                                <div class="font-semibold text-primary">Tersedia</div>
                             </div>
                         @endif
                         @if ($item->status == 1)
@@ -71,7 +71,7 @@
                             </a>
                         @endif
                         @if ($item->status == 1)
-                            <a href="{{url('/barang/info/' .$item->id)}}"
+                            <a href="{{url('/barang/info/' .$item->no)}}"
                                 class="flex justify-center items-center align-middle group select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-primary text-sec shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
                                 type="button">
                                 Info <i class="ph ph-info ml-2 text-xl group-hover:rotate-90 transition-all"></i>

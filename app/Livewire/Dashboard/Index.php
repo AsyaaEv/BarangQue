@@ -34,7 +34,7 @@ class Index extends Component
         return Audit::where('type', 'admin')->get();
     }
     public function auditBarang(){
-        return Audit::where('admin', '')->get();
+        return Audit::where('type', 'barang')->get();
     }
 
 

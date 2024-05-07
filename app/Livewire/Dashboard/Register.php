@@ -186,7 +186,7 @@ class Register extends Component
                     "receiver" => $this->noWa, // target
                     "type" => "PERSONAL", // PERSONAL | GROUP
                     "data" => [
-                        "message" => "Kode OTP: " . strval($this->otp) // message
+                        "message" => "*BarangQue*\n\nKode OTP Anda : *" . strval($this->otp) . "*, Jangan berikan kode otp anda kepada siapapun!\n\nGunakan kode otp ini untuk mendaftar akun anda dan kode otp ini hanya berlaku 1 menit." // message
                     ]
                 ]
             ]);
