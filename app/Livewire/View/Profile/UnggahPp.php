@@ -28,7 +28,9 @@ class UnggahPp extends Component
 
         if($this->fotoNew){
             $data = User::find(Auth::user()->id);
-            Storage::delete('public/' . $data->foto);
+            if($data->foto !== 'foto/blank_pp.png') {
+                Storage::delete('public/' . $data->foto);
+            }
             $foto = $this->fotoNew->store('foto', 'public');
             $data->foto = $foto;
             $data->update();

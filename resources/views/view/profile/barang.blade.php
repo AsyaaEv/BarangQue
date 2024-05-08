@@ -5,6 +5,16 @@
     <div class="py-4 pt-3 px-4">
         @include('components.profile.barang')
     </div>
-    @include('components.view.footer ')
+    <div class="w-full h-auto absolute bottom-0">
+        <div class="w-full h-auto relative bg-primary p-4" data-aos='fade-up' data-aos-once="true">
+            <div class="w-full h-auto flex flex-col border-b-2 pb-2">
+                <div class="text-3xl font-bold text-white">Barang<span class="text-sec">Que</span></div>
+                <div class="text-white">Solusi mudah untuk memenuhi kebutuhan semua warga SMK Negeri 1 Bangsri.</div>
+            </div>
+            <div class="w-full h-auto flex mt-2 justify-center items-center text-sm">
+                <i class="ph ph-copyright text-white"></i><div class="text-white">copyright BarangQue 2024</div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection

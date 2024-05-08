@@ -36,6 +36,7 @@ class PinjamController extends Controller
         $namaBarang = $barang->nama;
         $pemilik = $barang->owner->no_wa;
 
+
         
         $client = new Client();
         $url = 'https://waque.rifalkom.my.id/whatsapp/sendmessage'; 
@@ -47,7 +48,7 @@ class PinjamController extends Controller
                     "receiver" => $pemilik, // target
                     "type" => "PERSONAL", // PERSONAL | GROUP
                     "data" => [
-                        "message" => "*BarangQue (Peminjaman)*\n\n*Informasi Peminjam :*\nNama : " . Auth::user()->name . "\nNo. Wa : " . Auth::user()->no_wa . "\n\n*Informasi Barang :* \nJenis : " . $jenis . "\nNama Barang : " . $namaBarang . " \nNo. Barang : " . $no_barang . "\nKeperluan : " . $keperluan . "\nTgl. Peminjaman : " . $tglSekarang . "\nTgl. Pengembalian : " . $tglPengembalian// message
+                        "message" => "*BarangQue (Peminjaman)*\n\n*Informasi Peminjam :*\nNama : " . Auth::user()->name . "\nNo. Wa : " . Auth::user()->no_wa . "\n\n*Informasi Barang :* \nJenis : " . $jenis . "\nNama Barang : " . $namaBarang . " \nNo. Barang : " . $no_barang . "\nKeperluan : " . $keperluan . "\nTgl. Peminjaman : " . $tglSekarang . "\nTgl. Pengembalian : " . $tglPengembalian . "\n\n*Barang sedang dipinjam*, Silakan buka link berikut untuk melihat info lebih detail :" // message
                     ]
                 ]
             ]);

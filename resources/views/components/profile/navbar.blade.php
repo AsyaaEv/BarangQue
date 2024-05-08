@@ -1,9 +1,9 @@
 <div class="w-full h-[4rem] flex items-center px-[10px] justify-between border-b-[1px] shadow fixed z-[9999] bg-white">
     <a href="/">
-        <img src="{{Storage::url('public/src/assets/vLogo2.svg')}}" alt="" class="w-[8rem] h-[8rem]">
+        <img src="{{ Storage::url('public/src/assets/vLogo2.svg') }}" alt="" class="w-[8rem] h-[8rem]">
     </a>
     <div class="w-auto h-full items-center flex gap-[15px]">
-        <img src="{{Storage::url('public/' .Auth::user()->foto)}}"
+        <img src="{{ Storage::url('public/' . Auth::user()->foto) }}"
             alt="" class="w-[2.5rem] h-[2.5rem] rounded-full hover:cursor-pointer object-cover" id="profile">
         <div class="w-auto h-auto hover:cursor-pointer" id="toggleNav">
             <i class="ph ph-list text-3xl " id="navShow"></i>
@@ -24,60 +24,84 @@
             My Profile
         </p>
     </a>
+    <a role="menuitem" href="/profile/barang"
+        class="flex w-full cursor-pointer select-none items-center gap-2 rounded-md px-3 pt-[9px] pb-2 text-start leading-tight outline-none transition-all hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
+        <i class="ph ph-stack"></i>
+        <p class="block font-sans text-sm antialiased font-medium leading-normal text-inherit">
+            Barang Pinjaman
+        </p>
+    </a>
     <hr class="my-2 border-blue-gray-50" role="menuitem" />
+    <a role="menuitem" href="/dashboard"
+        class="flex w-full cursor-pointer select-none items-center gap-2 rounded-md px-3 pt-[9px] pb-2 text-start leading-tight outline-none transition-all hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900 {{ Auth::user()->role == 'admin' ? 'block' : 'hidden' }}">
+        <i class="ph ph-table"></i>
+        <p class="block font-sans text-sm antialiased font-medium leading-normal text-inherit">
+            Dashboard Admin
+        </p>
+    </a>
     @livewire('dashboard.navbar.logout')
 </ul>
 <nav class="w-full h-full -translate-x-[50rem] transition-all duration-200 py-[2rem] bg-white  z-50 fixed mt-[3rem]"
     id="nav">
     <div class="w-full h-auto flex px-[1rem] gap-[10px] justify-center items-center">
-        <img src="{{Storage::url('public/' .Auth::user()->foto)}}"
+        <img src="{{ Storage::url('public/' . Auth::user()->foto) }}"
             alt="" class="w-[3.5rem] h-[3.5rem] rounded-full object-cover">
         <div class="w-full h-full flex justify-center flex-col">
             <div class="text-xl font-semibold">
-                {{Auth::user()->name}}
+                {{ Auth::user()->name }}
             </div>
             <div class="">Selamat datang di profile user👋</div>
         </div>
     </div>
     <div class="w-full h-full flex  flex-col gap-3">
         <div class="w-full h-auto mt-[2rem] px-[2rem] ">
-            <div class="text-gray-500">Profile</div>
+            <div class="text-gray-500">MAIN</div>
             <div class="w-full h-auto flex flex-col gap-[10px] mt-4 justify-center items-center">
-                <a href="/profile"
-                    class="w-[90%] h-[3rem] @if (request()->is('profile')) bg-[#F6F8FA] shadow @else bg-transparent @endif  rounded-[10px]  flex justify-between items-center px-4">
-                    <div class="w-auto h-auto flex gap-[10px] justify-center items-center">
-                        <i
-                            class="ph ph-user text-2xl @if (request()->is('profile')) text-blue-600 @else @endif"></i>
-                        <div class="@if (request()->is('profile')) font-semibold text-blue-600 @else @endif">
-                            Profile</div>
-                    </div>
-                    <i class="ph ph-caret-right @if (request()->is('profile')) block @else invisible @endif"></i>
-                </a>
-                <a href="/profile/barang"
-                    class="w-[90%] h-[3rem] @if (request()->is('profile/barang')) bg-[#F6F8FA] shadow @else bg-transparent @endif  rounded-[10px]  flex justify-between items-center px-4">
-                    <div class="w-auto h-auto flex gap-[10px] justify-center items-center">
-                        <i
-                            class="ph ph-stack text-2xl @if (request()->is('profile/barang')) text-blue-600 @else @endif"></i>
-                        <div class="@if (request()->is('profile/barang')) font-semibold text-blue-600 @else @endif">
-                            Barang</div>
-                    </div>
-                    <i class="ph ph-caret-right @if (request()->is('profile/barang')) block @else invisible @endif"></i>
-                </a>
-                <hr class="border-[1px] w-full">
-                <a href="/"
-                    class="w-[90%] h-[3rem] bg-primary text-white rounded-[10px]  flex justify-between items-center px-4">
+                <a href="{{url('/#' . 'landing')}}" onclick="navbarToggle()"
+                    class="w-[90%] h-[3rem]   rounded-[10px]  flex justify-between items-center px-4 hover:bg-gray-200 transition-all">
                     <div class="w-auto h-auto flex gap-[10px] justify-center items-center">
                         <i
                             class="ph ph-house text-2xl "></i>
                         <div class="">
                             Home</div>
                     </div>
-                    <i class="ph ph-caret-right @if (request()->is('profile/barang')) block @else invisible @endif"></i>
+                    <i class="ph ph-caret-right "></i>
+                </a>
+                <a href="{{url('/#' . 'about')}}" onclick="navbarToggle()"
+                    class="w-[90%] h-[3rem]   rounded-[10px]  flex justify-between items-center px-4 hover:bg-gray-200 transition-all">
+                    <div class="w-auto h-auto flex gap-[10px] justify-center items-center">
+                        <i
+                            class="ph ph-info text-2xl "></i>
+                        <div class="">
+                            About</div>
+                    </div>
+                    <i class="ph ph-caret-right "></i>
+                </a>
+                <a href="{{url('/#' . 'barang')}}" onclick="navbarToggle()"
+                    class="w-[90%] h-[3rem]   rounded-[10px]  flex justify-between items-center px-4 hover:bg-gray-200 transition-all">
+                    <div class="w-auto h-auto flex gap-[10px] justify-center items-center">
+                        <i
+                            class="ph ph-stack text-2xl "></i>
+                        <div class="">
+                            Barang</div>
+                    </div>
+                    <i class="ph ph-caret-right "></i>
+                </a>
+                <a href="{{url('/#' . 'testimoni')}}" onclick="navbarToggle()"
+                    class="w-[90%] h-[3rem]   rounded-[10px]  flex justify-between items-center px-4 hover:bg-gray-200 transition-all">
+                    <div class="w-auto h-auto flex gap-[10px] justify-center items-center">
+                        <i
+                            class="ph ph-crown text-2xl  "></i>
+                        <div class="">
+                            Testimoni</div>
+                    </div>
+                    <i class="ph ph-caret-right "></i>
                 </a>
             </div>
         </div>
         <div class="w-auto h-auto text-center flex justify-center items-center">
-            <i class="ph ph-copyright text-primary"></i><div class="text-primary">copyright BarangQue 2024</div>
+            <i class="ph ph-copyright text-primary"></i>
+            <div class="text-primary">copyright BarangQue 2024</div>
         </div>
     </div>
 </nav>
@@ -85,7 +109,6 @@
 
 
 <script>
-  
     let togglePP = false
     const PP = document.getElementById('profile')
     const toggleProfile = document.getElementById('dropdownProfile')

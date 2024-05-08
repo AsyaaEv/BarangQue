@@ -97,7 +97,7 @@ class Register extends Component
         }
         
         if($this->cPassword != $this->password){
-            $this->errorM = 'confirm password tidak sama dengan password';
+            $this->errorM = 'konfirmasi password tidak sama dengan password';
             return;
         }
     

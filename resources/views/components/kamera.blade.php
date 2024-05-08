@@ -19,6 +19,7 @@
 <script>
     const kamera = document.getElementById('kamera')
     const canvas = document.getElementById('canvas')
+    const submitButton = document.getElementById('submitButton')
     let id
     let imageData
 
@@ -47,6 +48,7 @@
         context.scale(-1, 1); // Flip the context horizontally
         context.drawImage(kamera, 0, 0, kamera.videoWidth, kamera.videoHeight);
         imageData = canvas.toDataURL('image/jpg');
+        submitButton.classList.remove('invisible')
 
         if (kamera.srcObject) {
             kamera.srcObject.getTracks().forEach(track => track.stop());

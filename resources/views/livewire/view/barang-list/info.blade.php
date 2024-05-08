@@ -1,4 +1,4 @@
-<section class="w-full h-screenm py-4 mt-4 px-4">
+<section class="w-full h-auto py-6 mt-4 px-4">
     <nav class="w-full h-auto bg-primary rounded-[10px]  px-4 py-2 text-lg text-white">
         <a href="/list-barang" class="flex gap-2 items-center">
             <i class="ph ph-arrow-circle-left"></i>
@@ -53,7 +53,7 @@
                 <div class="font-semibold text-primary text-xl">Peminjaman Barang</div>
             </div>
             <div class="w-full h-auto mt-2">
-                <img src="{{ Storage::url('public/' . $data->foto) }}" alt="">
+                <img src="{{ Storage::url('public/' . $data->foto) }}" alt="" class="object-cover w-full h-full">
             </div>
         </div>
     </div>

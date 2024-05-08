@@ -19,7 +19,7 @@ class RemovePp extends Component
     public function removePP(){
         $data = User::find(Auth::user()->id);
 
-        if(Storage::exists('public/'. $data->foto)){
+        if(Storage::exists('public/'. $data->foto) && $data->foto != 'foto/blank_pp.png'){
             Storage::delete('public/' .$data->foto);
         }
         $data->foto = 'foto/blank_pp.png';

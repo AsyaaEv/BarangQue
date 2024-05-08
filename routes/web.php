@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\KembaliController;
 use App\Http\Controllers\PinjamController;
 use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Route;
@@ -12,6 +13,9 @@ Route::get('/', function(){
 Route::get('/list-barang', function(){
     return view('view.list-barang');
 });
+
+
+
 Route::group(['middleware' => ['auth', 'can:view_profile']], function(){
     Route::get('/profile', function () {
         return view('view.profile.profile');
@@ -21,6 +25,9 @@ Route::group(['middleware' => ['auth', 'can:view_profile']], function(){
     });
     Route::get('/barang/pinjam/{id}', [PinjamController::class, 'index']);
     Route::POST('/barang/pinjam/proses', [PinjamController::class, 'store']);
+
+    Route::get('/barang/kembali/{id}', [KembaliController::class, 'index']);
+    Route::POST('/barang/kembali/proses', [KembaliController::class, 'store']);
 });
 
 //login register
@@ -48,6 +55,9 @@ Route::group(['middleware' => ['auth', 'can:view_dashboard']], function(){
     
     Route::get('/dashboard/barang', function () {
         return view('dashboard.index');
+    });
+    Route::get('/dashboard/barang/pengembalian/{id}', function ($id) {
+        return view('dashboard.barang.pengembalian', ['id' => $id]);
     });
     Route::get('/dashboard/master', function () {
         return view('dashboard.index');

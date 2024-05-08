@@ -32,7 +32,21 @@
                 My Profile
             </p>
         </a>
+        <a role="menuitem" href="/profile/barang"
+            class="flex w-full cursor-pointer select-none items-center gap-2 rounded-md px-3 pt-[9px] pb-2 text-start leading-tight outline-none transition-all hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
+            <i class="ph ph-stack"></i>
+            <p class="block font-sans text-sm antialiased font-medium leading-normal text-inherit">
+                Barang Pinjaman
+            </p>
+        </a>
         <hr class="my-2 border-blue-gray-50" role="menuitem" />
+        <a role="menuitem" href="/dashboard"
+            class="flex w-full cursor-pointer select-none items-center gap-2 rounded-md px-3 pt-[9px] pb-2 text-start leading-tight outline-none transition-all hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900 {{ Auth::user()->role == 'admin' ? 'block' : 'hidden' }}">
+            <i class="ph ph-table"></i>
+            <p class="block font-sans text-sm antialiased font-medium leading-normal text-inherit">
+                Dashboard
+            </p>
+        </a>
         @livewire('dashboard.navbar.logout')
     </ul>
 @endif

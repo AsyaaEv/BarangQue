@@ -1,4 +1,4 @@
-<div class="w-full h-screen px-[1rem] py-[2rem] flex flex-col gap-[20px]">
+<div class="w-full h-auto px-[1rem] py-[2rem] flex flex-col gap-[20px]">
     <div
         role="alert"
         data-dismissible="alert"
@@ -36,20 +36,6 @@
                 <i class="ph ph-stack text-2xl"></i>
                 <div class="">Barang</div>
             </div>
-            {{-- <div class="w-72">
-                <div class="relative w-full min-w-[200px] h-10">
-                    <div
-                        class="absolute grid w-5 h-5 place-items-center text-blue-gray-500 top-2/4 right-3 -translate-y-2/4">
-                        <i class="ph ph-magnifying-glass" aria-hidden="true"></i>
-                    </div>
-                    <input wire:model.live='keyword'
-                        class="peer w-full h-full bg-transparent text-blue-gray-700 font-sans font-normal outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 border focus:border-2 border-t-transparent focus:border-t-transparent text-sm px-3 py-2.5 rounded-[7px] !pr-9 border-blue-gray-200 focus:border-gray-900"
-                        placeholder=" " /><label
-                        class="-z-50 flex w-full h-full select-none pointer-events-none absolute left-0 font-normal !overflow-visible truncate peer-placeholder-shown:text-blue-gray-500 leading-tight peer-focus:leading-tight peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500 transition-all -top-1.5 peer-placeholder-shown:text-sm text-[11px] peer-focus:text-[11px] before:content[' '] before:block before:box-border before:w-2.5 before:h-1.5 before:mt-[6.5px] before:mr-1 peer-placeholder-shown:before:border-transparent before:rounded-tl-md before:border-t peer-focus:before:border-t-2 before:border-l peer-focus:before:border-l-2 before:pointer-events-none before:transition-all peer-disabled:before:border-transparent after:content[' '] after:block after:flex-grow after:box-border after:w-2.5 after:h-1.5 after:mt-[6.5px] after:ml-1 peer-placeholder-shown:after:border-transparent after:rounded-tr-md after:border-t peer-focus:after:border-t-2 after:border-r peer-focus:after:border-r-2 after:pointer-events-none after:transition-all peer-disabled:after:border-transparent peer-placeholder-shown:leading-[3.75] text-gray-500 peer-focus:text-gray-900 before:border-blue-gray-200 peer-focus:before:!border-gray-900 after:border-blue-gray-200 peer-focus:after:!border-gray-900">
-                        Search
-                    </label>
-                </div>
-            </div> --}}
         </div>
         <div
             class="w-full h-[30rem] flex gap-[10px] items-center flex-col md:grid md:grid-cols-2 overflow-auto md:items-start md:justify-normal">
@@ -95,6 +81,50 @@
                                 <i class="ph ph-trash text-white"></i>
                             </button>
                             {{-- icon delete item --}}
+                        </div>
+                    </div>
+                </div>
+            @empty
+            <div class="w-full h-auto">
+                <div class="p-4 bg-gray-900 rounded-[10px] flex justify-center items-center">
+                    <div class="text-white font-bold text-lg">Data tidak tersedia</div>
+                </div>
+            </div>
+            @endforelse
+
+        </div>
+    </div>
+    <div class="border-[2px] rounded-[20px] px-[1rem] py-[1rem] flex flex-col gap-[20px]">
+        <div class="w-full h-auto flex border-b-2 pb-[1rem]">
+            <div class="w-full h-auto flex gap-[10px] items-center ">
+                <i class="ph ph-stack text-2xl"></i>
+                <div class="">Pengembalian Barang</div>
+            </div>
+        </div>
+        <div
+            class="w-full h-[30rem] flex gap-[10px] items-center flex-col md:grid md:grid-cols-2 overflow-auto md:items-start md:justify-normal">
+            @forelse ($pengembalian as $item)
+                <div class="w-full h-auto border-2 rounded-[10px] p-2 shadow flex">
+                    <div class="w-[10rem] h-full">
+                        <img src="{{ Storage::url('public/' . $item->barang->foto) }}"
+                            alt="" class="w-[7rem] h-[7rem] object-cover rounded-[10px]">
+                    </div>
+                    <div class="w-full h-auto flex justify-between ml-4">
+                        <div class="w-auto h-full flex justify-center gap-4 items-center">
+                            <div class="">
+                                <div class="">Jenis:</div>
+                                <div class="">Peminjam:</div>
+                            </div>
+                            <div class="">
+                                <div class="">{{ $item->barang->jenis }}</div>
+                                <div class="">{{ $item->user->name }}</div>
+                                
+                            </div>
+                        </div>
+                        <div class="w-auto h-full flex flex-col gap-[10px] items-center justify-center">
+                            <a href="/dashboard/barang/pengembalian/. {{ $item->id }}" class="w-auto h-auto bg-blue-500 rounded-[10px] p-2" >
+                                <i class="ph ph-eye text-white"></i>
+                            </a>
                         </div>
                     </div>
                 </div>

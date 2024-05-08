@@ -67,10 +67,10 @@
                         @endif
                         <canvas id="canvas" class="hidden mt-4"></canvas>
                     </div>
-                    <div class="w-full h-auto  flex justify-end mt-4">
+                    <div class="w-full h-auto  flex justify-end mt-4 invisible" id="submitButton">
                         <div class="w-auto flex items-center gap-2 text-white p-2 bg-primary rounded-[10px]" id="submit">
                             <i class="ph ph-upload-simple"></i>
-                            <button type="submit">Submit</button>
+                            <button type="submit" >Submit</button>
                         </div>
                     </div>
                     @include('components.kamera')
