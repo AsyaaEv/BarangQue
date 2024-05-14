@@ -3,6 +3,7 @@
     <div class="w-full h-auto flex flex-col gap-2 justify-center animate__animated animate__fadeInDown">
         <div class="font-bold text-6xl text-primary">Barang<span class="text-sec">Que</span></div>
         <div class="text-primary">BarangQue adalah platform peminjaman barang di SMK Negeri 1 Bangsri. Temukan berbagai macam barang yang kamu butuhkan untuk berbagai keperluan dengan mudah dan cepat.</div>
+        <div class="text-sm italic underline text-sec">"Penak Nyilihe. Penak Gawene"</div>
     </div>
     <div class="w-full h-auto flex justify-center items-center animate__animated animate__fadeInLeft">
         <img src="{{ Storage::url('public/src/assets/vLanding.svg') }}" alt="" class="w-[20rem] h-[20rem]">
@@ -12,7 +13,7 @@
             href="@auth /list-barang @else /login @endauth"
             class="w-full justify-center flex items-center gap-2 px-6 py-3 font-sans text-xs font-bold text-center bg-primary text-sec uppercase align-middle transition-all rounded-lg select-none disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none"
             type="button">
-            Get Started
+            memulai
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
                 stroke="currentColor"
                 class="w-5 h-5">

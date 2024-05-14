@@ -8,7 +8,26 @@ use Livewire\Component;
 
 class UbahBio extends Component
 {
-    public $data, $type, $jurusanGuru, $typeGuru, $mapel, $kode, $kelas, $absen, $jurusan, $posisi;
+    public $data;
+
+    public $type;
+
+    public $jurusanGuru;
+
+    public $typeGuru;
+
+    public $mapel;
+
+    public $kode;
+
+    public $kelas;
+
+    public $absen;
+
+    public $jurusan;
+
+    public $posisi;
+
     public function render()
     {
         $this->data = User::find(Auth::user()->id);
@@ -27,6 +46,7 @@ class UbahBio extends Component
 
         //staff
         $this->posisi = $this->data->typeuser->posisi;
+
         return view('livewire.view.profile.ubah-bio');
     }
 
@@ -46,6 +66,7 @@ class UbahBio extends Component
         try {
             $this->data->typeuser->update();
             session()->flash('msgBio', __('Biodata Pengguna Berhasil Diubah'));
+
             return redirect('/profile');
         } catch (\Throwable $th) {
         }

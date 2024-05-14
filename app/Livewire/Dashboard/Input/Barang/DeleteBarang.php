@@ -6,8 +6,8 @@ use App\Models\Audit;
 use App\Models\Barang;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use Livewire\Component;
 use Livewire\Attributes\On;
+use Livewire\Component;
 
 class DeleteBarang extends Component
 {
@@ -16,7 +16,12 @@ class DeleteBarang extends Component
 
         return view('livewire.dashboard.input.barang.delete-barang');
     }
-    public $jenis, $no, $id;
+
+    public $jenis;
+
+    public $no;
+
+    public $id;
 
     #[On('delete')]
     public function updateTest($id)
@@ -35,11 +40,11 @@ class DeleteBarang extends Component
         $audit = new Audit;
         $audit->nama_admin = Auth::user()->name;
         $audit->no_barang = $this->no;
-        $audit->keterangan = "Menghapus";
+        $audit->keterangan = 'Menghapus';
         $audit->type = 'barang';
-        
+
         if ($foto) {
-            Storage::delete('public/' . $foto);
+            Storage::delete('public/'.$foto);
         }
 
         try {
@@ -47,6 +52,7 @@ class DeleteBarang extends Component
             $audit->save();
             session()->flash('msg', __('Barang berhasil dihapus'));
             session()->flash('alert', 'success');
+
             return redirect('/dashboard/barang');
         } catch (\Throwable $th) {
         }

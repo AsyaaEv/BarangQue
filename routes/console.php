@@ -10,11 +10,12 @@ Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote')->hourly();
 
-
-
-Schedule::job(function(){
-    Pengembalian::delete_pengembalian();
-})->daily();
-Schedule::job(function(){
+// Schedule::job(function () {
+//     Pengembalian::delete_pengembalian();
+// })->everyMinute();
+Schedule::job(function () {
     Peminjaman::infoDeadlinePeminjaman();
-})->daily();
+})->everyFiveSeconds();
+// Schedule::job(function () {
+//     Peminjaman::infoTanggalPeminjaman();
+// })->everyMinute();

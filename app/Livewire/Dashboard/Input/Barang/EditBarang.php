@@ -13,12 +13,26 @@ use Livewire\WithFileUploads;
 class EditBarang extends Component
 {
     use WithFileUploads;
+
     public function render()
     {
         return view('livewire.dashboard.input.barang.edit-barang');
     }
 
-    public $jenis, $no, $nama, $status, $foto, $fotoold, $fotoNew;
+    public $jenis;
+
+    public $no;
+
+    public $nama;
+
+    public $status;
+
+    public $foto;
+
+    public $fotoold;
+
+    public $fotoNew;
+
     #[On('edit')]
     public function updateEdit($id)
     {
@@ -43,11 +57,11 @@ class EditBarang extends Component
         $audit = new Audit;
         $audit->nama_admin = Auth::user()->name;
         $audit->no_barang = $this->no;
-        $audit->keterangan = "Mengubah";
+        $audit->keterangan = 'Mengubah';
         $audit->type = 'barang';
 
         if ($this->fotoNew) {
-            Storage::delete('public/' . $this->foto);
+            Storage::delete('public/'.$this->foto);
             $foto = $this->fotoNew->store('src/img/barang', 'public');
             $data->foto = $foto;
         } else {
@@ -59,9 +73,10 @@ class EditBarang extends Component
             $audit->save();
             session()->flash('msg', __('Barang berhasil diedit'));
             session()->flash('alert', 'success');
+
             return redirect('/dashboard/barang');
         } catch (\Throwable $th) {
-            session()->flash('msg', __('Barang gagal diedit' . $th));
+            session()->flash('msg', __('Barang gagal diedit'.$th));
             session()->flash('alert', 'success');
         }
     }

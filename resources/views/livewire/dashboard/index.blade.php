@@ -106,7 +106,7 @@
                             <td class="p-4">
                                 <p
                                     class="block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
-                                    {{$item->created_at->format('j F Y')}}
+                                    {{\Carbon\Carbon::parse($item->created_at)->locale('id')->isoFormat('DD MMMM YYYY')}}
                                     </p>
                             </td>
                         </tr>
@@ -193,7 +193,7 @@
                             <td class="p-4">
                                 <p
                                     class="block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
-                                    {{$item->created_at->format('j F Y')}}
+                                    {{\Carbon\Carbon::parse($item->created_at)->locale('id')->isoFormat('DD MMMM YYYY')}}
                                     </p>
                             </td>
                         </tr>

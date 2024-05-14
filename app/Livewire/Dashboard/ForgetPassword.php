@@ -8,8 +8,30 @@ use Livewire\Component;
 
 class ForgetPassword extends Component
 {
-    public $noWa, $otp, $password, $password_confirmation, $otp1, $otp2, $otp3, $otp4, $otp5, $otp6;
-    public $toggleOtp = false, $togglePassword = false;
+    public $noWa;
+
+    public $otp;
+
+    public $password;
+
+    public $password_confirmation;
+
+    public $otp1;
+
+    public $otp2;
+
+    public $otp3;
+
+    public $otp4;
+
+    public $otp5;
+
+    public $otp6;
+
+    public $toggleOtp = false;
+
+    public $togglePassword = false;
+
     public function render()
     {
         return view('livewire.dashboard.forget-password');
@@ -19,31 +41,29 @@ class ForgetPassword extends Component
     {
 
         $this->validate([
-            'noWa' => 'required|numeric'
+            'noWa' => 'required|numeric',
         ], [
             'noWa.required' => 'Nomor WA harus diisi.',
-            'noWa.numeric' => 'Nomor WA harus berupa angka.'
+            'noWa.numeric' => 'Nomor WA harus berupa angka.',
         ]);
 
-        
-
         $this->otp = rand(100000, 999999);
-    
+
         $client = new Client();
-        $url = 'https://waque.rifalkom.my.id/whatsapp/sendmessage'; 
+        $url = 'https://waque.rifalkom.my.id/whatsapp/sendmessage';
         try {
             // Mengirim request ke API
             $response = $client->request('POST', $url, [
                 'json' => [
-                    "api_key" => "CqtVV1h/7zFAeN6tcaU+mXC2njZmCdMViWUUFOqLu4Y=", // your Secret key
-                    "receiver" => $this->noWa, // target
-                    "type" => "PERSONAL", // PERSONAL | GROUP
-                    "data" => [
-                        "message" => "*BarangQue*\n\nKode OTP Anda : *" . strval($this->otp) . "*, Jangan berikan kode otp anda kepada siapapun!\n\nGunakan kode otp ini untuk mengganti password anda dan kode otp ini hanya berlaku 1 menit."// message
-                    ]
-                ]
+                    'api_key' => 'CqtVV1h/7zFAeN6tcaU+mXC2njZmCdMViWUUFOqLu4Y=', // your Secret key
+                    'receiver' => $this->noWa, // target
+                    'type' => 'PERSONAL', // PERSONAL | GROUP
+                    'data' => [
+                        'message' => "*BarangQue*\n\nKode OTP Anda : *".strval($this->otp)."*, Jangan berikan kode otp anda kepada siapapun!\n\nGunakan kode otp ini untuk mengganti password anda dan kode otp ini hanya berlaku 1 menit.", // message
+                    ],
+                ],
             ]);
-            
+
         } catch (\Exception $e) {
             return;
         }
@@ -53,11 +73,11 @@ class ForgetPassword extends Component
 
     public function sectionPassword()
     {
-        $combinedOtp = $this->otp1 . $this->otp2 . $this->otp3 . $this->otp4 . $this->otp5 . $this->otp6;
+        $combinedOtp = $this->otp1.$this->otp2.$this->otp3.$this->otp4.$this->otp5.$this->otp6;
         if ($combinedOtp != $this->otp) {
-            
+
             return;
-        } 
+        }
 
         $this->toggleOtp = false;
         $this->togglePassword = true;
@@ -80,6 +100,7 @@ class ForgetPassword extends Component
         $data = User::where('no_wa', $this->noWa)->first();
         $data->password = $this->password;
         $data->update();
+
         return redirect('login');
     }
 }

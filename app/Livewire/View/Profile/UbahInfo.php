@@ -8,8 +8,14 @@ use Livewire\Component;
 
 class UbahInfo extends Component
 {
+    public $data;
 
-    public $data, $nama, $email, $noWa;
+    public $nama;
+
+    public $email;
+
+    public $noWa;
+
     public function render()
     {
         $id = Auth::user()->id;
@@ -17,22 +23,24 @@ class UbahInfo extends Component
         $this->nama = $this->data->name;
         $this->email = $this->data->email;
         $this->noWa = $this->data->no_wa;
+
         return view('livewire.view.profile.ubah-info');
     }
 
-    public function ubahInfo(){
+    public function ubahInfo()
+    {
         $this->data->name = $this->nama;
         $this->data->email = $this->email;
         $this->data->no_wa = $this->noWa;
 
-        try{
+        try {
             $this->data->update();
             session()->flash('msg', __('Informasi Pengguna Berhasil Diubah'));
+
             return redirect('/profile');
         } catch (\Throwable $th) {
 
         }
-       
-    }
 
+    }
 }

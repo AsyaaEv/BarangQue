@@ -32,9 +32,11 @@
     </div>
     <div class="border-[2px] rounded-[20px] px-[1rem] py-[1rem] flex flex-col gap-[20px]">
         <div class="w-full h-auto flex border-b-2 pb-[1rem]">
-            <div class="w-full h-auto flex gap-[10px] items-center ">
-                <i class="ph ph-stack text-2xl"></i>
-                <div class="">Barang</div>
+            <div class="w-full h-auto flex gap-[10px] items-center justify-between">
+                <div class="flex gap-2">
+                    <i class="ph ph-stack text-2xl"></i>
+                    <div class="">Barang</div>
+                </div>
             </div>
         </div>
         <div

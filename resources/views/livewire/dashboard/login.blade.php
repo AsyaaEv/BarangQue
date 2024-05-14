@@ -3,7 +3,15 @@
         <div class="w-full h-auto bg-red-500 rounded-[10px] p-2">
             <div class="text-white">@if(session('msg')) {{session('msg')}} @endif</div>
         </div>
-    </div>    
+    </div>
+    @if(session('success'))
+        <div class="w-full h-auto flex">
+            <div class="w-full h-auto bg-green-500 rounded-[10px] p-2 flex gap-2 justify-start items-center">
+                <i class="ph ph-check-circle text-white text-lg"></i>
+                <div class="text-white">{{ session('success') }}</div>
+            </div>
+        </div>
+    @endif
     <div class="w-72">
         <div class="relative w-full min-w-[200px] h-10">
             <input wire:model='email' required

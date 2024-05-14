@@ -21,7 +21,7 @@
                 fill="#90A4AE"></path>
         </svg>
         <p class="block font-sans text-sm antialiased font-medium leading-normal text-inherit">
-            My Profile
+            Profil
         </p>
     </a>
     <a role="menuitem" href="/profile/barang"

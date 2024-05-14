@@ -12,8 +12,10 @@ class Logout extends Component
         return view('livewire.dashboard.navbar.logout');
     }
 
-    public function logout(){
+    public function logout()
+    {
         Auth::logout();
+
         return redirect('/');
     }
 }

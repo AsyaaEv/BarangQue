@@ -13,9 +13,17 @@ class EditPassword extends Component
         return view('livewire.view.profile.edit-password');
     }
 
-    public $passwordNew, $cPasswordNew, $errorM1, $errorM2;
-    public function updatePasswordValidation(){
-        if(strlen($this->passwordNew) <= 8){
+    public $passwordNew;
+
+    public $cPasswordNew;
+
+    public $errorM1;
+
+    public $errorM2;
+
+    public function updatePasswordValidation()
+    {
+        if (strlen($this->passwordNew) <= 8) {
             $this->errorM1 = 'Password harus lebih dari 8 karakter';
         } else {
             $this->errorM1 = null;
@@ -28,19 +36,21 @@ class EditPassword extends Component
         }
     }
 
-    public function editPassword(){
-        if($this->errorM1 || $this->errorM2){
+    public function editPassword()
+    {
+        if ($this->errorM1 || $this->errorM2) {
             return;
         }
 
         $data = User::find(Auth::user()->id);
         $data->password = $this->passwordNew;
 
-        try{
+        try {
             $data->update();
             session()->flash('alert', 'Password berhasil diubah');
+
             return redirect('/profile');
-        } catch(\Throwable $th) {
+        } catch (\Throwable $th) {
 
         }
     }

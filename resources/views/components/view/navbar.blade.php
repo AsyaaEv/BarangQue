@@ -9,7 +9,7 @@
             id="profile">
         <div class="{{ Auth::check() ? 'hidden' : 'block' }}">
             <a href="/login" class="p-2 bg-primary rounded-[10px] text-white">
-                Login
+                Masuk
             </a>
         </div>
         <div class="w-auto h-auto hover:cursor-pointer" id="toggleNav">
@@ -29,7 +29,7 @@
                     fill="#90A4AE"></path>
             </svg>
             <p class="block font-sans text-sm antialiased font-medium leading-normal text-inherit">
-                My Profile
+                Profil
             </p>
         </a>
         <a role="menuitem" href="/profile/barang"

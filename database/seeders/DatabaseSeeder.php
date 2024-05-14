@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-       Peminjaman::updateOrCreate([
+        Peminjaman::updateOrCreate([
             'id_barang' => 'LP001',
             'keperluan' => 'testing',
             'tgl_peminjaman' => '04-04-2024',

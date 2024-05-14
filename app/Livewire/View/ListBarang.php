@@ -9,7 +9,8 @@ class ListBarang extends Component
 {
     public function render()
     {
-        $data = Barang::where('jenis', 'Laptop')->orderBy('no')->paginate(2);
+        $data = Barang::where('status', '0')->orderBy('no')->paginate(2);
+
         return view('livewire.view.list-barang', compact('data'));
     }
 }

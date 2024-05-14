@@ -13,20 +13,27 @@ class Index extends Component
         $getAdmin = $this->getAdmin();
         $getUser = $this->getUser();
         $dataAdmin = User::where('role', 'admin')->get();
-        return view('livewire.dashboard.master.index', compact('allUser', 'getAdmin' , 'getUser', 'dataAdmin'));
+
+        return view('livewire.dashboard.master.index', compact('allUser', 'getAdmin', 'getUser', 'dataAdmin'));
     }
 
-    public function getAllUser(){
+    public function getAllUser()
+    {
         return User::count();
     }
-    public function getAdmin(){
+
+    public function getAdmin()
+    {
         return User::where('role', 'admin')->count();
     }
-    public function getUser(){
+
+    public function getUser()
+    {
         return User::where('role', 'user')->count();
     }
 
-    public function view($id){
-        $this->dispatch('popupView', data:$id);
+    public function view($id)
+    {
+        $this->dispatch('popupView', data: $id);
     }
 }

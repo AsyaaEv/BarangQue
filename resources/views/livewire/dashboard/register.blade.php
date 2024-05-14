@@ -8,6 +8,7 @@
             <div class="w-full h-auto flex flex-col justify-center items-center">
                 <div class="font-bold text-3xl text-primary">Barang<span class="text-sec">Que</span></div>
                 <div class="text-md">Silakan masukan data anda untuk mendaftar</div>
+                <div class="text-sm text-red-500 italic">*Pastikan memasukan data secara benar!</div>
             </div>
             <div class="relative w-full min-w-[200px] h-10">
                 <input wire:model='nama' required
@@ -44,16 +45,16 @@
             </div>
         </div>
         <div class="w-full h-auto flex gap-2 justify-end px-4">
-            <button wire:click='back1'
+            <button wire:click='back1' wire:loading.attr="disabled"
                 class="flex  justify-center items-center gap-2 align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-red-900 text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
                 type="button">
                 <i class="ph ph-arrow-bend-up-left text-lg"></i>
-                Back
+                Batal
             </button>
-            <button
+            <button wire:loading.attr="disabled"
                 class="flex justify-center items-center gap-2 align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-primary text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
                 type="submit" wire:click='section1'>
-                Next
+                Lanjut
                 <i class="ph ph-arrow-bend-up-right text-lg"></i>
             </button>
         </div>
@@ -101,9 +102,16 @@
                         </label>
                     </div>
                     <div class="relative w-full min-w-[200px] h-10">
-                        <input wire:model='jurusan'
-                            class="peer w-full h-full bg-transparent text-blue-gray-700 font-sans font-normal outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 border focus:border-2 border-t-transparent focus:border-t-transparent text-sm px-3 py-2.5 rounded-[7px] border-blue-gray-200 focus:border-gray-900"
-                            placeholder=" " /><label
+                        <select wire:model='jurusan'
+                            class="peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 empty:!bg-gray-900 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50">
+                            <option value="0">Select</option>
+                            <option value="PPLG">PPLG</option>
+                            <option value="AKL">AKL</option>
+                            <option value="TO">TO</option>
+                            <option value="MPLB">MPLB</option>
+                            <option value="PM">PM</option>
+                        </select>
+                        <label
                             class="flex w-full h-full select-none pointer-events-none absolute left-0 font-normal !overflow-visible truncate peer-placeholder-shown:text-blue-gray-500 leading-tight peer-focus:leading-tight peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500 transition-all -top-1.5 peer-placeholder-shown:text-sm text-[11px] peer-focus:text-[11px] before:content[' '] before:block before:box-border before:w-2.5 before:h-1.5 before:mt-[6.5px] before:mr-1 peer-placeholder-shown:before:border-transparent before:rounded-tl-md before:border-t peer-focus:before:border-t-2 before:border-l peer-focus:before:border-l-2 before:pointer-events-none before:transition-all peer-disabled:before:border-transparent after:content[' '] after:block after:flex-grow after:box-border after:w-2.5 after:h-1.5 after:mt-[6.5px] after:ml-1 peer-placeholder-shown:after:border-transparent after:rounded-tr-md after:border-t peer-focus:after:border-t-2 after:border-r peer-focus:after:border-r-2 after:pointer-events-none after:transition-all peer-disabled:after:border-transparent peer-placeholder-shown:leading-[3.75] text-gray-500 peer-focus:text-gray-900 before:border-blue-500 peer-focus:before:!border-gray-900 after:border-blue-500 peer-focus:after:!border-gray-900">
                             Jurusan
                         </label>
@@ -155,16 +163,16 @@
             </div>
         </div>
         <div class="w-full h-auto flex gap-2 justify-end px-4">
-            <button wire:click='back2'
+            <button wire:click='back2' wire:loading.attr="disabled"
                 class="flex  justify-center items-center gap-2 align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-red-900 text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
                 type="button">
                 <i class="ph ph-arrow-bend-up-left text-lg"></i>
-                Back
+                Kembali
             </button>
-            <button
+            <button wire:loading.attr="disabled"
                 class="flex justify-center items-center gap-2 align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-primary text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
                 type="submit" wire:click='section2'>
-                Next
+                Lanjut
                 <i class="ph ph-arrow-bend-up-right text-lg"></i>
             </button>
         </div>
@@ -186,16 +194,16 @@
             </div>
         </div>
         <div class="w-full h-auto flex gap-2 justify-end px-4">
-            <button wire:click='back3'
+            <button wire:click='back3' wire:loading.attr="disabled"
                 class="flex  justify-center items-center gap-2 align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-red-900 text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
                 type="button">
                 <i class="ph ph-arrow-bend-up-left text-lg"></i>
-                Back
+                Kembali
             </button>
-            <button wire:click='section3'
+            <button wire:click='section3' wire:loading.attr="disabled"
                 class="flex justify-center items-center gap-2 align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-primary text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
                 type="submit">
-                Next
+                Lanjut
                 <i class="ph ph-arrow-bend-up-right text-lg"></i>
             </button>
         </div>
@@ -221,16 +229,16 @@
             </div>
         </div>
         <div class="w-full h-auto flex gap-2 justify-end px-4">
-            <button wire:click='back4'
+            <button wire:click='back4' wire:loading.attr="disabled"
                 class="flex  justify-center items-center gap-2 align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-red-900 text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
                 type="button">
                 <i class="ph ph-arrow-bend-up-left text-lg"></i>
-                Back
+                Kembali
             </button>
-            <button wire:click='section4'
+            <button wire:click='section4' wire:loading.attr="disabled"
                 class="flex justify-center items-center gap-2 align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-primary text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
                 type="submit">
-                Next
+                Lanjut
                 <i class="ph ph-arrow-bend-up-right text-lg"></i>
             </button>
         </div>
@@ -246,7 +254,7 @@
                 <div class="font-bold text-3xl text-primary">Barang<span class="text-sec">Que</span></div>
                 <div class="text-md">Silakan masukan data anda untuk mendaftar</div>
             </div>
-            <div class="relative w-full min-w-[200px] h-auto border-2 p-4">
+            <div class="relative w-full min-w-[200px] h-auto p-4">
                 <div class="flex space-x-2 justify-center items-center">
                     <input wire:model='otp1' maxlength="1" class="peer w-10 h-10 text-center bg-transparent text-blue-gray-700 font-sans font-normal outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all border-blue-gray-200 border focus:border-2 rounded-[7px] focus:border-gray-900" type="text" oninput="this.value=this.value.slice(0,1); if(this.value) document.getElementById('otp2').focus();">
                     <input id="otp2" wire:model='otp2' maxlength="1" class="peer w-10 h-10 text-center bg-transparent text-blue-gray-700 font-sans font-normal outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all border-blue-gray-200 border focus:border-2 rounded-[7px] focus:border-gray-900" type="text" oninput="this.value=this.value.slice(0,1); if(this.value) document.getElementById('otp3').focus();">
@@ -258,16 +266,16 @@
             </div>
         </div>
         <div class="w-full h-auto flex gap-2 justify-end px-4">
-            <button wire:click='back5'
+            <button wire:click='back5' wire:loading.attr="disabled"
                 class="flex  justify-center items-center gap-2 align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-red-900 text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
                 type="button">
                 <i class="ph ph-arrow-bend-up-left text-lg"></i>
-                Back
+                Kembali
             </button>
-            <button wire:click='insert'
+            <button wire:click='insert' wire:loading.attr="disabled"
                 class="flex justify-center items-center gap-2 align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-primary text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
                 type="submit">
-                Next
+                Submit
                 <i class="ph ph-arrow-bend-up-right text-lg"></i>
             </button>
         </div>

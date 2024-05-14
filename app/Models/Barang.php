@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Barang extends Model
 {
     use HasFactory;
-    public function owner(){
+
+    public function owner()
+    {
         return $this->belongsTo(User::class, 'pemilik', 'name');
     }
 }
-

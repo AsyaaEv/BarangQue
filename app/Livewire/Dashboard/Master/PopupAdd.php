@@ -12,10 +12,12 @@ class PopupAdd extends Component
     public function render()
     {
         $data = User::where('role', 'user')->get();
+
         return view('livewire.dashboard.master.popup-add', compact('data'));
     }
 
-    public function add($id){
+    public function add($id)
+    {
         $data = User::find($id);
         $data->assignRole('admin');
         $data->role = 'admin';
@@ -27,6 +29,7 @@ class PopupAdd extends Component
         $audit->admin = $data->name;
         $audit->type = 'admin';
         $audit->save();
+
         return redirect('/dashboard/master');
     }
 }

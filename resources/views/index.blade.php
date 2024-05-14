@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="{{ Storage::url('public/src/assets/vFavicon2.svg') }}" type="image/x-icon">
     <title>{{ config('app.name') }}</title>
 
-
+    
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css" />
     <style>
@@ -32,8 +32,7 @@
 
     @livewireScripts
 
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="/asset/jquery.js"></script>
 
     <script>
         $(document).ready(function() {
@@ -62,6 +61,8 @@
                     processData: false,
                     success: function(response) {
                         console.log('sukses');
+                        sessionStorage.setItem('successMessage',
+                            'Anda berhasil meminjam barang');
                         window.location.href = '/profile/barang';
                     },
                     error: function(xhr, status, error) {

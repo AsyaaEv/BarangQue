@@ -15,9 +15,37 @@ class PopupView extends Component
         return view('livewire.dashboard.master.popup-view');
     }
 
-    public $id, $nama, $foto, $email, $typeUser, $kelas, $absen, $jurusan, $jurusanGuru, $typeGuru, $mapel, $kodeGuru, $posisi, $noWa;
+    public $id;
+
+    public $nama;
+
+    public $foto;
+
+    public $email;
+
+    public $typeUser;
+
+    public $kelas;
+
+    public $absen;
+
+    public $jurusan;
+
+    public $jurusanGuru;
+
+    public $typeGuru;
+
+    public $mapel;
+
+    public $kodeGuru;
+
+    public $posisi;
+
+    public $noWa;
+
     #[On('popupView')]
-    public function  updateView($data){
+    public function updateView($data)
+    {
         $data = User::find($data);
         $this->id = $data->id;
         $this->nama = $data->name;
@@ -36,7 +64,8 @@ class PopupView extends Component
         $this->posisi = $data->typeuser->posisi;
     }
 
-    public function deleteRole($id){
+    public function deleteRole($id)
+    {
         $data = User::find($id);
         $data->removeRole('admin');
         $data->assignRole('user');
@@ -49,14 +78,15 @@ class PopupView extends Component
         $audit->admin = $data->name;
         $audit->type = 'admin';
         $audit->save();
+
         return redirect('/dashboard/master');
 
     }
 
     protected $redirectToSelf = true;
 
-    public function close(){
+    public function close()
+    {
         $this->redirect('/dashboard/master');
     }
-    
 }
