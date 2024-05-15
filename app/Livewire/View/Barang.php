@@ -3,6 +3,7 @@
 namespace App\Livewire\View;
 
 use App\Models\Peminjaman;
+use App\Models\Testimoni;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -10,6 +11,7 @@ use Livewire\Component;
 class Barang extends Component
 {
     public $id;
+    public $rating, $alasan, $error, $toggleTesti = true;
 
     public function render()
     {
@@ -23,5 +25,21 @@ class Barang extends Component
         Carbon::setLocale($originalLocale); // Reset locale back
 
         return $view;
+    }
+
+    public function testi()
+    {
+        if ( empty($this->alasan)) {
+            $this->error = "Masukan rating dan alasan terlebih dahulu";
+            return;
+        }
+
+        $data = new Testimoni();
+        $data->nama = Auth::user()->name;
+        $data->rating = $this->rating;
+        $data->alasan = $this->alasan;
+        $data->save();
+        $this->toggleTesti = false;
+
     }
 }

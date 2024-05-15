@@ -24,9 +24,10 @@ class Peminjaman extends Model
 
     public static function infoTanggalPeminjaman()
     {
-        $data = Peminjaman::whereDate('tgl_pengembalian', '=', now()->subDay())->with('user', 'barang')->first();
+        $waktu = Carbon::now()->addDay()->isoFormat('YYYY-MM-DD');
+        $data = Peminjaman::whereDate('tgl_pengembalian', '=', $waktu)->with('user', 'barang')->first();
 
-        if ($data->isNotEmpty()) {
+        if ($data) {
             $client = new Client();
             $url = 'https://waque.rifalkom.my.id/whatsapp/sendmessage';
             try {
@@ -45,6 +46,7 @@ class Peminjaman extends Model
                 // Handle error
                 // Misalnya: Log error atau kirim notifikasi ke admin
             }
+        }else {
         }
     }
 
@@ -72,7 +74,6 @@ class Peminjaman extends Model
                 Log::error("Failed to send WhatsApp message: " . $e->getMessage());
             }
         } else {
-            Log::info("tidak ada data hari ini");
         }
     }
 }

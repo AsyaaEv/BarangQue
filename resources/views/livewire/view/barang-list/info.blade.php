@@ -5,16 +5,16 @@
             <div class="">Informasi Peminjaman</div>
         </a>
     </nav>
-    <main class="bg-primary p-2 rounded-[10px] shadow flex gap-4 mx-8 justify-center mt-4">
-        <div class="bg-primary p-2 rounded-[10px] shadow flex gap-4 mx-8 justify-center">
+    <main class="bg-primary p-2 rounded-[10px] shadow flex gap-4 mx-4 justify-center mt-4">
+        <div class="bg-primary p-2 rounded-[10px] flex gap-4 mx-2 justify-center">
             <div class="w-auto h-auto flex justify-center items-center">
                 <img src="{{ Storage::url('public/' . $data->barang->foto) }}" alt=""
                     class="w-[3rem] h-[3rem] object-cover rounded-full">
             </div>
             <div class="w-auto h-full flex flex-col text-white">
                 <div class="flex gap-2 text-lg">
-                    <div class="">{{ $data->barang->nama }}</div>
-                    <div class="">#{{ $data->barang->no }}</div>
+                    <div class="border-2">{{ $data->barang->nama }}</div>
+                    <div class="border-2">#{{ $data->barang->no }}</div>
                 </div>
                 <div class="text-sm">{{ $data->barang->pemilik}}</div>
             </div>
@@ -49,7 +49,7 @@
     <div class="w-full h-auto mt-4">
         <div class="w-full h-auto border-2 rounded-[10px] p-2">
             <div class="w-full h-auto flex gap-2 items-center">
-                <i class="ph ph-stack p-2 bg-primary rounded-full text-white"></i>
+                <i class="ph ph-camera p-2 bg-primary rounded-full text-white"></i>
                 <div class="font-semibold text-primary text-xl">Peminjaman Barang</div>
             </div>
             <div class="w-full h-auto mt-2">

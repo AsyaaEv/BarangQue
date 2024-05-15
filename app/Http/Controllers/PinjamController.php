@@ -70,13 +70,10 @@ class PinjamController extends Controller
             try {
                 $barang->save();
                 $data->save();
-
-                return redirect('/profile/barang')->with('success', 'Data peminjaman berhasil disimpan');
+                session()->flash('success', "Anda berhasil meminjam barang pinjaman");
             } catch (\Throwable $th) {
-                return redirect()->back()->withInput()->withErrors(['error' => 'Gagal menyimpan data peminjaman']);
             }
         } else {
-            return redirect()->back()->withInput()->withErrors(['no_barang' => 'Barang tidak ditemukan']);
         }
     }
 }

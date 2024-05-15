@@ -10,7 +10,6 @@
 
     
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css" />
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
@@ -53,6 +52,8 @@
                 formData.append('no_barang', no_barang);
                 formData.append('file', fileBlob);
 
+                $('#buttonKembali').prop('disabled', true);
+
                 $.ajax({
                     type: method,
                     url: url,
@@ -68,6 +69,10 @@
                     error: function(xhr, status, error) {
                         console.error('Error:', error);
                         alert('Error submitting form!');
+                    },
+                    complete: function() {
+                        // Re-enable the submit button after the request is complete
+                        $('#buttonKembali').prop('disabled', false);
                     }
                 });
             });
@@ -133,6 +138,9 @@
                 formData.append('tglPengembalian', tglPengembalian);
                 formData.append('file', file);
 
+                // Disable the submit button
+                $('#buttonPinjam').prop('disabled', true);
+
                 $.ajax({
                     type: method,
                     url: url,
@@ -146,6 +154,10 @@
                     error: function(xhr, status, error) {
                         console.error('Error:', error);
                         alert('Error submitting form!');
+                    },
+                    complete: function() {
+                        // Re-enable the submit button after the request is complete
+                        $('#buttonPinjam').prop('disabled', false);
                     }
                 });
             });

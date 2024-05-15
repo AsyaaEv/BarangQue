@@ -3,13 +3,13 @@
         <div class="w-full h-auto border-2 mt-[5rem] rounded-[10px]">
             <div class="w-full h-auto flex justify-between items-center p-2">
                 <div class="w-full h-auto flex gap-2 items-center">
-                    <a href="/#barang" class="p-2 bg-primary text-white rounded-full">
-                        <i class="ph ph-arrow-left "></i>
+                    <a href="/#barang" class="">
+                        <i class="ph ph-arrow-left p-2 bg-primary text-white rounded-full"></i>
                     </a>
                     <div class="">List Barang</div>
                 </div>
-                <div class="w-full h-auto flex flex-col gap-2">
-                    <div class="relative h-10 w-72 min-w-[200px]">
+                <div class="w-full h-auto flex flex-col gap-2 ">
+                    <div class="relative h-10">
                         <select wire:model.live='jenis'
                             class="peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 empty:!bg-gray-900 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50">
                             <option value="all" selected>All</option>
@@ -22,7 +22,7 @@
                             Pilih Barang
                         </label>
                     </div>
-                    <div class="relative h-10 w-72 min-w-[200px]">
+                    <div class="relative h-10 w-auto">
                         <select wire:model.live='status'
                             class="peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 empty:!bg-gray-900 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50">
                             <option value="all" selected>All</option>
@@ -70,14 +70,14 @@
                             <a href="{{url('/barang/pinjam/' .$item->id)}}"
                                 class="flex justify-center items-center align-middle group select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-primary text-sec shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
                                 type="button">
-                                Pinjam <i class="ph ph-upload-simple ml-2 text-xl group-hover:rotate-90 transition-all"></i>
+                                Pinjam <i class="ph ph-upload-simple ml-2 text-xl"></i>
                             </a>
                         @endif
                         @if ($item->status == 1)
                             <a href="{{url('/barang/info/' .$item->no)}}"
                                 class="flex justify-center items-center align-middle group select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-primary text-sec shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
                                 type="button">
-                                Info <i class="ph ph-info ml-2 text-xl group-hover:rotate-90 transition-all"></i>
+                                Info <i class="ph ph-info ml-2 text-xl"></i>
                             </a>
                         @endif
                     </div>

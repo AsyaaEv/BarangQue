@@ -124,7 +124,7 @@
                             </div>
                         </div>
                         <div class="w-auto h-full flex flex-col gap-[10px] items-center justify-center">
-                            <a href="/dashboard/barang/pengembalian/. {{ $item->id }}" class="w-auto h-auto bg-blue-500 rounded-[10px] p-2" >
+                            <a href="/dashboard/barang/pengembalian/{{ $item->id }}" class="w-auto h-auto bg-blue-500 rounded-[10px] p-2" >
                                 <i class="ph ph-eye text-white"></i>
                             </a>
                         </div>

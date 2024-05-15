@@ -7,8 +7,8 @@
                 <div class="">Pengembalian Barang</div>
             </a>
         </nav>
-        <main class="bg-primary p-2 rounded-[10px] shadow flex gap-4 mx-8 justify-center mt-4">
-            <div class="bg-primary p-2 rounded-[10px] shadow flex gap-4 mx-8 justify-center">
+        <main class="bg-primary p-2 rounded-[10px] shadow flex gap-4 mx-4 justify-center mt-4">
+            <div class="bg-primary p-2 rounded-[10px] shadow flex gap-4 mx-2 justify-center">
                 <div class="w-auto h-auto flex justify-center items-center">
                     <img src="{{ Storage::url('public/' . $data->barang->foto) }}" alt=""
                         class="w-[3rem] h-[3rem] object-cover rounded-full">

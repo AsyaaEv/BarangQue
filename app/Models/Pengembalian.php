@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Pengembalian extends Model
 {
@@ -21,10 +22,14 @@ class Pengembalian extends Model
 
     public static function delete_pengembalian()
     {
+        $now = time();
         $data = Pengembalian::all();
         foreach ($data as $item) {
-            $created = strtotime($item->tgl_delete) + (86400 * 7); // 2 minutes in seconds
-            if ($created < time()) {
+            $created = strtotime($item->created_at) + (60 * 60 * 24 * 7); // Menambah 7 hari ke waktu pembuatan
+            if ($created < $now) {
+                if ($item->foto_pengembalian) {
+                    Storage::delete('public/' . $item->foto_pengembalian);
+                }
                 $item->delete();
             }
         }

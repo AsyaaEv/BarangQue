@@ -68,7 +68,7 @@
         <div class="w-full h-auto mt-[2rem] px-[2rem] ">
             <div class="text-gray-500">MAIN</div>
             <div class="w-full h-auto flex flex-col gap-[10px] mt-4 justify-center items-center">
-                <a href="#landing" onclick="navbarToggle()"
+                <a href="{{url('/#' . 'landing')}}" onclick="navbarToggle()"
                     class="w-[90%] h-[3rem]   rounded-[10px]  flex justify-between items-center px-4 hover:bg-gray-200 transition-all">
                     <div class="w-auto h-auto flex gap-[10px] justify-center items-center">
                         <i
@@ -78,7 +78,7 @@
                     </div>
                     <i class="ph ph-caret-right "></i>
                 </a>
-                <a href="#about" onclick="navbarToggle()"
+                <a href="{{url('/#' . 'about')}}" onclick="navbarToggle()"
                     class="w-[90%] h-[3rem]   rounded-[10px]  flex justify-between items-center px-4 hover:bg-gray-200 transition-all">
                     <div class="w-auto h-auto flex gap-[10px] justify-center items-center">
                         <i
@@ -88,7 +88,7 @@
                     </div>
                     <i class="ph ph-caret-right "></i>
                 </a>
-                <a href="#barang" onclick="navbarToggle()"
+                <a href="{{url('/#' . 'barang')}}" onclick="navbarToggle()"
                     class="w-[90%] h-[3rem]   rounded-[10px]  flex justify-between items-center px-4 hover:bg-gray-200 transition-all">
                     <div class="w-auto h-auto flex gap-[10px] justify-center items-center">
                         <i
@@ -98,7 +98,7 @@
                     </div>
                     <i class="ph ph-caret-right "></i>
                 </a>
-                <a href="#testimoni" onclick="navbarToggle()"
+                <a href="{{url('/#' . 'testimoni')}}" onclick="navbarToggle()"
                     class="w-[90%] h-[3rem]   rounded-[10px]  flex justify-between items-center px-4 hover:bg-gray-200 transition-all">
                     <div class="w-auto h-auto flex gap-[10px] justify-center items-center">
                         <i

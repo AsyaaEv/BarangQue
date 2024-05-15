@@ -14,7 +14,7 @@
                     <meta name="csrf-token" content="{{ csrf_token() }}">
                     @csrf
                     <div class="bg-primary p-2 rounded-[10px] shadow flex gap-4 mx-8 justify-center">
-                        <div class="bg-primary p-2 rounded-[10px] shadow flex gap-4 mx-8 justify-center">
+                        <div class="bg-primary p-2 rounded-[10px] flex gap-4 mx-8 justify-center">
                             <div class="w-auto h-auto flex justify-center items-center">
                                 <img src="{{ Storage::url('public/' . $dataBarang->foto) }}" alt=""
                                     class="w-[3rem] h-[3rem] object-cover rounded-full">
@@ -70,7 +70,7 @@
                     <div class="w-full h-auto  flex justify-end mt-4 invisible" id="submitButton">
                         <div class="w-auto flex items-center gap-2 text-white p-2 bg-primary rounded-[10px]" id="submit">
                             <i class="ph ph-upload-simple"></i>
-                            <button type="submit" >Submit</button>
+                            <button type="submit" id="buttonPinjam">Submit</button>
                         </div>
                     </div>
                     @include('components.kamera')
