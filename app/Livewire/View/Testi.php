@@ -9,7 +9,8 @@ class Testi extends Component
 {
     public function render()
     {
-        $data = Testimoni::all();
-        return view('livewire.view.testi', compact('data'));
+        $averageRating = number_format(Testimoni::average('rating'), 1);
+        $data = Testimoni::where('rating', '5')->paginate(3);
+        return view('livewire.view.testi', compact('data', 'averageRating'));
     }
 }

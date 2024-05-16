@@ -12,6 +12,23 @@ Route::get('/', function () {
 Route::get('/list-barang', function () {
     return view('view.list-barang');
 });
+Route::get('/testimonis', function () {
+    return view('view.testimonis');
+});
+
+Route::get('/barang/info/{id}', function ($id) {
+    return view('view.barang.info', ['id' => $id]);
+});
+
+
+
+
+
+
+
+
+
+
 
 Route::group(['middleware' => ['auth', 'can:view_profile']], function () {
     Route::get('/profile', function () {
@@ -27,6 +44,15 @@ Route::group(['middleware' => ['auth', 'can:view_profile']], function () {
     Route::POST('/barang/kembali/proses', [KembaliController::class, 'store']);
 });
 
+
+
+
+
+
+
+
+
+
 //login register
 Route::get('/login', function () {
     return view('dashboard.login');
@@ -35,13 +61,21 @@ Route::get('/forget-password', function () {
     return view('dashboard.forget-password');
 });
 
-Route::get('/barang/info/{id}', function ($id) {
-    return view('view.barang.info', ['id' => $id]);
-});
-
 Route::get('/register', function () {
     return view('dashboard.register.register');
 });
+
+
+
+
+
+
+
+
+
+
+
+
 
 //admin view
 Route::group(['middleware' => ['auth', 'can:view_dashboard']], function () {

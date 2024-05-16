@@ -75,6 +75,7 @@ class KembaliController extends Controller
             $data->delete();
             $pengembalian->save();
             session()->flash('success', "Anda berhasil mengkembalikan barang pinjaman");
+            session()->flash('testimoni', "matap");
         } catch (\Exception $e) {
         }
     }

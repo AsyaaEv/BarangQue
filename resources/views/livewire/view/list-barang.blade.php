@@ -1,5 +1,5 @@
 <div class="w-full h-auto flex justify-center items-center gap-[20px]">
-    @foreach ($data as $item)
+    @forelse ($data as $item)
     <div class="relative flex flex-col mt-6 text-gray-700 bg-white shadow-xl bg-clip-border rounded-xl w-96" data-aos='fade-right' data-aos-once="true">
         <div
             class="relative h-56 mx-4 -mt-6 overflow-hidden text-white shadow-lg bg-clip-border rounded-xl bg-blue-gray-500 shadow-blue-gray-500/40 object-cover">
@@ -42,5 +42,12 @@
             @endif
         </div>
     </div>
-    @endforeach
+    @empty
+    <div class="w-full h-auto flex justify-center items-center">
+        <div class="bg-sec p-4 rounded-[10px] flex gap-2 text-white">
+            <i class="ph ph-info text-2xl"></i>
+            <div class="">Tidak ada barang tersedia</div>
+        </div>
+    </div>
+    @endforelse
 </div>

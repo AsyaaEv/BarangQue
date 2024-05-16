@@ -29,7 +29,7 @@ class Barang extends Component
 
     public function testi()
     {
-        if ( empty($this->alasan)) {
+        if ( empty($this->rating) ||empty($this->alasan)) {
             $this->error = "Masukan rating dan alasan terlebih dahulu";
             return;
         }
@@ -40,6 +40,12 @@ class Barang extends Component
         $data->alasan = $this->alasan;
         $data->save();
         $this->toggleTesti = false;
+        session()->flash('success', "Anda berhasil memberikan ulasan");
+        return redirect('/profile/barang');
+    }
 
+    public function hide(){
+        $this->toggleTesti = false;
     }
 }
+
