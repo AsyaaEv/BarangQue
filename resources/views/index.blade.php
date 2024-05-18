@@ -20,6 +20,10 @@
         ::-webkit-scrollbar {
             display: none;
         }
+
+        *{
+            scroll-behavior: smooth;
+        }
     </style>
     @livewireStyles
 

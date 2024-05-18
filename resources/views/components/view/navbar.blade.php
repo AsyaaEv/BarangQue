@@ -2,19 +2,28 @@
     <a href="/">
         <img src="{{ Storage::url('public/src/assets/vLogo2.svg') }}" alt="" class="w-[8rem] h-[8rem]">
     </a>
-    <div class="w-auto h-full items-center flex gap-[15px]">
+    <div class="w-auto md:w-full h-full items-center flex gap-[15px] md:flex-row-reverse">
         <img src="@if (Auth::check()) {{ Storage::url('public/' . Auth::user()->foto) }} @endif"
             alt=""
             class="w-[2.5rem] h-[2.5rem] rounded-full hover:cursor-pointer object-cover {{ Auth::check() ? 'block' : 'hidden' }}"
             id="profile">
-        <div class="{{ Auth::check() ? 'hidden' : 'block' }}">
+        <div class="{{ Auth::check() ? 'hidden' : 'block' }} flex gap-2">
             <a href="/login" class="p-2 bg-primary rounded-[10px] text-white">
                 Masuk
             </a>
+            <a href="/register" class="p-2 bg-sec rounded-[10px] text-white">
+                Daftar
+            </a>
         </div>
-        <div class="w-auto h-auto hover:cursor-pointer" id="toggleNav">
+        <div class="w-auto h-auto hover:cursor-pointer md:hidden" id="toggleNav">
             <i class="ph ph-list text-3xl " id="navShow"></i>
             <i class="ph ph-x text-3xl hidden" id="navHide"></i>
+        </div>
+        <div class="hidden w-full h-full md:flex justify-center items-center gap-8">
+            <a href="/#landing" id="landingSec" class="hover:border-b-2 hover:border-sec text-primary text-lg ">Beranda</a>
+            <a href="/#about" id="aboutSec" class="hover:border-b-2 hover:border-sec text-primary text-lg ">Tentang</a>
+            <a href="/#barang" id="barangSec" class="hover:border-b-2 hover:border-sec text-primary text-lg">Barang</a>
+            <a href="/#testimoni" id="testiSec" class="hover:border-b-2 hover:border-sec text-primary text-lg">Testi</a>
         </div>
     </div>
 </div>
@@ -50,7 +59,7 @@
         @livewire('dashboard.navbar.logout')
     </ul>
 @endif
-<nav class="w-full h-full -translate-x-[50rem] transition-all duration-200 py-[2rem] bg-white  z-50 fixed mt-[3rem]"
+<nav class="w-full h-full -translate-x-[50rem] transition-all duration-200 py-[2rem] bg-white  z-50 fixed mt-[3rem] md:hidden"
     id="nav">
     <div class="w-full h-auto flex px-[1rem] gap-[10px] justify-center items-center">
         @if (Auth::check())
@@ -68,7 +77,7 @@
         <div class="w-full h-auto mt-[2rem] px-[2rem] ">
             <div class="text-gray-500">MAIN</div>
             <div class="w-full h-auto flex flex-col gap-[10px] mt-4 justify-center items-center">
-                <a href="{{url('/#' . 'landing')}}" onclick="navbarToggle()"
+                <a href="{{ url('/#' . 'landing') }}" onclick="navbarToggle()"
                     class="w-[90%] h-[3rem]   rounded-[10px]  flex justify-between items-center px-4 hover:bg-gray-200 transition-all">
                     <div class="w-auto h-auto flex gap-[10px] justify-center items-center">
                         <i
@@ -78,7 +87,7 @@
                     </div>
                     <i class="ph ph-caret-right "></i>
                 </a>
-                <a href="{{url('/#' . 'about')}}" onclick="navbarToggle()"
+                <a href="{{ url('/#' . 'about') }}" onclick="navbarToggle()"
                     class="w-[90%] h-[3rem]   rounded-[10px]  flex justify-between items-center px-4 hover:bg-gray-200 transition-all">
                     <div class="w-auto h-auto flex gap-[10px] justify-center items-center">
                         <i
@@ -88,7 +97,7 @@
                     </div>
                     <i class="ph ph-caret-right "></i>
                 </a>
-                <a href="{{url('/#' . 'barang')}}" onclick="navbarToggle()"
+                <a href="{{ url('/#' . 'barang') }}" onclick="navbarToggle()"
                     class="w-[90%] h-[3rem]   rounded-[10px]  flex justify-between items-center px-4 hover:bg-gray-200 transition-all">
                     <div class="w-auto h-auto flex gap-[10px] justify-center items-center">
                         <i
@@ -98,7 +107,7 @@
                     </div>
                     <i class="ph ph-caret-right "></i>
                 </a>
-                <a href="{{url('/#' . 'testimoni')}}" onclick="navbarToggle()"
+                <a href="{{ url('/#' . 'testimoni') }}" onclick="navbarToggle()"
                     class="w-[90%] h-[3rem]   rounded-[10px]  flex justify-between items-center px-4 hover:bg-gray-200 transition-all">
                     <div class="w-auto h-auto flex gap-[10px] justify-center items-center">
                         <i
@@ -163,4 +172,40 @@
         navHide.classList.add('hidden')
         nav = true
     }
+</script>
+
+<script>
+    const berandaLink = document.getElementById('landingSec');
+    const about = document.getElementById('aboutSec');
+    const barang = document.getElementById('barangSec');
+    const testi = document.getElementById('testiSec');
+
+    // Function to handle hash URL changes
+    function handleHashChange() {
+        let activeClass = 'border-b-2 border-sec';
+
+        // Check hash URL when the page loads
+        if (window.location.hash === '#landing') {
+            berandaLink.classList.add(...activeClass.split(' '));
+        } else {
+            berandaLink.classList.remove(...activeClass.split(' '));
+        }
+        if (window.location.hash === '#about') {
+            about.classList.add(...activeClass.split(' '));
+        } else {
+            about.classList.remove(...activeClass.split(' '));
+        }
+        if (window.location.hash === '#barang') {
+            barang.classList.add(...activeClass.split(' '));
+        } else {
+            barang.classList.remove(...activeClass.split(' '));
+        }
+        if (window.location.hash === '#testimoni') {
+            testi.classList.add(...activeClass.split(' '));
+        } else {
+            testi.classList.remove(...activeClass.split(' '));
+        }
+    }
+
+    window.addEventListener('hashchange', handleHashChange);
 </script>

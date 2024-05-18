@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\KembaliController;
 use App\Http\Controllers\PinjamController;
-use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Route;
 
 //user view

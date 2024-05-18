@@ -17,7 +17,7 @@ class Register extends Component
 
     public $toggle1 = false;
 
-    public $toggle2 = true;
+    public $toggle2 = false;
 
     public $toggle3 = false;
 
