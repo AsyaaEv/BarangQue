@@ -45,7 +45,7 @@
                 <div class="w-full h-auto border-2 rounded-[10px] p-2 shadow flex">
                     <div class="w-[10rem] h-full">
                         <img src="{{ Storage::url('public/' . $item->foto) }}"
-                            alt="" class="w-[7rem] h-[7rem] object-cover rounded-[10px]">
+                            alt="" class="w-[7rem] h-[7rem] object-cover rounded-[10px] pointer-events-none">
                     </div>
                     <div class="w-full h-auto flex justify-between ml-4">
                         <div class="w-auto h-full flex justify-center gap-4 items-center">
@@ -87,7 +87,7 @@
                     </div>
                 </div>
             @empty
-            <div class="w-full h-auto">
+            <div class="w-full h-auto ">
                 <div class="p-4 bg-gray-900 rounded-[10px] flex justify-center items-center">
                     <div class="text-white font-bold text-lg">Data tidak tersedia</div>
                 </div>
@@ -109,7 +109,7 @@
                 <div class="w-full h-auto border-2 rounded-[10px] p-2 shadow flex">
                     <div class="w-[10rem] h-full">
                         <img src="{{ Storage::url('public/' . $item->barang->foto) }}"
-                            alt="" class="w-[7rem] h-[7rem] object-cover rounded-[10px]">
+                            alt="" class="w-[7rem] h-[7rem] object-cover rounded-[10px] pointer-events-none">
                     </div>
                     <div class="w-full h-auto flex justify-between ml-4">
                         <div class="w-auto h-full flex justify-center gap-4 items-center">
@@ -131,8 +131,8 @@
                     </div>
                 </div>
             @empty
-            <div class="w-full h-auto">
-                <div class="p-4 bg-gray-900 rounded-[10px] flex justify-center items-center">
+            <div class="w-full h-auto ">
+                <div class="p-4 bg-gray-900 rounded-[10px] flex justify-center items-center md:absolute">
                     <div class="text-white font-bold text-lg">Data tidak tersedia</div>
                 </div>
             </div>

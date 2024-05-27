@@ -18,8 +18,7 @@ class UbahInfo extends Component
 
     public function render()
     {
-        $id = Auth::user()->id;
-        $this->data = User::find($id);
+        $this->data = User::find(Auth::user()->id);
         $this->nama = $this->data->name;
         $this->email = $this->data->email;
         $this->noWa = $this->data->no_wa;
@@ -31,15 +30,14 @@ class UbahInfo extends Component
     {
         $this->data->name = $this->nama;
         $this->data->email = $this->email;
-        $this->data->no_wa = $this->noWa;
-
+        
         try {
             $this->data->update();
-            session()->flash('msg', __('Informasi Pengguna Berhasil Diubah'));
-
+            session()->flash('msgInfo','Informasi Pengguna Berhasil Diubah');
+            
             return redirect('/profile');
         } catch (\Throwable $th) {
-
+            dd($th);
         }
 
     }

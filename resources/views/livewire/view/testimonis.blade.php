@@ -6,7 +6,7 @@
                     <a href="/#testimoni" class="">
                         <i class="ph ph-arrow-left p-2 bg-primary text-white rounded-full"></i>
                     </a>
-                    <div class="">Testimoni</div>
+                    <div class="">Ulasan</div>
                 </div>
                 <div class="w-full h-auto flex flex-col gap-2 ">
                     <div class="relative h-10 w-auto">
@@ -32,7 +32,7 @@
                 </div>
             </div>
         </div>
-        <div class="w-full h-auto flex justify-center items-center flex-col mt-8">
+        <div class="w-full h-auto flex justify-center items-center flex-col mt-8 md:grid md:grid-cols-3 md:place-items-center">
             @forelse ($data as $item)
                 <div
                     class="relative flex w-full max-w-[26rem] flex-col rounded-xl bg-primary bg-clip-border text-gray-700 shadow-none mt-4 px-3 shrink-0">
@@ -72,10 +72,10 @@
                     </div>
                 </div>
                 @empty
-                <div class="w-full h-auto flex justify-center items-center">
+                <div class="w-full h-auto flex justify-center items-center md:absolute md:top-1/2 md:left-1/2 md:transform md:-translate-x-1/2 md:-translate-y-1/2">
                     <div class="bg-sec p-4 rounded-[10px] flex gap-2 text-white">
                         <i class="ph ph-ghost text-2xl"></i>
-                        <div class="">Tidak ada testimoni</div>
+                        <div class="">Tidak ada ulasan</div>
                     </div>
                 </div>
             @endforelse

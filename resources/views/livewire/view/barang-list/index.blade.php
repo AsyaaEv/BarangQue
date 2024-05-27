@@ -14,7 +14,7 @@
                             class="peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 empty:!bg-gray-900 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50">
                             <option value="all" selected>All</option>
                             @foreach ($filter as $item)
-                            <option value="{{$item->jenis}}">{{$item->jenis}}</option>
+                                <option value="{{ $item->jenis }}">{{ $item->jenis }}</option>
                             @endforeach
                         </select>
                         <label
@@ -37,12 +37,13 @@
                 </div>
             </div>
         </div>
-        <div class="w-full h-[21dxrem] flex justify-center items-center flex-col mt-8 gap-[20px]">
-            @foreach ($data as $item)
-                <div class="relative flex flex-col mt-6 text-gray-700 bg-white shadow-xl bg-clip-border rounded-xl w-96"
-                    >
+        <div
+            class="w-full h-auto flex justify-center items-center flex-col mt-8 gap-[20px] md:grid md:grid-cols-3 md:place-items-center">
+            @forelse ($data as $item)
+                <div
+                    class="relative flex flex-col mt-6 text-gray-700 bg-white shadow-xl bg-clip-border rounded-xl w-96">
                     <div
-                        class="relative h-56 mx-4 -mt-6 overflow-hidden text-white shadow-lg bg-clip-border rounded-xl bg-blue-gray-500 shadow-blue-gray-500/40 object-cover">
+                        class="relative h-56 mx-4 -mt-6 overflow-hidden text-white  bg-clip-border rounded-xl bg-blue-gray-500 shadow-blue-gray-500/40 object-cover">
                         <img
                             src="{{ Storage::url('public/' . $item->foto) }}"
                             alt="card-image" class="object-cover w-full h-full" />
@@ -67,14 +68,14 @@
                     </div>
                     <div class="p-6 pt-0">
                         @if ($item->status == 0)
-                            <a href="{{url('/barang/pinjam/' .$item->id)}}"
+                            <a href="{{ url('/barang/pinjam/' . $item->id) }}"
                                 class="flex justify-center items-center align-middle group select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-primary text-sec shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
                                 type="button">
                                 Pinjam <i class="ph ph-upload-simple ml-2 text-xl"></i>
                             </a>
                         @endif
                         @if ($item->status == 1)
-                            <a href="{{url('/barang/info/' .$item->no)}}"
+                            <a href="{{ url('/barang/info/' . $item->no) }}"
                                 class="flex justify-center items-center align-middle group select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-primary text-sec shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
                                 type="button">
                                 Info <i class="ph ph-info ml-2 text-xl"></i>
@@ -82,9 +83,16 @@
                         @endif
                     </div>
                 </div>
-            @endforeach
+                @empty
+                <div class="w-full h-auto flex justify-center items-center md:absolute md:mt-8">
+                    <div class="bg-sec p-4 rounded-[10px] flex gap-2 text-white">
+                        <i class="ph ph-info text-2xl"></i>
+                        <div class="">Tidak ada barang tersedia</div>
+                    </div>
+                </div>
+            @endforelse
         </div>
-    
+
     </section>
-    
+
 </div>

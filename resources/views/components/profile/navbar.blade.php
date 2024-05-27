@@ -2,12 +2,19 @@
     <a href="/">
         <img src="{{ Storage::url('public/src/assets/vLogo2.svg') }}" alt="" class="w-[8rem] h-[8rem]">
     </a>
-    <div class="w-auto h-full items-center flex gap-[15px]">
+    <div class="w-auto h-full items-center flex gap-[15px] md:flex-row-reverse md:mx-8 md:justify-center md:w-full">
+        
         <img src="{{ Storage::url('public/' . Auth::user()->foto) }}"
             alt="" class="w-[2.5rem] h-[2.5rem] rounded-full hover:cursor-pointer object-cover" id="profile">
-        <div class="w-auto h-auto hover:cursor-pointer" id="toggleNav">
+        <div class="w-auto h-auto hover:cursor-pointer md:hidden" id="toggleNav">
             <i class="ph ph-list text-3xl " id="navShow"></i>
             <i class="ph ph-x text-3xl hidden" id="navHide"></i>
+        </div>
+        <div class="hidden w-full h-full md:flex justify-center items-center gap-8">
+            <a href="/#landing" id="landingSec" class="hover:border-b-2 hover:border-sec text-primary text-lg ">Beranda</a>
+            <a href="/#about" id="aboutSec" class="hover:border-b-2 hover:border-sec text-primary text-lg ">Tentang</a>
+            <a href="/#barang" id="barangSec" class="hover:border-b-2 hover:border-sec text-primary text-lg">Barang</a>
+            <a href="/#testimoni" id="testiSec" class="hover:border-b-2 hover:border-sec text-primary text-lg">Ulasan</a>
         </div>
     </div>
 </div>
@@ -41,7 +48,7 @@
     </a>
     @livewire('dashboard.navbar.logout')
 </ul>
-<nav class="w-full h-full -translate-x-[50rem] transition-all duration-200 py-[2rem] bg-white  z-50 fixed mt-[3rem]"
+<nav class="w-full h-full -translate-x-[50rem] transition-all duration-200 py-[2rem] bg-white  z-50 fixed mt-[3rem] md:hidden"
     id="nav">
     <div class="w-full h-auto flex px-[1rem] gap-[10px] justify-center items-center">
         <img src="{{ Storage::url('public/' . Auth::user()->foto) }}"
@@ -53,7 +60,35 @@
             <div class="">Selamat datang di profile user👋</div>
         </div>
     </div>
-    <div class="w-full h-full flex  flex-col gap-3">
+    <div class="w-full h-full flex  flex-col gap-3 ">
+        @if (Auth::check())
+            <div class="w-full h-auto mt-[2rem] px-[2rem] ">
+                <div class="text-gray-500">PROFILE</div>
+                <div class="w-full h-auto flex flex-col gap-[10px] mt-4 justify-center items-center">
+                    <a href="{{ url('/profile') }}" onclick="navbarToggle()"
+                        class="w-[90%] h-[3rem]   rounded-[10px]  flex justify-between items-center px-4 hover:bg-gray-200 transition-all">
+                        <div class="w-auto h-auto flex gap-[10px] justify-center items-center">
+                            <i
+                                class="ph ph-user text-2xl "></i>
+                            <div class="">
+                                Profile Saya</div>
+                        </div>
+                        <i class="ph ph-caret-right "></i>
+                    </a>
+                    <a href="{{ url('/profile/barang') }}" onclick="navbarToggle()"
+                        class="w-[90%] h-[3rem]   rounded-[10px]  flex justify-between items-center px-4 hover:bg-gray-200 transition-all">
+                        <div class="w-auto h-auto flex gap-[10px] justify-center items-center">
+                            <i
+                                class="ph ph-stack text-2xl "></i>
+                            <div class="">
+                                Barang Pinjaman Saya</div>
+                        </div>
+                        <i class="ph ph-caret-right "></i>
+                    </a>
+
+                </div>
+            </div>
+        @endif
         <div class="w-full h-auto mt-[2rem] px-[2rem] ">
             <div class="text-gray-500">MAIN</div>
             <div class="w-full h-auto flex flex-col gap-[10px] mt-4 justify-center items-center">
@@ -63,7 +98,7 @@
                         <i
                             class="ph ph-house text-2xl "></i>
                         <div class="">
-                            Home</div>
+                            Beranda</div>
                     </div>
                     <i class="ph ph-caret-right "></i>
                 </a>
@@ -73,7 +108,7 @@
                         <i
                             class="ph ph-info text-2xl "></i>
                         <div class="">
-                            About</div>
+                            Tentang Kami</div>
                     </div>
                     <i class="ph ph-caret-right "></i>
                 </a>
@@ -93,10 +128,13 @@
                         <i
                             class="ph ph-crown text-2xl  "></i>
                         <div class="">
-                            Testimoni</div>
+                            Ulasan</div>
                     </div>
                     <i class="ph ph-caret-right "></i>
                 </a>
+                @if (Auth::check())
+                    @livewire('dashboard.navbar.logout')
+                @endif
             </div>
         </div>
         <div class="w-auto h-auto text-center flex justify-center items-center">

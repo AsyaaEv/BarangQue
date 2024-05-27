@@ -19,8 +19,7 @@ class Index extends Component
             $query->where('jenis', $this->jenis);
         }
         $data = $query->get();
-        $filter = Barang::all();
-
+        $filter = Barang::all()->unique('jenis');
         return view('livewire.view.barang-list.index', compact('data', 'filter'));
     }
 }

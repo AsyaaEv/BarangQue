@@ -1,1 +1,1 @@
-{{-- <div class="w-full h-screen bg-indigo-300 hidden"></div> --}}
+<div class="w-[15rem] h-screen bg-black fixed"></div>

@@ -2,7 +2,7 @@
 <div class="w-full h-auto px-4 mt-[4rem] flex flex-col gap-[20px] ">
     <div class="w-auto md:h-auto">
         <ul class="flex flex-col w-full  md:flex-row md:gap-8 md:justify-center">
-            <li class="relative flex flex-col gap-2 md:bg-primary md:h-auto md:py-4 md:w-full md:p-4 md:rounded-[10px] md:shadow-md md:justify-center" data-aos='fade-up' data-aos-once="true">
+            <li class="relative flex flex-col gap-2 md:bg-primary md:h-auto md:py-4 md:w-full md:p-4 md:rounded-[10px] md:shadow-md md:justify-center animate__animated animate__fadeInUp" data-aos='fade-up' data-aos-once="true" >
                 <span class="absolute left-0 grid justify-center transition-opacity duration-200 bg-transparent">
                     <span class="h-full w-0.5 bg-blue-gray-100"></span>
                 </span>
@@ -23,7 +23,7 @@
                     </div>
                 </div>
             </li>
-            <li class="relative flex flex-col gap-2 md:bg-primary md:h-auto md:py-4 md:w-full md:p-4 md:rounded-[10px] md:shadow-md  md:items-center " data-aos='fade-up' data-aos-once="true">
+            <li class="relative flex flex-col gap-2 md:bg-primary md:h-auto md:py-4 md:w-full md:p-4 md:rounded-[10px] md:shadow-md  md:items-center animate__animated animate__fadeInUp" data-aos='fade-up' data-aos-once="true">
                 <span class="absolute left-0 grid justify-center transition-opacity duration-200 bg-transparent">
                     <span class="h-full w-0.5 bg-blue-gray-100"></span>
                 </span>
@@ -44,7 +44,7 @@
                     </div>
                 </div>
             </li>
-            <li class=" relative flex flex-col gap-2 md:bg-primary md:h-auto md:py-4 md:w-full md:p-4 md:rounded-[10px] md:shadow-md  md:items-center" data-aos='fade-up' data-aos-once="true">
+            <li class=" relative flex flex-col gap-2 md:bg-primary md:h-auto md:py-4 md:w-full md:p-4 md:rounded-[10px] md:shadow-md  md:items-center animate__animated animate__fadeInUp" data-aos='fade-up' data-aos-once="true">
                 <span class="absolute left-0 grid justify-center transition-opacity duration-200 bg-transparent">
                     <span class="h-full w-0.5 bg-blue-gray-100"></span>
                 </span>

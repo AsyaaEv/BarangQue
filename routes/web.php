@@ -2,11 +2,15 @@
 
 use App\Http\Controllers\KembaliController;
 use App\Http\Controllers\PinjamController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 //user view
 Route::get('/', function () {
     return view('view.index');
+});
+Route::get('/tos', function () {
+    return view('view.tos');
 });
 Route::get('/list-barang', function () {
     return view('view.list-barang');
@@ -18,9 +22,6 @@ Route::get('/testimonis', function () {
 Route::get('/barang/info/{id}', function ($id) {
     return view('view.barang.info', ['id' => $id]);
 });
-
-
-
 
 
 
@@ -64,7 +65,10 @@ Route::get('/register', function () {
     return view('dashboard.register.register');
 });
 
-
+Route::post('/logout', function () {
+     Auth::logout();
+     return redirect()->back();
+});
 
 
 

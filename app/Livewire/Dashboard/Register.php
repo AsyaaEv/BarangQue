@@ -14,6 +14,7 @@ class Register extends Component
     use WithFileUploads;
 
     public $nama;
+    public $tos;
 
     public $toggle1 = false;
 
@@ -154,6 +155,10 @@ class Register extends Component
         if ($this->cPassword != $this->password) {
             $this->errorM = 'konfirmasi password tidak sama dengan password';
 
+            return;
+        }
+        if(!$this->tos){
+            $this->errorM = 'anda harus menyetujui syarat dan ketentuan';
             return;
         }
 

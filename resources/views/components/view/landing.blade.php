@@ -1,6 +1,6 @@
 <div id="landing" class="absolute"></div>
-<section class="w-full h-auto px-4 mt-[7rem] flex flex-col gap-[20px] -z-50 md:flex-row">
-    <div class="md:flex justify-center items-center flex-col">
+<section class="w-full h-auto px-4 mt-[7rem] flex flex-col gap-[20px] -z-50 md:justify-between md:flex-row">
+    <div class="md:flex justify-center items-center flex-col md:ml-[5rem]">
         <div class="w-full h-auto flex flex-col gap-2 justify-center animate__animated animate__fadeInDown">
             <div class="font-bold text-6xl text-primary">Barang<span class="text-sec">Que</span></div>
             <div class="text-primary">BarangQue adalah platform peminjaman barang di SMK Negeri 1 Bangsri. Temukan berbagai
@@ -18,7 +18,7 @@
         </div>
     </div>
     <div class="w-full h-auto flex justify-center items-center animate__animated animate__fadeInLeft">
-        <img src="{{ Storage::url('public/src/assets/vLanding.svg') }}" alt="" class="w-[20rem] h-[20rem] md:w-[25rem] md:h-[25rem]">
+        <img src="{{ Storage::url('public/src/assets/vLanding.svg') }}" alt="" class="w-[20rem] h-[20rem] md:w-[25rem] md:h-[25rem] pointer-events-none">
     </div>
     <div class="w-full h-auto flex justify-center items-center animate__animated animate__fadeInDown md:hidden">
         <a

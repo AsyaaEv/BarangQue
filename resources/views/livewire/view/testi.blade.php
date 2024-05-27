@@ -3,7 +3,7 @@
         <div class="w-auto h-auto flex gap-2 items-center">
             <i class="w-auto h-auto ph ph-crown p-2 text-white bg-primary rounded-full text-2xl"></i>
             <div class="flex flex-col">
-                <div class="text-primary text-2xl font-bold">Testimoni Barang<span class="text-sec">Que</span></div>
+                <div class="text-primary text-2xl font-bold">Ulasan Barang<span class="text-sec">Que</span></div>
                 <div class="flex text-sm">
                     @php
                         $star = floor($averageRating);
@@ -23,7 +23,7 @@
         <a href="/testimonis" class="underline text-sec">Lebih banyak..</a>
     </div>
     <div class="w-full h-auto flex overflow-auto gap-[10px]">
-        <div class="w-full flex gap-4">
+        <div class="w-full flex gap-4 md:justify-center">
             @forelse ($data as $item)
                 <div
                     class="relative flex w-full max-w-[26rem] flex-col rounded-xl bg-primary bg-clip-border text-gray-700 shadow-none mt-4 px-3 shrink-0">
@@ -32,7 +32,7 @@
                         <img
                             src="{{ Storage::url('public/' . $item->user->foto) }}"
                             alt="Tania Andrew"
-                            class="relative inline-block h-[58px] w-[58px] !rounded-full  object-cover object-center" />
+                            class="relative inline-block h-[58px] w-[58px] !rounded-full  object-cover object-center pointer-events-none" />
                         <div class="flex w-full flex-col gap-0.5">
                             <div class="flex items-center justify-between gap-4">
                                 <h5
@@ -66,7 +66,7 @@
             <div class="w-full h-auto flex justify-center items-center">
                 <div class="bg-sec p-4 rounded-[10px] flex gap-2 text-white">
                     <i class="ph ph-ghost text-2xl"></i>
-                    <div class="">Tidak ada testimoni</div>
+                    <div class="">Tidak ada ulasan</div>
                 </div>
             </div>
             @endforelse

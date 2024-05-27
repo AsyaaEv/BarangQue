@@ -63,6 +63,32 @@
     </div>
     <div class="{{ $this->togglePassword ? 'block' : 'hidden' }}">
         <div class="w-72 mt-4 flex flex-col gap-[10px]">
+            @error('password')
+            <div role="alert" class="relative flex w-full px-4 py-4 text-base text-white bg-red-500 rounded-lg font-regular gap-2 items-center">
+                <div class="shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                    stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z">
+                    </path>
+                  </svg>
+                </div>
+                <div class="text-sm">{{ $message}}</div>
+              </div>
+            @enderror
+            @error('password_confirmation')
+            <div role="alert" class="relative flex w-full px-4 py-4 text-base text-white bg-red-500 rounded-lg font-regular gap-2 items-center">
+                <div class="shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                    stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z">
+                    </path>
+                  </svg>
+                </div>
+                <div class="text-sm">{{ $message}}</div>
+              </div>
+            @enderror
             <div class="relative w-full min-w-[200px] h-10 flex flex-col gap-[10px]">
                 <input wire:model='password' required type="password"
                     class="peer w-full h-full bg-transparent text-blue-gray-700 font-sans font-normal outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 border focus:border-2 border-t-transparent focus:border-t-transparent text-sm px-3 py-2.5 rounded-[7px] border-blue-gray-200 focus:border-gray-900"

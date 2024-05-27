@@ -2,12 +2,18 @@
     <a href="/">
         <img src="{{ Storage::url('public/src/assets/vLogo2.svg') }}" alt="" class="w-[8rem] h-[8rem]">
     </a>
-    <div class="w-auto h-full items-center flex gap-[15px]">
+    <div class="w-auto h-full items-center flex gap-[15px] md:mx-8 md:flex-row-reverse md:w-full">
         <img src="{{ Storage::url('public/' . Auth::user()->foto) }}"
             alt="" class="w-[2.5rem] h-[2.5rem] rounded-full hover:cursor-pointer object-cover" id="profile">
-        <div class="w-auto h-auto hover:cursor-pointer" id="toggleNav">
+        <div class="w-auto h-auto hover:cursor-pointer md:hidden" id="toggleNav">
             <i class="ph ph-list text-3xl " id="navShow"></i>
             <i class="ph ph-x text-3xl hidden" id="navHide"></i>
+        </div>
+        <div class="hidden w-full h-full md:flex justify-center items-center gap-8">
+            <a href="/dashboard" id="landingSec" class="hover:border-b-2 hover:border-sec text-primary text-lg @if (request()->is('dashboard')) border-b-2 border-sec @endif">Dashboard</a>
+            <a href="/dashboard/master" id="aboutSec" class="hover:border-b-2 hover:border-sec text-primary text-lg @if (request()->is('dashboard/master')) border-b-2 border-sec @endif">Data Master</a>
+            <a href="/dashboard/barang" id="barangSec" class="hover:border-b-2 hover:border-sec text-primary text-lg @if (request()->is('dashboard/barang')) border-b-2 border-sec @endif">Data Barang</a>
+            <a href="/#landing" id="testiSec" class="text-lg text-white bg-primary p-2 rounded-[10px] flex gap-2 items-center"><i class="ph ph-house"></i>Home</a>
         </div>
     </div>
 </div>
@@ -34,7 +40,7 @@
     <hr class="my-2 border-blue-gray-50" role="menuitem" />
     @livewire('dashboard.navbar.logout')
 </ul>
-<div class="w-full h-screen -translate-x-[50rem] transition-all duration-200 py-[2rem] bg-white absolute z-50"
+<div class="w-full h-screen -translate-x-[50rem] transition-all duration-200 py-[2rem] bg-white absolute z-50 md:hidden"
     id="nav">
     <div class="w-full h-auto flex px-[1rem] gap-[10px] justify-center items-center">
         <img src="{{ Storage::url('public/' . Auth::user()->foto) }}"

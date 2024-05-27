@@ -65,7 +65,7 @@ class UbahBio extends Component
 
         try {
             $this->data->typeuser->update();
-            session()->flash('msgBio', __('Biodata Pengguna Berhasil Diubah'));
+            session()->flash('msgBio','Biodata Pengguna Berhasil Diubah');
 
             return redirect('/profile');
         } catch (\Throwable $th) {

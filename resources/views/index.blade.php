@@ -15,15 +15,13 @@
 
         * {
             font-family: 'Roboto', sans-serif;
+            scroll-behavior: smooth;
         }
 
         ::-webkit-scrollbar {
             display: none;
         }
 
-        *{
-            scroll-behavior: smooth;
-        }
     </style>
     @livewireStyles
 

@@ -25,36 +25,18 @@
     <div class="w-full h-auto mt-4">
         <div class="w-full h-auto border-2 rounded-[10px] p-2">
             <div class="w-full h-auto flex gap-2 items-center">
-                <i class="ph ph-user p-2 bg-primary rounded-full text-white"></i>
-                <div class="font-semibold text-primary text-xl">Informasi Pengguna</div>
+                <div class="w-full flex items-center gap-2">
+                    <i class="ph ph-user p-2 bg-primary rounded-full text-white"></i>
+                    <div class="font-semibold text-primary text-xl">Informasi Pengguna</div>
+                </div>
                 <div
-                    role="alert"
-                    class="relative flex w-full p-2 text-base text-white bg-primary rounded-lg font-regular {{ session('msg') ? 'block' : 'hidden' }}"
-                    data-dismissible="alert">
-                    <div class="mr-12 ">
-                        @if (session('msg'))
-                            {{ session('msg') }}
+                    class="relative flex w-full p-2 text-base text-white bg-green-500 rounded-lg font-regular {{ session('msgInfo') ? 'block' : 'hidden' }}">
+                    <div class="mr-12 flex items-center gap-2">
+                        @if (session('msgInfo'))
+                        <i class="ph ph-check-circle text-white"></i>
+                            {{ session('msgInfo') }}
                         @endif
                     </div>
-                    <button
-                        data-dismissible-target="alert"
-                        class="!absolute  top-3 right-3 h-8 max-h-[32px] w-8 max-w-[32px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-white transition-all hover:bg-white/10 active:bg-white/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                        type="button">
-                        <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                                class="w-6 h-6"
-                                stroke-width="2">
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M6 18L18 6M6 6l12 12"></path>
-                            </svg>
-                        </span>
-                    </button>
                 </div>
             </div>
             <div class="w-full h-auto mt-2">
@@ -74,36 +56,19 @@
     <div class="w-full h-auto mt-4">
         <div class="w-full h-auto border-2 rounded-[10px] p-2">
             <div class="w-full h-auto flex gap-2 items-center">
-                <i class="ph ph-identification-badge p-2 bg-primary rounded-full text-white"></i>
-                <div class="font-semibold text-primary text-xl">Biodata Pengguna</div>
+                <div class="w-full flex items-center gap-2">
+                    <i class="ph ph-identification-badge p-2 bg-primary rounded-full text-white"></i>
+                    <div class="font-semibold text-primary text-xl">Biodata Pengguna</div>
+                </div>
                 <div
                     role="alert"
-                    class="relative flex w-full p-2 text-base text-white bg-primary rounded-lg font-regular {{ session('msgBio') ? 'block' : 'hidden' }}"
-                    data-dismissible="alertbio">
-                    <div class="mr-12 ">
+                    class="relative flex w-full p-2 text-base text-white bg-green-500 rounded-lg font-regular {{ session('msgBio') ? 'block' : 'hidden' }}">
+                    <div class="mr-12 flex items-center gap-2">
                         @if (session('msgBio'))
+                            <i class="ph ph-check-circle text-white"></i>
                             {{ session('msgBio') }}
                         @endif
                     </div>
-                    <button
-                        data-dismissible-target="alertbio"
-                        class="!absolute  top-3 right-3 h-8 max-h-[32px] w-8 max-w-[32px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-white transition-all hover:bg-white/10 active:bg-white/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                        type="button">
-                        <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                                class="w-6 h-6"
-                                stroke-width="2">
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M6 18L18 6M6 6l12 12"></path>
-                            </svg>
-                        </span>
-                    </button>
                 </div>
             </div>
             <div class="w-full h-auto mt-2">
@@ -136,9 +101,10 @@
     <div class="w-full h-auto mt-4 text-white flex gap-2">
         <button class="p-2 bg-primary rounded-[10px]" data-ripple-light="true"
             data-dialog-target="dialogEditPassword"><i class="ph ph-lock mr-2"></i>Ubah Password</button>
-        <div class="w-auto h-auto flex gap-2 p-2 bg-primary rounded-[10px] justify-center items-center {{session('alert') ? 'block' : 'hidden'}}">
-            <i class="ph ph-info text-white"></i>
-            <div class="">{{session('alert')}}</div>
+        <div
+            class="w-auto h-auto flex gap-2 p-2 bg-green-500 rounded-[10px] justify-center items-center {{ session('alert') ? 'block' : 'hidden' }}">
+            <i class="ph ph-check-circle text-white"></i>
+            <div class="">{{ session('alert') }}</div>
         </div>
     </div>
 </div>

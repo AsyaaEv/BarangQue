@@ -30,7 +30,7 @@
             </div>
             <div class="">
                 <div class="relative h-10 w-full min-w-[200px]">
-                    <input type="text" wire:model='noWa'
+                    <input type="text" wire:model='noWa' disabled
                         class="peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
                         placeholder=" " />
                     <label
@@ -44,11 +44,11 @@
         <div class="flex flex-wrap items-center justify-end p-4 shrink-0 text-blue-gray-500">
             <button data-ripple-dark="true" data-dialog-close="true" type="button"
                 class="px-6 py-3 mr-1 font-sans text-xs font-bold text-red-500 uppercase transition-all rounded-lg middle none center hover:bg-red-500/10 active:bg-red-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
-                Cancel
+                Batal
             </button>
             <button data-ripple-light="true" data-dialog-close="true" type="submit"
                 class="middle none center rounded-lg bg-primary py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-green-500/20 transition-all hover:shadow-lg hover:shadow-green-500/40 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
-                Confirm
+                Submit
             </button>
         </div>
     </form>

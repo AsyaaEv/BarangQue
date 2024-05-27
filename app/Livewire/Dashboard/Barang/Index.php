@@ -24,7 +24,7 @@ class Index extends Component
     public function render()
     {
         $data = Barang::where('no', 'like', '%'.$this->keyword.'%')->orderBy('no')->get();
-        $pengembalian = Pengembalian::all();
+        $pengembalian = Pengembalian::orderBy('id', 'desc')->get();
 
         return view('livewire.dashboard.barang.index', compact('data', 'pengembalian'));
     }

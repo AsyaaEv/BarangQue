@@ -19,7 +19,13 @@
                 <div class="text-sm">{{ $data->barang->pemilik}}</div>
             </div>
         </div>
+        
     </main>
+    <div class="w-full h-auto mt-4">
+        <div class="w-full h-auto border-2 rounded-[10px] p-2">
+            <div class="">Peminjam telah mengembalikan barang yang ia pinjam pada <span>{{$data->created_at->locale('id')->isoFormat('dddd, D MMMM Y HH:mm')}}</span></div>
+        </div>
+    </div>
     <div class="w-full h-auto mt-4">
         <div class="w-full h-auto border-2 rounded-[10px] p-2">
             <div class="w-full h-auto flex gap-2 items-center">
@@ -57,9 +63,5 @@
             </div>
         </div>
     </div>
-    <div class="w-full h-auto mt-4">
-        <div class="w-full h-auto border-2 rounded-[10px] p-2">
-            <div class="">Peminjam telah mengembalikan barang yang ia pinjam pada <span>{{$data->created_at->locale('id')->isoFormat('dddd, D MMMM Y HH:mm')}}</span></div>
-        </div>
-    </div>
+    
 </section>

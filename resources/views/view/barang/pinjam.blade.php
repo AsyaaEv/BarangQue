@@ -8,7 +8,10 @@
                     <div class="">Peminjaman Barang</div>
                 </a>
             </nav>
-            <main class="w-full h-auto">
+            <main class="w-full h-auto md:flex md:justify-between md:gap-4">
+                <div class="hidden md:block w-full h-full mt-4">
+                    <img src="{{Storage::url('public/src/assets/vSelfie.svg')}}" alt="" class="w-full h-full">
+                </div>
                 <form action="/barang/pinjam/proses" method="POST" class="w-full h-auto  mt-4" id="formPinjam"
                     enctype="multipart/form-data">
                     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -67,7 +70,7 @@
                         @endif
                         <canvas id="canvas" class="hidden mt-4"></canvas>
                     </div>
-                    <div class="w-full h-auto  flex justify-end mt-4 invisible" id="submitButton">
+                    <div class="w-full h-auto  flex justify-end my-4 invisible" id="submitButton">
                         <div class="w-auto flex items-center gap-2 text-white p-2 bg-primary rounded-[10px]" id="submit">
                             <i class="ph ph-upload-simple"></i>
                             <button type="submit" id="buttonPinjam">Submit</button>

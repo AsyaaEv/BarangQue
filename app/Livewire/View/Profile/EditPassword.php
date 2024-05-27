@@ -4,6 +4,7 @@ namespace App\Livewire\View\Profile;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 
 class EditPassword extends Component
@@ -13,16 +14,24 @@ class EditPassword extends Component
         return view('livewire.view.profile.edit-password');
     }
 
+    public $passwordOld;
+
     public $passwordNew;
 
     public $cPasswordNew;
 
+    public $errorM0;
     public $errorM1;
 
     public $errorM2;
 
     public function updatePasswordValidation()
     {
+        $dataUser = User::find(Auth::id());
+
+        if (!Hash::check($this->passwordOld, $dataUser->password)) {
+            $this->errorM0 = "Password lama salah";
+        }
         if (strlen($this->passwordNew) <= 8) {
             $this->errorM1 = 'Password harus lebih dari 8 karakter';
         } else {
@@ -38,7 +47,7 @@ class EditPassword extends Component
 
     public function editPassword()
     {
-        if ($this->errorM1 || $this->errorM2) {
+        if ($this->errorM0 ||$this->errorM1 || $this->errorM2) {
             return;
         }
 

@@ -3,7 +3,7 @@
         class="pointer-events-none fixed inset-0 z-[999] grid h-screen w-screen bg-black bg-opacity-60 opacity-0 backdrop-blur-sm transition-opacity duration-300">
         <div data-dialog="dialogKamera"
             class="relative rounded-lg font-sans text-base font-light leading-relaxed text-blue-gray-500 antialiased shadow-2xl">
-            <div class="w-full h-[85%]">
+            <div class="w-full h-[60%] md:h-[50%]">
                 <video src="" class="w-full h-full border-2" id="kamera" autoplay></video>
             </div>
             <div class="w-full h-full ">

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('barangs', function (Blueprint $table) {
             $table->id();
             $table->string('pemilik');
-            $table->foreign('pemilik')->references('name')->on('users')->onDelete('cascade');
+            $table->foreign('pemilik')->references('name')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->string('jenis');
             $table->string('no')->unique();
             $table->string('nama');
