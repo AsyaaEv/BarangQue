@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('nama');
             $table->string('status');
             $table->string('foto');
+            $table->string('peminjam')->nullable();
+            $table->foreign('peminjam')->references('name')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

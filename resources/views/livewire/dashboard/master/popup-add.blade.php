@@ -5,9 +5,6 @@
                 <i class="ph ph-users text-2xl"></i>
                 <div class="">List User</div>
             </div>
-            {{-- <button class="w-auto h-auto p-2 bg-gray-900 rounded-[10px]" data-dialog-target="dialogAdd">
-                <i class="ph ph-plus text-white"></i>
-            </button> --}}
         </div>
         <div class="w-full max-h-[20rem] flex flex-col gap-[10px] justify-center items-center overflow-auto">
             @forelse ($data as $item)
@@ -21,7 +18,7 @@
                         <div class="">{{$item->email}}</div>
                     </div>
                     <div class="w-auto h-auto">
-                        <button class=" bg-gray-900 rounded-[10px]" data-ripple-light="true" data-dialog-close="true" wire:click='add({{$item->id}})'>
+                        <button class=" bg-primary rounded-[10px]" data-ripple-light="true" data-dialog-close="true" wire:click='add({{$item->id}})'>
                             <i class="ph ph-plus text-white p-4 "></i>
                         </button>
                     </div>
@@ -32,7 +29,7 @@
             @endforelse
         </div>
         <div class="w-full h-auto flex justify-end items-center">
-            <button class="p-2 rounded-[10px] bg-gray-900 text-white" data-dialog-close="true" >Close</button>
+            <button class="p-2 rounded-[10px] bg-primary text-white" data-dialog-close="true" >Close</button>
         </div>
     </div>
 </div>

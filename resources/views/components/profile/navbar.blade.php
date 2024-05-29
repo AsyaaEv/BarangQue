@@ -3,18 +3,23 @@
         <img src="{{ Storage::url('public/src/assets/vLogo2.svg') }}" alt="" class="w-[8rem] h-[8rem]">
     </a>
     <div class="w-auto h-full items-center flex gap-[15px] md:flex-row-reverse md:mx-8 md:justify-center md:w-full">
-        
+
         <img src="{{ Storage::url('public/' . Auth::user()->foto) }}"
             alt="" class="w-[2.5rem] h-[2.5rem] rounded-full hover:cursor-pointer object-cover" id="profile">
+        @if (Auth::check())
+            @livewire('view.card')
+        @endif
         <div class="w-auto h-auto hover:cursor-pointer md:hidden" id="toggleNav">
             <i class="ph ph-list text-3xl " id="navShow"></i>
             <i class="ph ph-x text-3xl hidden" id="navHide"></i>
         </div>
         <div class="hidden w-full h-full md:flex justify-center items-center gap-8">
-            <a href="/#landing" id="landingSec" class="hover:border-b-2 hover:border-sec text-primary text-lg ">Beranda</a>
+            <a href="/#landing" id="landingSec"
+                class="hover:border-b-2 hover:border-sec text-primary text-lg ">Beranda</a>
             <a href="/#about" id="aboutSec" class="hover:border-b-2 hover:border-sec text-primary text-lg ">Tentang</a>
             <a href="/#barang" id="barangSec" class="hover:border-b-2 hover:border-sec text-primary text-lg">Barang</a>
-            <a href="/#testimoni" id="testiSec" class="hover:border-b-2 hover:border-sec text-primary text-lg">Ulasan</a>
+            <a href="/#testimoni" id="testiSec"
+                class="hover:border-b-2 hover:border-sec text-primary text-lg">Ulasan</a>
         </div>
     </div>
 </div>
@@ -33,7 +38,7 @@
     </a>
     <a role="menuitem" href="/profile/barang"
         class="flex w-full cursor-pointer select-none items-center gap-2 rounded-md px-3 pt-[9px] pb-2 text-start leading-tight outline-none transition-all hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
-        <i class="ph ph-stack"></i>
+        <i class="ph ph-basket"></i>
         <p class="block font-sans text-sm antialiased font-medium leading-normal text-inherit">
             Barang Pinjaman
         </p>
@@ -79,7 +84,7 @@
                         class="w-[90%] h-[3rem]   rounded-[10px]  flex justify-between items-center px-4 hover:bg-gray-200 transition-all">
                         <div class="w-auto h-auto flex gap-[10px] justify-center items-center">
                             <i
-                                class="ph ph-stack text-2xl "></i>
+                                class="ph ph-basket text-2xl "></i>
                             <div class="">
                                 Barang Pinjaman Saya</div>
                         </div>
@@ -92,7 +97,7 @@
         <div class="w-full h-auto mt-[2rem] px-[2rem] ">
             <div class="text-gray-500">MAIN</div>
             <div class="w-full h-auto flex flex-col gap-[10px] mt-4 justify-center items-center">
-                <a href="{{url('/#' . 'landing')}}" onclick="navbarToggle()"
+                <a href="{{ url('/#' . 'landing') }}" onclick="navbarToggle()"
                     class="w-[90%] h-[3rem]   rounded-[10px]  flex justify-between items-center px-4 hover:bg-gray-200 transition-all">
                     <div class="w-auto h-auto flex gap-[10px] justify-center items-center">
                         <i
@@ -102,7 +107,7 @@
                     </div>
                     <i class="ph ph-caret-right "></i>
                 </a>
-                <a href="{{url('/#' . 'about')}}" onclick="navbarToggle()"
+                <a href="{{ url('/#' . 'about') }}" onclick="navbarToggle()"
                     class="w-[90%] h-[3rem]   rounded-[10px]  flex justify-between items-center px-4 hover:bg-gray-200 transition-all">
                     <div class="w-auto h-auto flex gap-[10px] justify-center items-center">
                         <i
@@ -112,7 +117,7 @@
                     </div>
                     <i class="ph ph-caret-right "></i>
                 </a>
-                <a href="{{url('/#' . 'barang')}}" onclick="navbarToggle()"
+                <a href="{{ url('/#' . 'barang') }}" onclick="navbarToggle()"
                     class="w-[90%] h-[3rem]   rounded-[10px]  flex justify-between items-center px-4 hover:bg-gray-200 transition-all">
                     <div class="w-auto h-auto flex gap-[10px] justify-center items-center">
                         <i
@@ -122,7 +127,7 @@
                     </div>
                     <i class="ph ph-caret-right "></i>
                 </a>
-                <a href="{{url('/#' . 'testimoni')}}" onclick="navbarToggle()"
+                <a href="{{ url('/#' . 'testimoni') }}" onclick="navbarToggle()"
                     class="w-[90%] h-[3rem]   rounded-[10px]  flex justify-between items-center px-4 hover:bg-gray-200 transition-all">
                     <div class="w-auto h-auto flex gap-[10px] justify-center items-center">
                         <i

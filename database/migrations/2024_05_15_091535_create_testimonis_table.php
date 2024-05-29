@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('testimonis', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->foreign('nama')->references('name')->on('users')->onDelete('cascade');
+            $table->foreign('nama')->references('name')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('rating');
             $table->string('alasan');
             $table->timestamps();

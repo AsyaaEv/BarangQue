@@ -23,28 +23,35 @@
     let id
     let imageData
 
-    async function startKamera(idBarang) {
-        console.log(idBarang)
+    async function startKamera(retryCount = 3) {
         var stream = null;
         try {
             stream = await navigator.mediaDevices.getUserMedia({
-                video: { facingMode: "user" }, // Set the camera to front-facing (mirrorless)
+                video: {
+                    facingMode: "user"
+                }, // Set the camera to front-facing (mirrorless)
                 audio: false
-            })
+            });
+            kamera.srcObject = stream;
         } catch (error) {
-            alert(error)
-            return
+            alert(error);
+            if (retryCount > 0) {
+                console.log(retryCount)
+                setTimeout(() => startKamera(retryCount - 1), 1000); // Retry after 1 second
+            } else {
+                alert('Failed to start the camera after multiple attempts');
+            }
         }
-        id = idBarang
-        kamera.srcObject = stream;
     }
+
+
 
     function ambilGambar() {
         canvas.classList.remove('hidden');
         canvas.width = kamera.videoWidth;
         canvas.height = kamera.videoHeight;
         const context = canvas.getContext("2d");
-        context.translate(canvas.width, 0);// Move the context to the right by the width of the canvas
+        context.translate(canvas.width, 0); // Move the context to the right by the width of the canvas
         context.scale(-1, 1); // Flip the context horizontally
         context.drawImage(kamera, 0, 0, kamera.videoWidth, kamera.videoHeight);
         imageData = canvas.toDataURL('image/jpg');
@@ -56,5 +63,4 @@
         }
 
     }
-
 </script>

@@ -57,10 +57,10 @@
                     <div class="w-full h-auto mt-2 flex flex-col">
                         <input type="file" name="gambar" accept="image/*" class="hidden">
                         <label for="" class="text-primary text-sm">Ambil gambar dengan barang pinjaman</label>
-                        <div class="max-w-fit h-auto p-2 bg-primary rounded-[10px] text-white flex items-center gap-2"
+                        <div class="max-w-fit h-auto p-2 bg-primary rounded-[10px] text-white flex items-center gap-2" onclick="startKamera({{ $dataBarang->id }})"
                             data-ripple-light="true" data-dialog-target="dialogKamera" wire:loading.attr='disabled'>
                             <i class="ph ph-camera-plus"></i>
-                            <button class="" onclick="startKamera({{ $dataBarang->id }})"
+                            <button class="" 
                                 type="button">Selfie</button>
                         </div>
                         @if (session('error'))
@@ -71,10 +71,10 @@
                         <canvas id="canvas" class="hidden mt-4"></canvas>
                     </div>
                     <div class="w-full h-auto  flex justify-end my-4 invisible" id="submitButton">
-                        <div class="w-auto flex items-center gap-2 text-white p-2 bg-primary rounded-[10px]" id="submit">
+                        <button class="w-auto flex items-center gap-2 text-white p-2 bg-primary rounded-[10px]" id="buttonPinjam">
                             <i class="ph ph-upload-simple"></i>
-                            <button type="submit" id="buttonPinjam">Submit</button>
-                        </div>
+                            Submit
+                        </button>
                     </div>
                     @include('components.kamera')
                 </form>

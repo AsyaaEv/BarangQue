@@ -37,6 +37,10 @@
                     <i class="ph ph-stack text-2xl"></i>
                     <div class="">Barang</div>
                 </div>
+                <button class="p-2 bg-primary rounded-[10px] flex items-center justify-center text-white gap-2" data-dialog-target="dialog">
+                    <i class="ph ph-stack-plus"></i>
+                    <div class="">Tambah Barang</div>
+                </button>
             </div>
         </div>
         <div

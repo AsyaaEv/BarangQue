@@ -10,7 +10,10 @@ class Testimonis extends Component
     public $rating;
     public function render()
     {
-        $data = Testimoni::where('rating', empty($this->rating) ? '5' : $this->rating)->get();
+        $data = Testimoni::when(!is_null($this->rating), function ($query) {
+            return $query->where('rating', $this->rating);
+        })->get();
+        
         $b5 = Testimoni::where('rating', '5')->count();
         $b4 = Testimoni::where('rating', '4')->count();
         $b3 = Testimoni::where('rating', '3')->count();

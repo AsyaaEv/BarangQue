@@ -1,8 +1,14 @@
 <div class="w-full h-auto px-[1rem] py-[2rem] flex flex-col gap-[20px]">
     <div class="border-[2px] rounded-[20px] px-[1rem] py-[1rem] flex flex-col gap-[20px]">
-        <div class="w-full h-auto flex gap-[10px] items-center border-b-2 pb-[1rem]">
-            <i class="ph ph-stack text-2xl"></i>
-            <div class="">Overview</div>
+        <div class="w-full h-auto flex gap-[10px] items-center border-b-2 pb-[1rem] justify-between">
+            <div class="flex items-center gap-2">
+                <i class="ph ph-stack text-2xl"></i>
+                <div class="">Overview Barang</div>
+            </div>
+            <a class="px-4 py-2 bg-primary rounded-[10px] flex gap-2 justify-center items-center text-white" href="/dashboard/barang">
+                <i class="ph ph-arrow-right  text-white"></i>
+                <div class="">Detail</div>
+            </a>
         </div>
         <div class="w-full h-auto flex gap-[10px] items-center border-b-2 pb-[1rem]">
             <div class="p-2 flex justify-center items-center rounded-full bg-white border-2">
@@ -22,13 +28,52 @@
                 <div class="text-lg font-bold">{{ $totalBarangDiam }}</div>
             </div>
         </div>
-        <div class="w-full h-auto flex gap-[10px] items-center border-b-2 pb-[1rem]">
+        <div class="w-full h-auto flex gap-[10px] items-center">
             <div class="p-2 flex justify-center items-center rounded-full bg-white border-2">
                 <i class="ph ph-upload text-2xl text-red-500"></i>
             </div>
             <div class="w-full h-full flex flex-col ">
                 <div class="text-[12px]">Total Barang Terpinjam</div>
                 <div class="text-lg font-bold">{{ $jumlahBarangDipinjam }}</div>
+            </div>
+        </div>
+    </div>
+    <div class="border-[2px] rounded-[20px] px-[1rem] py-[1rem] flex flex-col gap-[20px]">
+        <div class="w-full h-auto flex gap-[10px] items-center border-b-2 pb-[1rem] justify-between">
+            <div class="flex items-center gap-2">
+                <i class="ph ph-folder-user text-2xl"></i>
+                <div class="">Data Akun</div>
+            </div>
+            <a class="px-4 py-2 bg-primary rounded-[10px] flex gap-2 justify-center items-center text-white" href="/dashboard/master">
+                <i class="ph ph-arrow-right  text-white"></i>
+                <div class="">Detail</div>
+            </a>
+        </div>
+        <div class="w-full h-auto flex gap-[10px] items-center border-b-2 pb-[1rem]">
+            <div class="p-2 flex justify-center items-center rounded-full bg-white border-2">
+                <i class="ph ph-users text-2xl"></i>
+            </div>
+            <div class="w-full h-full flex flex-col ">
+                <div class="text-[12px]">Total Pengguna</div>
+                <div class="text-lg font-bold">{{$allUser}}</div>
+            </div>
+        </div>
+        <div class="w-full h-auto flex gap-[10px] items-center border-b-2 pb-[1rem]">
+            <div class="p-2 flex justify-center items-center rounded-full bg-white border-2">
+                <i class="ph ph-user-circle-gear text-2xl text-green-500"></i>
+            </div>
+            <div class="w-full h-full flex flex-col ">
+                <div class="text-[12px]">Total Admin</div>
+                <div class="text-lg font-bold">{{$getAdmin}}</div>
+            </div>
+        </div>
+        <div class="w-full h-auto flex gap-[10px] items-center border-b-2 pb-[1rem]">
+            <div class="p-2 flex justify-center items-center rounded-full bg-white border-2">
+                <i class="ph ph-user text-2xl text-red-500"></i>
+            </div>
+            <div class="w-full h-full flex flex-col ">
+                <div class="text-[12px]">Total User</div>
+                <div class="text-lg font-bold">{{$getUser}}</div>
             </div>
         </div>
     </div>
@@ -179,7 +224,7 @@
                             </td>
                             <td class="p-4">
                                 <div class="w-auto h-auto {{$item->keterangan == 'Menambahkan' ? 'bg-green-500' : ($item->keterangan == 'Mengubah' ? 'bg-blue-500' : 'bg-red-500')}} rounded-[20px] text-sm text-white p-1 px-2 flex justify-center items-center">
-                                    {{$item->keterangan}}
+                                    {{$item->keterangan}} Role
                                 </div>
                                 
                                 

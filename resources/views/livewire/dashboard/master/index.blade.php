@@ -1,45 +1,16 @@
 <div class="w-full h-auto px-[1rem] py-[2rem] flex flex-col gap-[20px]">
-    <div class="border-[2px] rounded-[20px] px-[1rem] py-[1rem] flex flex-col gap-[20px]">
-        <div class="w-full h-auto flex gap-[10px] items-center border-b-2 pb-[1rem]">
-            <i class="ph ph-folder-user text-2xl"></i>
-            <div class="">Data Akun</div>
-        </div>
-        <div class="w-full h-auto flex gap-[10px] items-center border-b-2 pb-[1rem]">
-            <div class="p-2 flex justify-center items-center rounded-full bg-white border-2">
-                <i class="ph ph-users text-2xl"></i>
-            </div>
-            <div class="w-full h-full flex flex-col ">
-                <div class="text-[12px]">Total Pengguna</div>
-                <div class="text-lg font-bold">{{$allUser}}</div>
-            </div>
-        </div>
-        <div class="w-full h-auto flex gap-[10px] items-center border-b-2 pb-[1rem]">
-            <div class="p-2 flex justify-center items-center rounded-full bg-white border-2">
-                <i class="ph ph-user-circle-gear text-2xl text-green-500"></i>
-            </div>
-            <div class="w-full h-full flex flex-col ">
-                <div class="text-[12px]">Total Admin</div>
-                <div class="text-lg font-bold">{{$getAdmin}}</div>
-            </div>
-        </div>
-        <div class="w-full h-auto flex gap-[10px] items-center border-b-2 pb-[1rem]">
-            <div class="p-2 flex justify-center items-center rounded-full bg-white border-2">
-                <i class="ph ph-user text-2xl text-red-500"></i>
-            </div>
-            <div class="w-full h-full flex flex-col ">
-                <div class="text-[12px]">Total User</div>
-                <div class="text-lg font-bold">{{$getUser}}</div>
-            </div>
-        </div>
-    </div>
+    
     <div class="border-[2px] rounded-[20px] px-[1rem] py-[1rem] mb-4 flex flex-col gap-[20px]">
         <div class="w-full h-auto flex justify-between  border-b-2  pb-[1rem]">
             <div class="w-full h-auto flex gap-[10px] items-center ">
                 <i class="ph ph-user-gear text-2xl"></i>
                 <div class="">Admin BarangQue</div>
             </div>
-            <button class="w-auto h-auto p-2 bg-gray-900 rounded-[10px]" data-dialog-target="dialogAdd">
-                <i class="ph ph-plus text-white"></i>
+            <button class="p-2 w-full md:max-w-[10rem] bg-primary rounded-[10px] flex items-center justify-center text-white gap-2 border-2" data-dialog-target="dialogAdd">
+                <div class="flex w-fit gap-2 justify-center items-center">
+                    <i class="ph ph-user-plus"></i>
+                    <div class="">Tambah Admin</div>
+                </div>
             </button>
         </div>
         <div class="w-full h-auto flex flex-col gap-[10px] justify-center items-center overflow-auto">
@@ -54,7 +25,7 @@
                         <div class="">{{$item->email}}</div>
                     </div>
                     <div class="w-auto h-auto">
-                        <button class=" bg-gray-900 rounded-[10px]" data-ripple-light="true" data-dialog-target="dialog" wire:click='view({{$item->id}})'>
+                        <button class=" bg-primary rounded-[10px]" data-ripple-light="true" data-dialog-target="dialog" wire:click='view({{$item->id}})'>
                             <i class="ph ph-eye text-white p-4 "></i>
                         </button>
                     </div>

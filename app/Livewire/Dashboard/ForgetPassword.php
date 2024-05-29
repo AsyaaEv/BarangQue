@@ -47,6 +47,13 @@ class ForgetPassword extends Component
             'noWa.numeric' => 'Nomor WA harus berupa angka.',
         ]);
 
+        $data = User::where('no_wa', $this->noWa)->first();
+        if ($data == null) {
+            session()->flash('msgFG', 'Nomor WA tidak terdaftar.');
+            session()->flash('alert', 'danger');
+            return redirect('/forget-password');
+        }
+
         $this->otp = rand(100000, 999999);
 
         $client = new Client();

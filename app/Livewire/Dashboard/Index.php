@@ -4,6 +4,7 @@ namespace App\Livewire\Dashboard;
 
 use App\Models\Audit;
 use App\Models\Barang;
+use App\Models\User;
 use Livewire\Component;
 
 class Index extends Component
@@ -16,7 +17,11 @@ class Index extends Component
         $auditAdmin = $this->auditAdmin();
         $auditBarang = $this->auditBarang();
 
-        return view('livewire.dashboard.index', compact('totalBarang', 'totalBarangDiam', 'jumlahBarangDipinjam', 'auditAdmin', 'auditBarang'));
+        $allUser = $this->getAllUser();
+        $getAdmin = $this->getAdmin();
+        $getUser = $this->getUser();
+
+        return view('livewire.dashboard.index', compact('totalBarang', 'totalBarangDiam', 'jumlahBarangDipinjam', 'auditAdmin', 'auditBarang', 'allUser', 'getAdmin', 'getUser'));
     }
 
     public function jumlahBarang()
@@ -42,5 +47,20 @@ class Index extends Component
     public function auditBarang()
     {
         return Audit::where('type', 'barang')->orderBy('id', 'desc')->get();
+    }
+
+    public function getAllUser()
+    {
+        return User::count();
+    }
+
+    public function getAdmin()
+    {
+        return User::where('role', 'admin')->count();
+    }
+
+    public function getUser()
+    {
+        return User::where('role', 'user')->count();
     }
 }

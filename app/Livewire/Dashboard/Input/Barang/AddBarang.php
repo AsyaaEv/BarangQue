@@ -30,17 +30,26 @@ class AddBarang extends Component
     public function render()
     {
         if ($this->validasiNo) {
-            $data = Barang::where('no', $this->validasiNo)->get();
-            if ($data->isNotEmpty()) {
-                $this->messageValidasi = 'Data telah digunakan';
+            if (strpos($this->validasiNo, '/') !== false || strpos($this->validasiNo, '\\') !== false) {
+                // Set message and toggle if '/' or '\' is found
+                $this->messageValidasi = 'Karakter "/" dan "\\" tidak diperbolehkan';
                 $this->toggleValidasi = false;
             } else {
-                $this->messageValidasi = '';
-                $this->toggleValidasi = true;
+                // Continue with existing validation logic
+                $data = Barang::where('no', $this->validasiNo)->get();
+                if ($data->isNotEmpty()) {
+                    $this->messageValidasi = 'Data telah digunakan';
+                    $this->toggleValidasi = false;
+                } else {
+                    $this->messageValidasi = '';
+                    $this->toggleValidasi = true;
+                }
             }
         } else {
             $this->messageValidasi = '';
         }
+        
+        
 
         return view('livewire.dashboard.input.barang.add-barang');
     }

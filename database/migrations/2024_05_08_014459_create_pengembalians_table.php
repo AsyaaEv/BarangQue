@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('tgl_pengembalian');
             $table->string('foto_pengembalian');
             $table->string('peminjam');
-            $table->foreign('peminjam')->references('name')->on('users')->onDelete('cascade');
+            $table->foreign('peminjam')->references('name')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->string('tgl_delete');
             $table->timestamps();
         });

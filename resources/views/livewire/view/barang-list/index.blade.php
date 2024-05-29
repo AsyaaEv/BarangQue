@@ -69,21 +69,32 @@
                     <div class="p-6 pt-0">
                         @if ($item->status == 0)
                             <a href="{{ url('/barang/pinjam/' . $item->id) }}"
-                                class="flex justify-center items-center align-middle group select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-primary text-sec shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
+                                class="flex justify-center items-center align-middle group select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-primary text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
                                 type="button">
                                 Pinjam <i class="ph ph-upload-simple ml-2 text-xl"></i>
                             </a>
                         @endif
                         @if ($item->status == 1)
-                            <a href="{{ url('/barang/info/' . $item->no) }}"
-                                class="flex justify-center items-center align-middle group select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-primary text-sec shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
-                                type="button">
-                                Info <i class="ph ph-info ml-2 text-xl"></i>
-                            </a>
+                            <div class="flex gap-2 flex-col">
+                                <a href="{{ url('/barang/info/' . $item->no) }}"
+                                    class="flex justify-center items-center align-middle group select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-primary text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
+                                    type="button">
+                                    Info <i class="ph ph-info ml-2 text-xl"></i>
+                                </a>
+                                @if (Auth::check())
+                                    @if ($item->peminjam == Auth::user()->name)
+                                        <a href="{{ url('/barang/kembali/' . $item->no) }}"
+                                            class="flex justify-center items-center align-middle group select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-primary text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
+                                            type="button">
+                                            Kembalikan <i class="ph ph-upload ml-2 text-xl"></i>
+                                        </a>
+                                    @endif
+                                @endif
+                            </div>
                         @endif
                     </div>
                 </div>
-                @empty
+            @empty
                 <div class="w-full h-auto flex justify-center items-center md:absolute md:mt-8">
                     <div class="bg-sec p-4 rounded-[10px] flex gap-2 text-white">
                         <i class="ph ph-info text-2xl"></i>

@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="{{ Storage::url('public/src/assets/vFavicon2.svg') }}" type="image/x-icon">
     <title>{{ config('app.name') }}</title>
 
-    
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
@@ -21,7 +21,6 @@
         ::-webkit-scrollbar {
             display: none;
         }
-
     </style>
     @livewireStyles
 
@@ -121,17 +120,43 @@
                     $('#keperluan').before(
                         '<div class="absolute text-red-500 text-sm -translate-y-6" id="alert1">Semua kolom harus diisi.</div>'
                     );
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    }); // Scroll to the top
                     return;
                 }
 
                 var today = new Date().toISOString().split('T')[0];
-                if (tglPengembalian < today) {
+                var maxDate = '2100-12-31'; // Set maximum allowable date
+
+                // Hapus pesan peringatan sebelumnya jika ada
+                $('#alert2').remove();
+
+                if (tglPengembalian < today || tglPengembalian > maxDate) {
+                    var alertMessage = '';
+                    if (tglPengembalian < today) {
+                        alertMessage = 'Tanggal pengembalian tidak boleh lebih awal dari hari ini.';
+                    } else if (tglPengembalian > maxDate) {
+                        alertMessage = 'Tanggal pengembalian tidak boleh lebih dari tahun 2100.';
+                    }
+
                     $('#keperluan').before(
-                        '<div class="absolute text-red-500 text-sm -translate-y-6" id="alert2">Tanggal pengembalian tidak boleh lebih awal dari hari ini.</div>'
+                        '<div class="absolute text-red-500 text-sm -translate-y-6" id="alert2">' +
+                        alertMessage + '</div>'
                     );
-                    $('#alert1').remove(); // Remove alert 1 if alert 2 is shown
+
+                    // Hapus alert sebelumnya jika ada
+                    $('#alert1').remove();
+
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    }); // Scroll to the top
                     return;
                 }
+
+
 
                 var formData = new FormData();
                 formData.append('_token', token);

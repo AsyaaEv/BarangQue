@@ -15,10 +15,10 @@ class KembaliController extends Controller
 {
     public function index($id)
     {
-        $data = Peminjaman::find($id);
+        $data = Peminjaman::where('id', $id)->orWhere('id_barang', $id)->first();
         $type = strstr($data->user->type, '_', true);
-        $tglPinjam = Carbon::parse($data->tgl_peminjaman)->locale('id')->isoFormat('dddd, D MMMM Y');
-        $tglPengembalian = Carbon::parse($data->tgl_pengembalian)->locale('id')->isoFormat('dddd, D MMMM Y');
+        $tglPinjam = Carbon::parse($data->tgl_peminjaman)->locale('id')->isoFormat('dddd, D MMMM Y HH:mm');
+        $tglPengembalian = Carbon::parse($data->tgl_pengembalian)->locale('id')->isoFormat('dddd, D MMMM Y HH:mm');
 
         return view('view.profile.kembali_barang', compact('data', 'type', 'tglPinjam', 'tglPengembalian'));
     }
@@ -43,7 +43,10 @@ class KembaliController extends Controller
         $pemilik = $barang->owner->no_wa;
         $jenis = $barang->jenis;
         $namaBarang = $barang->nama;
-        if ($data->foto) {
+        $barang->peminjam = null;
+        $barang->status = 0;
+
+        if ($data->foto) { 
             Storage::delete('public/' . $data->foto);
         }
         $tglPeminjaman = Carbon::parse($data->tgl_peminjaman)->locale('id')->isoFormat('DD MMMM YYYY HH:mm');
@@ -61,7 +64,7 @@ class KembaliController extends Controller
                     'receiver' => $pemilik, // target
                     'type' => 'PERSONAL', // PERSONAL | GROUP
                     'data' => [
-                        'message' => "*BarangQue (Pengembalian)*\n\n*Informasi Peminjam :*\nNama : " . Auth::user()->name . "\nNo. Wa : " . Auth::user()->no_wa . "\n\n*Informasi Barang :* \nJenis : " . $jenis . "\nNama Barang : " . $namaBarang . " \nNo. Barang : " . $no_barang . "\n\n*Informasi Peminjaman*" . "\nKeperluan : " . $keperluan . "\nTgl. Peminjaman : " . $tglPeminjaman . "\nTgl. Pengembalian : " . $tglPengembalian ."\n\n_Peminjam telah mengembalikan barang ini pada ".$waktuSekarang."_". "\n\n*Barang telah di kembalikan ketempat penyimpanan dengan aman*, Silakan buka link berikut untuk melihat info lebih detail :",
+                        'message' => "*BarangQue (Pengembalian)*\n\n*Informasi Peminjam :*\nNama : " . Auth::user()->name . "\nNo. Wa : " . Auth::user()->no_wa . "\n\n*Informasi Barang :* \nJenis : " . $jenis . "\nNama Barang : " . $namaBarang . " \nNo. Barang : " . $no_barang . "\n\n*Informasi Peminjaman*" . "\nKeperluan : " . $keperluan . "\nTgl. Peminjaman : " . $tglPeminjaman . "\nTgl. Pengembalian : " . $tglPengembalian . "\n\n_Peminjam telah mengembalikan barang ini pada " . $waktuSekarang . "_" . "\n\n*Barang telah di kembalikan ketempat penyimpanan dengan aman*, Silakan buka link berikut untuk melihat info lebih detail :",
                     ],
                 ],
             ]);
@@ -70,7 +73,6 @@ class KembaliController extends Controller
         }
 
         try {
-            $barang->status = 0;
             $barang->update();
             $data->delete();
             $pengembalian->save();

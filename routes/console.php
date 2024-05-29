@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Audit;
 use App\Models\Peminjaman;
 use App\Models\Pengembalian;
 use Illuminate\Foundation\Inspiring;
@@ -12,10 +13,13 @@ Artisan::command('inspire', function () {
 
 Schedule::job(function () {
     Pengembalian::delete_pengembalian();
-})->everySecond();
+})->everyMinute();
+Schedule::job(function () {
+    Audit::delete_audit();
+})->everyMinute();
 Schedule::job(function () {
     Peminjaman::infoDeadlinePeminjaman();
-})->everyFiveSeconds();
+})->everyMinute();
 Schedule::job(function () {
     Peminjaman::infoTanggalPeminjaman();
-})->everyTwoSeconds();
+})->everyMinute();

@@ -145,7 +145,7 @@
                 <div class="flex flex-wrap items-center justify-end p-4 shrink-0 text-blue-gray-500">
                     <button data-ripple-light="true" data-dialog-close="true"
                         class="middle none center rounded-lg bg-primary py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-primary transition-all hover:shadow-lg hover:shadow-green-500/40 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
-                        Setuju
+                        Kembali
                     </button>
                 </div>
             </section>

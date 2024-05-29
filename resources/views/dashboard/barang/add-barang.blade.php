@@ -1,4 +1,4 @@
-<div class="">
+<div class="absolute z-50">
     <i class="ph ph-plus text-2xl text-white " data-ripple-light="true" data-dialog-target="dialog" id="dialog"></i>
     <div data-dialog-backdrop="dialog"
         class="pointer-events-none  fixed inset-0 -z-[999] grid h-screen w-screen place-items-center bg-black bg-opacity-60 opacity-0 backdrop-blur-sm transition-opacity duration-300">

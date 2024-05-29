@@ -28,6 +28,8 @@ class Peminjaman extends Model
         $data = Peminjaman::whereDate('tgl_pengembalian', '=', $waktu)->with('user', 'barang')->first();
 
         if ($data) {
+            $tgl_pengembalian = Carbon::parse($data->tgl_pengembalian)->locale('id')->isoFormat('DD MMMM YYYY HH:mm');
+            $tgl_peminjaman = Carbon::parse($data->tgl_peminjaman)->locale('id')->isoFormat('DD MMMM YYYY HH:mm');
             $client = new Client();
             $url = 'https://waque.rifalkom.my.id/whatsapp/sendmessage';
             try {
@@ -38,7 +40,7 @@ class Peminjaman extends Model
                         'receiver' => $data->user->no_wa, // target
                         'type' => 'PERSONAL', // PERSONAL | GROUP
                         'data' => [
-                            'message' => "*BarangQue (Peminjaman)*\n\n*Informasi Peminjam :*\nNama : " . $data->user->name . "\nNo. Wa : " . $data->user->no_wa . "\n\n*Informasi Barang :* \nJenis : " . $data->barang->jenis . "\nNama Barang : " . $data->barang->nama . " \nNo. Barang : " . $data->barang->no . "\n\n*Informasi Peminjaman*" . "\nKeperluan : " . $data->keperluan . "\nTgl. Peminjaman : " . $data->tgl_peminjaman . "\nTgl. Pengembalian : " . $data->tgl_pengembalian . "\n\n*Waktu peminjaman barang anda tinggal 1 hari lagi*, segera selesaikan urusan anda dan jangan lupa untuk mengembalikan barang pinjaman tepat waktu.", // message
+                            'message' => "*BarangQue (Peminjaman)*\n\n*Informasi Peminjam :*\nNama : " . $data->user->name . "\nNo. Wa : " . $data->user->no_wa . "\n\n*Informasi Barang :* \nJenis : " . $data->barang->jenis . "\nNama Barang : " . $data->barang->nama . " \nNo. Barang : " . $data->barang->no . "\n\n*Informasi Peminjaman*" . "\nKeperluan : " . $data->keperluan . "\nTgl. Peminjaman : " . $tgl_peminjaman . "\nTgl. Pengembalian : " . $tgl_pengembalian . "\n\n*Waktu peminjaman barang anda tinggal 1 hari lagi*, segera selesaikan urusan anda dan jangan lupa untuk mengembalikan barang pinjaman tepat waktu.", // message
                         ],
                     ],
                 ]);

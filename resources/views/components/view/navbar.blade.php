@@ -8,6 +8,9 @@
             alt=""
             class="w-[2.5rem] h-[2.5rem] rounded-full hover:cursor-pointer object-cover {{ Auth::check() ? 'block' : 'hidden' }}"
             id="profile">
+        @if (Auth::check())
+            @livewire('view.card')
+        @endif
         <div class="{{ Auth::check() ? 'hidden' : 'block' }} flex gap-2">
             <a href="/login" class="p-2 bg-primary rounded-[10px] text-white">
                 Masuk
@@ -46,7 +49,7 @@
         </a>
         <a role="menuitem" href="/profile/barang"
             class="flex w-full cursor-pointer select-none items-center gap-2 rounded-md px-3 pt-[9px] pb-2 text-start leading-tight outline-none transition-all hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
-            <i class="ph ph-stack"></i>
+            <i class="ph ph-basket"></i>
             <p class="block font-sans text-sm antialiased font-medium leading-normal text-inherit">
                 Barang Pinjaman
             </p>
@@ -95,7 +98,7 @@
                         class="w-[90%] h-[3rem]   rounded-[10px]  flex justify-between items-center px-4 hover:bg-gray-200 transition-all">
                         <div class="w-auto h-auto flex gap-[10px] justify-center items-center">
                             <i
-                                class="ph ph-stack text-2xl "></i>
+                                class="ph ph-basket text-2xl "></i>
                             <div class="">
                                 Barang Pinjaman Saya</div>
                         </div>

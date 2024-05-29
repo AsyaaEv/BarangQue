@@ -25,10 +25,10 @@
         </div>
         <div class="">Nomer : {{ $this->noWa }}</div>
         <div class="w-full h-auto flex justify-start items-center mt-4 " >
-            <button class="p-2 rounded-[10px] bg-red-900 text-white flex justify-center items-center gap-2" data-dialog-close="true" wire:click='deleteRole({{$this->id}})'><i class="ph ph-trash">delete role</i></button>
+            <button class="p-2 rounded-[10px] bg-red-900 text-white flex justify-center items-center gap-2" data-dialog-close="true" wire:click='deleteRole({{$this->id}})'><i class="ph ph-trash"></i>Hapus Role</button>
         </div>
     </div>
     <div class="w-full h-auto flex justify-end items-center">
-        <button class="p-2 rounded-[10px] bg-gray-900 text-white" data-dialog-close="true" wire:click='close'>Close</button>
+        <button class="p-2 rounded-[10px] bg-primary text-white" data-dialog-close="true" wire:click='close'>Close</button>
     </div>
 </div>

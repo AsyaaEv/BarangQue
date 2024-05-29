@@ -5,6 +5,7 @@ namespace App\Livewire\Dashboard;
 use App\Models\TypeUser;
 use App\Models\User;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -126,8 +127,9 @@ class Register extends Component
             $type->save();
             $data->save();
 
-            session()->flash('success', 'Anda berhasil membuat akun');
-            return redirect('/login');
+            // session()->flash('success', 'Anda berhasil membuat akun');
+            Auth::login($data);
+            return redirect('/');
         } catch (\Throwable $th) {
             dd($th);
         }
@@ -223,8 +225,8 @@ class Register extends Component
     {
         if ($this->foto) {
             $fileExtension = strtolower($this->foto->getClientOriginalExtension());
-            if (! in_array($fileExtension, ['png', 'jpg', 'jpeg'])) {
-                $this->errorM = 'Format foto harus PNG atau JPG';
+            if (! in_array($fileExtension, ['png', 'jpg', 'jpeg', 'webp'])) {
+                $this->errorM = 'Format foto harus PNG JPG, JPEG, atau WEBP';
 
                 return;
             }

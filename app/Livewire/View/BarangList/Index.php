@@ -3,11 +3,12 @@
 namespace App\Livewire\View\BarangList;
 
 use App\Models\Barang;
+use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 
 class Index extends Component
 {
-    public $status, $jenis;
+    public $status, $jenis, $id;
 
     public function render()
     {
@@ -22,4 +23,5 @@ class Index extends Component
         $filter = Barang::all()->unique('jenis');
         return view('livewire.view.barang-list.index', compact('data', 'filter'));
     }
+
 }

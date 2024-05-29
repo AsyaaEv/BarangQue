@@ -36,6 +36,7 @@ class PinjamController extends Controller
         $dataFoto = $gambarPeminjaman->store('peminjaman', 'public');
         $barang = Barang::where('no', $no_barang)->first();
         $jenis = $barang->jenis;
+        $barang->peminjam = Auth::user()->name;
         $namaBarang = $barang->nama;
         $pemilik = $barang->owner->no_wa;
 
