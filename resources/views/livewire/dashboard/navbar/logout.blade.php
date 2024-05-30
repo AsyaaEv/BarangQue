@@ -7,7 +7,7 @@
             fill="#113e67"></path>
     </svg>
     <p class="block font-sans text-sm antialiased font-medium leading-normal text-inherit text-black">
-        Sign Out
+        Keluar
     </p>
 </button>
 </div>

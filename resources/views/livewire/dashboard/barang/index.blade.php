@@ -2,7 +2,7 @@
     <div
         role="alert"
         data-dismissible="alert"
-        class="relative flex w-full max-w-screen-md px-4 py-4 text-base text-white bg-gray-900 rounded-lg font-regular {{session('alert') ? 'relative' : 'hidden'}}">
+        class="relative flex w-full max-w-screen-md px-4 py-4 text-base text-white bg-primary rounded-lg font-regular {{session('alert') ? 'relative' : 'hidden'}}">
         <div class="shrink-0">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                 <path fill-rule="evenodd"

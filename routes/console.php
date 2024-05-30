@@ -19,7 +19,7 @@ Schedule::job(function () {
 })->everyMinute();
 Schedule::job(function () {
     Peminjaman::infoDeadlinePeminjaman();
-})->everyMinute();
+})->everySecond();
 Schedule::job(function () {
     Peminjaman::infoTanggalPeminjaman();
-})->everyMinute();
+})->everySecond();
