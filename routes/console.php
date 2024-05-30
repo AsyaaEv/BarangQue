@@ -13,13 +13,13 @@ Artisan::command('inspire', function () {
 
 Schedule::job(function () {
     Pengembalian::delete_pengembalian();
-})->everyMinute();
+})->daily();
 Schedule::job(function () {
     Audit::delete_audit();
-})->everyMinute();
+})->daily();
 Schedule::job(function () {
     Peminjaman::infoDeadlinePeminjaman();
-})->everySecond();
+})->daily();
 Schedule::job(function () {
     Peminjaman::infoTanggalPeminjaman();
-})->everySecond();
+})->daily();
