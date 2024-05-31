@@ -1,15 +1,17 @@
-<div class="w-full h-auto justify-center items-center flex flex-col gap-4">
+<div class="w-full h-auto justify-center items-center flex flex-col gap-4 ">
     <div
-        class="w-full h-auto flex justify-center items-center flex-col gap-4 {{ $this->toggle1 == true ? 'hidden' : ($this->toggle2 == true ? 'hidden' : ($this->toggle3 == true ? 'hidden' : ($this->toggle4 == true ? 'hidden' : 'block'))) }}">
+        class="w-full h-auto flex justify-center items-center  flex-col gap-4 {{ $this->toggle1 == true ? 'hidden' : ($this->toggle2 == true ? 'hidden' : ($this->toggle3 == true ? 'hidden' : ($this->toggle4 == true ? 'hidden' : 'block'))) }}">
         <div class="w-[90%] h-auto flex flex-col md:flex-row md:gap-4">
-            <div class="w-full h-auto flex justify-center items-center">
-                <img src="{{ Storage::url('src/assets/vWelcome.svg') }}" alt="" class="w-[15rem] h-[15rem] md:w-[30rem] md:h-[30rem] pointer-events-none" >
+            <div class="w-full h-auto flex justify-center items-center  ">
+                <img src="{{ Storage::url('src/assets/vWelcome.svg') }}" alt=""
+                    class="w-[15rem] h-[15rem] md:w-[30rem] md:h-[30rem] pointer-events-none">
             </div>
             <hr class="border-[1px] h-full hidden md:block">
-            <div class="gap-2 flex flex-col w-full justify-center items-center">
+            <div class="gap-2 flex flex-col w-full justify-center items-center   md:w-full">
                 <div class="w-full h-auto flex flex-col justify-center items-center">
-                    <div class="font-bold text-3xl text-primary md:text-5xl">Barang<span class="text-sec">Que</span></div>
-                    <div class="text-md">Silakan masukan data anda untuk mendaftar</div>
+                    <div class="font-bold text-3xl text-primary md:text-5xl">Barang<span class="text-sec">Que</span>
+                    </div>
+                    <div class="text-sm text-center">Silakan masukan data anda untuk mendaftar</div>
                     <div class="text-sm text-red-500 italic">*Pastikan memasukan data secara benar!</div>
                 </div>
                 <div class="relative w-full min-w-[200px] h-10">
@@ -19,7 +21,7 @@
                         class="flex w-full h-full select-none pointer-events-none absolute left-0 font-normal !overflow-visible truncate peer-placeholder-shown:text-blue-gray-500 leading-tight peer-focus:leading-tight peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500 transition-all -top-1.5 peer-placeholder-shown:text-sm text-[11px] peer-focus:text-[11px] before:content[' '] before:block before:box-border before:w-2.5 before:h-1.5 before:mt-[6.5px] before:mr-1 peer-placeholder-shown:before:border-transparent before:rounded-tl-md before:border-t peer-focus:before:border-t-2 before:border-l peer-focus:before:border-l-2 before:pointer-events-none before:transition-all peer-disabled:before:border-transparent after:content[' '] after:block after:flex-grow after:box-border after:w-2.5 after:h-1.5 after:mt-[6.5px] after:ml-1 peer-placeholder-shown:after:border-transparent after:rounded-tr-md after:border-t peer-focus:after:border-t-2 after:border-r peer-focus:after:border-r-2 after:pointer-events-none after:transition-all peer-disabled:after:border-transparent peer-placeholder-shown:leading-[3.75] text-gray-500 peer-focus:text-gray-900 before:border-blue-gray-200 peer-focus:before:!border-gray-900 after:border-blue-gray-200 peer-focus:after:!border-gray-900">Nama
                         Lengkap
                     </label>
-    
+
                 </div>
                 <div class="relative w-full min-w-[200px] h-10">
                     <input wire:model='email' required type="email"
@@ -46,27 +48,31 @@
                     </label>
                 </div>
                 <div class="relative w-full min-w-[200px] h-10">
-                    <div class="inline-flex items-center">
+                    <div class="inline-flex items-center w-full">
                         <label class="relative flex items-center p-3 rounded-full cursor-pointer" htmlFor="check">
-                          <input type="checkbox" wire:model='tos' 
-                            class="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:before:opacity-10"
-                            id="check" />
-                          <span
-                            class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor"
-                              stroke="currentColor" stroke-width="1">
-                              <path fill-rule="evenodd"
-                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                clip-rule="evenodd"></path>
-                            </svg>
-                          </span>
+                            <input type="checkbox" wire:model='tos'
+                                class="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:before:opacity-10"
+                                id="check" />
+                            <span
+                                class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    stroke="currentColor" stroke-width="1">
+                                    <path fill-rule="evenodd"
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </span>
                         </label>
-                        <label class="mt-px font-light text-gray-700 cursor-pointer select-none" htmlFor="check" >
-                          Dengan Mencentang, Anda menyetujui dan telah membaca <a class="font-bold" data-dialog-target="dialog-tos">Terms Of Service</a>
+                        <label class="mt-px font-light text-gray-700 cursor-pointer select-none text-sm md:text-base"
+                            htmlFor="check">
+                            Dengan Mencentang, Anda menyetujui dan telah membaca <a class="font-bold"
+                                data-dialog-target="dialog-tos">Terms Of Service</a>
                         </label>
-                      </div> 
+                    </div>
+                    
                 </div>
-                <div class="w-full h-auto flex gap-2 justify-end px-0">
+                <div class="w-full h-auto flex gap-2 justify-end px-0 mt-4">
                     <button wire:click='back1' wire:loading.attr="disabled"
                         class="flex  justify-center items-center gap-2 align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-red-900 text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
                         type="button">
@@ -87,7 +93,8 @@
         class="w-full h-auto flex flex-col justify-center items-center gap-4 {{ $this->toggle1 == true ? 'block' : 'hidden' }}">
         <div class="w-[90%] h-auto flex flex-col gap-2 md:flex-row">
             <div class="w-full h-auto flex justify-center items-center">
-                <img src="{{ Storage::url('src/assets/vForm.svg') }}" alt="" class="w-[15rem] h-[15rem] md:w-[30rem] md:h-[30rem] pointer-events-none">
+                <img src="{{ Storage::url('src/assets/vForm.svg') }}" alt=""
+                    class="w-[15rem] h-[15rem] md:w-[30rem] md:h-[30rem] pointer-events-none">
             </div>
             <hr class="border-[1px] h-full">
             <div class="flex justify-center items-center flex-col w-full">
@@ -208,7 +215,9 @@
         ">
         <div class="w-[90%] h-auto flex flex-col gap-2 md:flex-row">
             <div class="w-full h-auto flex justify-center items-center">
-                <img src="{{ !$this->foto ? Storage::url('src/assets/vPicture.svg') : $this->foto->temporaryUrl() }}" alt="" class="w-[15rem] h-[15rem] md:w-[25rem] md:h-[25rem] rounded-full border-2 border-black shadow-sm pointer-events-none object-cover">
+                <img src="{{ !$this->foto ? Storage::url('src/assets/vPicture.svg') : $this->foto->temporaryUrl() }}"
+                    alt=""
+                    class="w-[15rem] h-[15rem] md:w-[25rem] md:h-[25rem] rounded-full border-2 border-black shadow-sm pointer-events-none object-cover">
             </div>
             <hr class="border-[1px] h-full hidden md:block">
             <div class="md:flex md:flex-col md:w-full md:justify-center md:items-center md:mx-4">
@@ -242,7 +251,8 @@
         ">
         <div class="w-[90%] h-auto flex flex-col gap-2 md:flex-row">
             <div class="w-full h-auto flex justify-center items-center">
-                <img src="{{ Storage::url('src/assets/vOtp.svg') }}" alt="" class="w-[15rem] h-[15rem] md:w-[25rem] md:h-[25rem] pointer-events-none">
+                <img src="{{ Storage::url('src/assets/vOtp.svg') }}" alt=""
+                    class="w-[15rem] h-[15rem] md:w-[25rem] md:h-[25rem] pointer-events-none">
             </div>
             <hr class="border-[1px] h-full hidden md:block">
             <div class="md:flex md:flex-col md:w-full md:justify-center md:items-center md:mx-4">
@@ -281,7 +291,8 @@
         ">
         <div class="w-[90%] h-auto flex flex-col gap-2 md:flex-row">
             <div class="w-full h-auto flex justify-center items-center">
-                <img src="{{ Storage::url('src/assets/vOtp.svg') }}" alt="" class="w-[15rem] h-[15rem] md:w-[25rem] md:h-[25rem] pointer-events-none">
+                <img src="{{ Storage::url('src/assets/vOtp.svg') }}" alt=""
+                    class="w-[15rem] h-[15rem] md:w-[25rem] md:h-[25rem] pointer-events-none">
             </div>
             <hr class="border-[1px] h-full hidden md:block">
             <div class="md:flex md:flex-col md:w-full md:justify-center md:items-center md:mx-4">
@@ -291,26 +302,38 @@
                 </div>
                 <div class="relative w-full min-w-[200px] h-auto p-4">
                     <div class="flex space-x-2 justify-center items-center">
-                        <input wire:model='otp1' id="otp1" maxlength="1" class="peer w-10 h-10 text-center bg-transparent text-blue-gray-700 font-sans font-normal outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all border-blue-gray-200 border focus:border-2 rounded-[7px] focus:border-gray-900" type="text" 
+                        <input wire:model='otp1' id="otp1" maxlength="1"
+                            class="peer w-10 h-10 text-center bg-transparent text-blue-gray-700 font-sans font-normal outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all border-blue-gray-200 border focus:border-2 rounded-[7px] focus:border-gray-900"
+                            type="text"
                             oninput="this.value=this.value.slice(0,1); if(this.value) document.getElementById('otp2').focus();"
                             onkeydown="if(event.key === 'Backspace' && !this.value) document.getElementById('otp1').focus();">
-                        <input id="otp2" wire:model='otp2' maxlength="1" class="peer w-10 h-10 text-center bg-transparent text-blue-gray-700 font-sans font-normal outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all border-blue-gray-200 border focus:border-2 rounded-[7px] focus:border-gray-900" type="text" 
+                        <input id="otp2" wire:model='otp2' maxlength="1"
+                            class="peer w-10 h-10 text-center bg-transparent text-blue-gray-700 font-sans font-normal outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all border-blue-gray-200 border focus:border-2 rounded-[7px] focus:border-gray-900"
+                            type="text"
                             oninput="this.value=this.value.slice(0,1); if(this.value) document.getElementById('otp3').focus();"
                             onkeydown="if(event.key === 'Backspace' && !this.value) document.getElementById('otp1').focus();">
-                        <input id="otp3" wire:model='otp3' maxlength="1" class="peer w-10 h-10 text-center bg-transparent text-blue-gray-700 font-sans font-normal outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all border-blue-gray-200 border focus:border-2 rounded-[7px] focus:border-gray-900" type="text" 
+                        <input id="otp3" wire:model='otp3' maxlength="1"
+                            class="peer w-10 h-10 text-center bg-transparent text-blue-gray-700 font-sans font-normal outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all border-blue-gray-200 border focus:border-2 rounded-[7px] focus:border-gray-900"
+                            type="text"
                             oninput="this.value=this.value.slice(0,1); if(this.value) document.getElementById('otp4').focus();"
                             onkeydown="if(event.key === 'Backspace' && !this.value) document.getElementById('otp2').focus();">
-                        <input id="otp4" wire:model='otp4' maxlength="1" class="peer w-10 h-10 text-center bg-transparent text-blue-gray-700 font-sans font-normal outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all border-blue-gray-200 border focus:border-2 rounded-[7px] focus:border-gray-900" type="text" 
+                        <input id="otp4" wire:model='otp4' maxlength="1"
+                            class="peer w-10 h-10 text-center bg-transparent text-blue-gray-700 font-sans font-normal outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all border-blue-gray-200 border focus:border-2 rounded-[7px] focus:border-gray-900"
+                            type="text"
                             oninput="this.value=this.value.slice(0,1); if(this.value) document.getElementById('otp5').focus();"
                             onkeydown="if(event.key === 'Backspace' && !this.value) document.getElementById('otp3').focus();">
-                        <input id="otp5" wire:model='otp5' maxlength="1" class="peer w-10 h-10 text-center bg-transparent text-blue-gray-700 font-sans font-normal outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all border-blue-gray-200 border focus:border-2 rounded-[7px] focus:border-gray-900" type="text" 
+                        <input id="otp5" wire:model='otp5' maxlength="1"
+                            class="peer w-10 h-10 text-center bg-transparent text-blue-gray-700 font-sans font-normal outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all border-blue-gray-200 border focus:border-2 rounded-[7px] focus:border-gray-900"
+                            type="text"
                             oninput="this.value=this.value.slice(0,1); if(this.value) document.getElementById('otp6').focus();"
                             onkeydown="if(event.key === 'Backspace' && !this.value) document.getElementById('otp4').focus();">
-                        <input id="otp6" wire:model='otp6' maxlength="1" class="peer w-10 h-10 text-center bg-transparent text-blue-gray-700 font-sans font-normal outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all border-blue-gray-200 border focus:border-2 rounded-[7px] focus:border-gray-900" type="text" 
+                        <input id="otp6" wire:model='otp6' maxlength="1"
+                            class="peer w-10 h-10 text-center bg-transparent text-blue-gray-700 font-sans font-normal outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all border-blue-gray-200 border focus:border-2 rounded-[7px] focus:border-gray-900"
+                            type="text"
                             oninput="this.value=this.value.slice(0,1);"
                             onkeydown="if(event.key === 'Backspace' && !this.value) document.getElementById('otp5').focus();">
                     </div>
-                    
+
                 </div>
                 <div class="w-full h-auto flex gap-2 justify-end mt-4">
                     <button wire:click='back5' wire:loading.attr="disabled"
